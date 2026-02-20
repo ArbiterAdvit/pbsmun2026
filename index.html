@@ -3,64 +3,631 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pace British MUN 2026</title>
+      <title>PBSMUN | Pace British School Model United Nations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-      body {
-      margins: 0;
-      font-family: Arial, sans serif;
-      }
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #060E2E;
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    box-shadow: 0 2px 6px rgba (0,0,0,0.3);
-    z-index: 1000;}
+        /* Color Palette */
+        :root {
+            --navy-blue: #161a29; 
+            --light-navy: #1f253a;
+            --gold: #d4c08b;      
+            --white: #ffffff;
+        }
 
-    .logo
-     color: #cab922;
-     font-size: 20px;
-     font-weight: bold;}
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 15px;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .navlinks a {
-     color: #92866c;
-     text-decoration: none;
-     font-size: 16px;
-     padding: 6px 10px;
-     border-radius: 4px;
-     margin-left: 20px;
-  }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    .nav-links a:hover {
-      background: #163f6b;
-    .nav-links {
-      margin-left: 20px;
- }
-  }
-    .content {
-     padding-top: 70px;
-     padding-left: 20px;
- }
-    @media (max-width: 600px) {
-    .nav-links {
-     flex-wrap: wrap;
- }
-  }
-</style>
-  </head>
-  <body>
-<div class="navbar">
-<div class="logo">PBS MUN</div>
-<div class="nav-links"> <a href="#">Committees</a> <a href="#">Scedule</a>
-<a href="#">Contact</a> </div>
-</div>
-  </body>
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: var(--light-navy);
+            border-bottom: 2px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-logo img {
+            height: 40px; 
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 5rem 2rem;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, var(--light-navy) 0%, var(--navy-blue) 100%);
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5));
+            animation: heroFadeIn 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: heroFadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: var(--white);
+            opacity: 0;
+            animation: heroFadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+        }
+
+        /* Countdown Timer */
+        .countdown-container {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0;
+            animation: heroFadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+        }
+
+        .time-box {
+            background-color: rgba(212, 192, 139, 0.1);
+            border: 1px solid var(--gold);
+            padding: 1.5rem;
+            border-radius: 8px;
+            min-width: 120px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+        }
+
+        .time-box p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            opacity: 0;
+            animation: heroFadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+        }
+
+        .btn:hover {
+            background-color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* General Sections */
+        .section-container {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            display: block;
+            margin: 1rem auto 0;
+        }
+
+        .bg-light {
+            background-color: var(--light-navy);
+        }
+
+        /* Premium Scroll Animation Classes (No Blur, No Stagger) */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(60px) scale(0.98);
+            transition: opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1), 
+                        transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .scroll-reveal.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* About Us */
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Meet The Team Section */
+        .division-title {
+            font-size: 2rem;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        /* Custom width for top tier rows so they don't stretch too wide */
+        .team-grid.secretariat-row {
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .team-card {
+            background-color: var(--light-navy);
+            border: 1px solid rgba(212, 192, 139, 0.2);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border-color: var(--gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .team-photo-frame {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            background-color: var(--navy-blue);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .team-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fallback-icon {
+            font-size: 4rem;
+            color: rgba(212, 192, 139, 0.4);
+        }
+
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .team-role {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tba-text {
+            color: #ccc !important;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-email {
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            margin: 2rem 0;
+            padding: 1rem 2rem;
+            border: 2px solid var(--gold);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-email:hover {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--navy-blue);
+            border-top: 1px solid rgba(212, 192, 139, 0.3);
+            font-size: 0.9rem;
+        }
+
+        /* Loading Animations (No Blur) */
+        @keyframes heroFadeInUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .nav-links { display: none; }
+            .countdown-container { gap: 1rem; }
+            .time-box { min-width: 90px; padding: 1rem; }
+            .time-box span { font-size: 1.8rem; }
+            .section-container { padding: 4rem 5%; }
+            .team-card { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="nav-logo">
+            <img src="image_153b89.png" alt="PBSMUN Logo">
+            PBSMUN
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <img src="image_153b89.png" alt="PBSMUN Logo" class="hero-logo">
+        
+        <h1 class="hero-title">PBSMUN '26</h1>
+        <p class="hero-subtitle">Pace British School Model United Nations</p>
+
+        <div class="countdown-container" id="timer-container">
+            <div class="time-box">
+                <span id="days">00</span>
+                <p>Days</p>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <p>Hours</p>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <p>Minutes</p>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <p>Seconds</p>
+            </div>
+        </div>
+
+        <a href="#team" class="btn">Meet the Team</a>
+    </header>
+
+    <section id="about" class="section-container bg-light">
+        <h2 class="section-title scroll-reveal">About PBSMUN</h2>
+        <div class="about-content scroll-reveal">
+            <p>Welcome to the Pace British School Model United Nations (PBSMUN) 2026. We are dedicated to providing a platform for the leaders of tomorrow to engage in meaningful diplomatic debate, hone their public speaking skills, and tackle the world's most pressing issues.</p>
+            <br>
+            <p>At PBSMUN, we believe in the power of youth to drive global change. Our conference brings together bright minds from across the region to simulate the complexities of international relations, fostering a spirit of collaboration, critical thinking, and mutual respect. Join us this September as we step into the shoes of global policymakers.</p>
+        </div>
+    </section>
+
+    <section id="team" class="section-container">
+        <h2 class="section-title scroll-reveal">Meet the Team</h2>
+        
+        <h3 class="division-title scroll-reveal">The Secretariat</h3>
+        
+        <div class="team-grid secretariat-row">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Huzaifa Anwar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Huzaifa Anwar</h3>
+                <p class="team-role">Secretary General</p>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Taha Yaseen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Taha Yaseen</h3>
+                <p class="team-role">Deputy Secretary General</p>
+            </div>
+        </div>
+
+        <div class="team-grid secretariat-row" style="margin-bottom: 0;">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Rayyan Hassan" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Rayyan Hassan</h3>
+                <p class="team-role">Director General</p>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Malik Salahadeen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Malik Salahadeen</h3>
+                <p class="team-role">Head of Staff</p>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Media Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Head of Media</p>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Manuel Dieudon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Manuel Dieudon</h3>
+                <p class="team-role">Co-Head of Media</p>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Finance Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Rayyan" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Rayyan</h3>
+                <p class="team-role">Head of Finance</p>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Co-Head of Finance</p>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Logistics Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Mohammed Matheen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Mohammed Matheen</h3>
+                <p class="team-role">Head of Logistics</p>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Co-Head of Logistics</p>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Delegate Affairs Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Mohammed Shahbaz" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Mohammed Shahbaz</h3>
+                <p class="team-role">Head of Delegate Affairs</p>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Anisa Qurbonalizoda" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Anisa Qurbonalizoda</h3>
+                <p class="team-role">Co-Head of Delegate Affairs</p>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Operations Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Ayaan Danish" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Ayaan Danish</h3>
+                <p class="team-role">Head of Operations</p>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Co-Head of Operations</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="contact" class="section-container bg-light">
+        <h2 class="section-title scroll-reveal">Contact Us</h2>
+        <div class="contact-content scroll-reveal">
+            <p>Have questions about registration, committee allocations, or sponsorship opportunities? Our Secretariat is here to help. Reach out to us via email, and we will get back to you as soon as possible.</p>
+            <a href="mailto:pbsmun26@gmail.com" class="contact-email">pbsmun26@gmail.com</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Pace British School Model United Nations. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- Countdown Timer Logic ---
+        const countDownDate = new Date("Sep 25, 2026 08:00:00").getTime();
+
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.getElementById("timer-container").innerHTML = "<h2 style='margin-bottom: 2rem;'>The Conference Has Begun!</h2>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }, 1000);
+
+        // --- Repeating Premium Scroll Animation Logic ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px', 
+            threshold: 0.1 
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        revealElements.forEach(el => observer.observe(el));
+    </script>
+
+</body>
 </html>
