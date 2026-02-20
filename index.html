@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>PBSMUN | Pace British School Model United Nations</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBSMUN | Pace British School Model United Nations</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Color Palette */
@@ -83,6 +83,15 @@
 
         .nav-links a:hover {
             color: var(--gold);
+        }
+
+        /* Mobile Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: var(--gold);
+            user-select: none;
         }
 
         /* Hero Section */
@@ -204,7 +213,7 @@
             background-color: var(--light-navy);
         }
 
-        /* Premium Scroll Animation Classes (No Blur, No Stagger) */
+        /* Premium Scroll Animation Classes */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(60px) scale(0.98);
@@ -238,17 +247,17 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* slightly smaller minmax for mobile */
             gap: 2rem;
             justify-content: center;
         }
 
-        /* Custom width for top tier rows so they don't stretch too wide */
         .team-grid.secretariat-row {
             max-width: 800px;
             margin: 0 auto 2rem auto;
         }
 
+        /* Interactive Team Cards */
         .team-card {
             background-color: var(--light-navy);
             border: 1px solid rgba(212, 192, 139, 0.2);
@@ -257,13 +266,16 @@
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            outline: none; /* remove default browser outline */
         }
 
-        .team-card:hover {
+        .team-card:hover, .team-card:focus {
             transform: translateY(-10px) !important;
             box-shadow: 0 10px 25px rgba(0,0,0,0.4);
             border-color: var(--gold);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .team-photo-frame {
@@ -311,6 +323,72 @@
             font-style: italic;
         }
 
+        /* Quote Expansion Styling */
+        .click-hint {
+            display: block;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .quote-area {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            font-style: italic;
+            color: #e0e0e0;
+            font-size: 1rem;
+        }
+
+        .quote-area p {
+            margin: 0;
+            position: relative;
+        }
+
+        /* Opening Quote */
+        .quote-area::before {
+            content: "“";
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            line-height: 0;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: -10px;
+            text-align: left;
+        }
+
+        /* Closing Quote */
+        .quote-area::after {
+            content: "”";
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            line-height: 0;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 0;
+            text-align: right;
+        }
+
+        /* Active State when clicked */
+        .team-card.show-quote .quote-area {
+            max-height: 250px; /* Expands to fit text */
+            opacity: 1;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212, 192, 139, 0.2);
+        }
+
+        .team-card.show-quote .click-hint {
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+            overflow: hidden;
+        }
+
         /* Contact Section */
         .contact-content {
             text-align: center;
@@ -329,6 +407,7 @@
             border: 2px solid var(--gold);
             border-radius: 5px;
             transition: all 0.3s ease;
+            word-break: break-all; /* Ensures email doesn't overflow on small screens */
         }
 
         .contact-email:hover {
@@ -345,7 +424,7 @@
             font-size: 0.9rem;
         }
 
-        /* Loading Animations (No Blur) */
+        /* Loading Animations */
         @keyframes heroFadeInUp {
             from { opacity: 0; transform: translateY(40px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
@@ -355,15 +434,42 @@
             to { opacity: 1; transform: scale(1); }
         }
 
+        /* Mobile Responsiveness Improvements */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1.2rem; }
-            .nav-links { display: none; }
-            .countdown-container { gap: 1rem; }
-            .time-box { min-width: 90px; padding: 1rem; }
-            .time-box span { font-size: 1.8rem; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            
+            /* Show Hamburger, Hide standard nav by default */
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 72px; /* sits right below nav bar */
+                left: 0;
+                width: 100%;
+                background-color: var(--light-navy);
+                padding: 1rem 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+                border-bottom: 2px solid var(--gold);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 1rem 0;
+                text-align: center;
+            }
+
+            .countdown-container { gap: 0.8rem; }
+            .time-box { min-width: 75px; padding: 1rem 0.5rem; }
+            .time-box span { font-size: 1.5rem; }
+            .time-box p { font-size: 0.75rem; }
+            
             .section-container { padding: 4rem 5%; }
-            .team-card { padding: 2rem 1.5rem; }
+            .team-card { padding: 2rem 1rem; }
+            .hero-logo { max-width: 180px; }
+            .contact-email { font-size: 1.2rem; padding: 1rem; }
         }
     </style>
 </head>
@@ -374,18 +480,16 @@
             <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo">
             PBSMUN
         </a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="/registration.html">Registration</a></li>
-            <li><a href="/guides.html">Committees and Guides</a></li>
-            <li><a href="/schedule.html">Schedule</a></li>
-            <li><a href="/about.html">About Us</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">☰</div>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About Us</a></li>
+            <li><a href="#team" onclick="toggleMenu()">Team</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </ul>
     </nav>
 
- <header id="home">
+    <header id="home">
         <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo" class="hero-logo">
         
         <h1 class="hero-title">PBSMUN '26</h1>
@@ -435,6 +539,8 @@
                 </div>
                 <h3>Huzaifa Anwar</h3>
                 <p class="team-role">Secretary General</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
@@ -444,6 +550,8 @@
                 </div>
                 <h3>Taha Yaseen</h3>
                 <p class="team-role">Deputy Secretary General</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -455,6 +563,8 @@
                 </div>
                 <h3>Rayyan Hassan</h3>
                 <p class="team-role">Director General</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
@@ -464,6 +574,8 @@
                 </div>
                 <h3>Malik Salahadeen</h3>
                 <p class="team-role">Head of Staff</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -476,6 +588,8 @@
                 </div>
                 <h3>Manuel Dieudon</h3>
                 <p class="team-role">Head of Media</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
@@ -485,6 +599,8 @@
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Media</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -497,6 +613,8 @@
                 </div>
                 <h3>Rayyan Ali</h3>
                 <p class="team-role">Head of Finance</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
@@ -506,6 +624,8 @@
                 </div>
                 <h3>Abdullah</h3>
                 <p class="team-role">Co-Head of Finance</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
         
@@ -518,6 +638,8 @@
                 </div>
                 <h3>Advit Kumar</h3>
                 <p class="team-role">Head of Research</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
@@ -527,6 +649,33 @@
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Research</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Crisis Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Head of Crisis</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Co-Head of Crisis</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -539,6 +688,8 @@
                 </div>
                 <h3>Mohammed Matheen</h3>
                 <p class="team-role">Head of Logistics</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
@@ -548,6 +699,8 @@
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Logistics</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -560,6 +713,8 @@
                 </div>
                 <h3>Mohammed Shahbaz</h3>
                 <p class="team-role">Head of Delegate Affairs</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Life is roblox</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
@@ -569,6 +724,8 @@
                 </div>
                 <h3>Anisa Qurbonalizoda</h3>
                 <p class="team-role">Co-Head of Delegate Affairs</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -581,6 +738,8 @@
                 </div>
                 <h3>Ayaan Danish</h3>
                 <p class="team-role">Head of Operations</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
@@ -590,6 +749,8 @@
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Operations</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -608,6 +769,39 @@
     </footer>
 
     <script>
+        // --- Mobile Menu Toggle ---
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            // Only toggle if we are on mobile screen size
+            if (window.innerWidth <= 768) {
+                menu.classList.toggle('active');
+            }
+        }
+
+        // --- Team Card Accessibility & Click Logic ---
+        // Dynamically add ARIA roles, tabindex, and click/keyboard events to cards
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.setAttribute('tabindex', '0'); // Makes it focusable via Tab key
+            card.setAttribute('role', 'button'); 
+            card.setAttribute('aria-expanded', 'false');
+
+            const toggleQuote = () => {
+                const isExpanded = card.classList.toggle('show-quote');
+                card.setAttribute('aria-expanded', isExpanded);
+            };
+
+            // Mouse click
+            card.addEventListener('click', toggleQuote);
+
+            // Keyboard "Enter" or "Space" key press
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault(); // Prevent page scrolling on spacebar
+                    toggleQuote();
+                }
+            });
+        });
+
         // --- Countdown Timer Logic ---
         const countDownDate = new Date("Sep 25, 2026 08:00:00").getTime();
 
