@@ -34,10 +34,10 @@
         }
 
         h1, h2, h3, h4 {
-            font-family: 'XBNiloofarRegular';
-            font-weight: normal;
-            font-style: normal;
-        }
+   font-family: 'XBNiloofarRegular';
+   font-weight: normal;
+   font-style: normal;
+}
 
         /* Navigation */
         nav {
@@ -58,6 +58,8 @@
             gap: 10px;
             font-size: 1.5rem;
             font-family: 'XBNiloofarRegular';
+            font-weight: normal;
+            font-style: normal;
             color: var(--white);
             text-decoration: none;
             letter-spacing: 2px;
@@ -85,6 +87,7 @@
             color: var(--gold);
         }
 
+        /* Mobile Hamburger Menu */
         .hamburger {
             display: none;
             cursor: pointer;
@@ -147,12 +150,24 @@
             border-radius: 8px;
             min-width: 120px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
         .time-box span {
             display: block;
             font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'XBNiloofarRegular';
+            font-weight: normal;
+            font-style: normal;
             color: var(--gold);
+        }
+
+        .time-box p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
         }
 
         /* Buttons */
@@ -164,59 +179,17 @@
             font-weight: 600;
             text-decoration: none;
             border-radius: 5px;
-            transition: all 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
             border: none;
             cursor: pointer;
             display: inline-block;
+            opacity: 0;
+            animation: heroFadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
         }
 
         .btn:hover {
             background-color: var(--white);
             transform: translateY(-3px);
-        }
-
-        /* Dialogue / Modal Styling */
-        dialog {
-            border: 1px solid var(--gold);
-            border-radius: 12px;
-            background-color: var(--light-navy);
-            color: var(--white);
-            padding: 3rem 2rem;
-            max-width: 600px;
-            width: 90%;
-            margin: auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            position: fixed;
-            z-index: 1001;
-        }
-
-        dialog::backdrop {
-            background: rgba(22, 26, 41, 0.85);
-            backdrop-filter: blur(10px);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: transparent;
-            border: none;
-            color: var(--gold);
-            font-size: 2.5rem;
-            cursor: pointer;
-            line-height: 1;
-            transition: transform 0.2s;
-        }
-
-        .close-modal:hover {
-            transform: scale(1.1);
-        }
-
-        .modal-content h3 {
-            margin-bottom: 1.5rem;
-            color: var(--gold);
-            font-size: 2.2rem;
-            text-align: center;
         }
 
         /* General Sections */
@@ -244,11 +217,13 @@
             background-color: var(--light-navy);
         }
 
+        /* Premium Scroll Animation Classes */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(60px) scale(0.98);
-            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), 
-                        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1), 
+                        transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
         }
 
         .scroll-reveal.show {
@@ -261,23 +236,22 @@
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
 
-        .about-btn {
-            margin-top: 2.5rem;
-        }
-
-        /* Team Cards */
+        /* Meet The Team Section */
         .division-title {
             font-size: 2rem;
             margin-top: 4rem;
             margin-bottom: 1.5rem;
             text-align: center;
+            color: var(--white);
+            letter-spacing: 1px;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* slightly smaller minmax for mobile */
             gap: 2rem;
             justify-content: center;
         }
@@ -287,18 +261,24 @@
             margin: 0 auto 2rem auto;
         }
 
+        /* Interactive Team Cards */
         .team-card {
             background-color: var(--light-navy);
             border: 1px solid rgba(212, 192, 139, 0.2);
             border-radius: 12px;
             padding: 3rem 2rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            outline: none; /* remove default browser outline */
         }
 
-        .team-card:hover {
-            transform: translateY(-10px);
+        .team-card:hover, .team-card:focus {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
             border-color: var(--gold);
         }
 
@@ -308,11 +288,12 @@
             margin: 0 auto 1.5rem auto;
             border-radius: 50%;
             border: 3px solid var(--gold);
-            overflow: hidden;
             background-color: var(--navy-blue);
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .team-photo-frame img {
@@ -321,12 +302,40 @@
             object-fit: cover;
         }
 
+        .fallback-icon {
+            font-size: 4rem;
+            color: rgba(212, 192, 139, 0.4);
+        }
+
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            font-family: 'XBNiloofarRegular';
+           font-weight: normal;
+           font-style: normal;
+        }
+
         .team-role {
+            font-size: 1rem;
             font-weight: 600;
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.9rem;
+        }
+
+        .tba-text {
+            color: #ccc !important;
+            font-style: italic;
+        }
+
+        /* Quote Expansion Styling */
+        .click-hint {
+            display: block;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 1rem;
+            transition: opacity 0.3s;
         }
 
         .quote-area {
@@ -335,19 +344,66 @@
             overflow: hidden;
             transition: all 0.4s ease;
             font-style: italic;
+            color: #e0e0e0;
+            font-size: 1rem;
         }
 
+        .quote-area p {
+            margin: 0;
+            position: relative;
+        }
+
+        /* Opening Quote */
+        .quote-area::before {
+            content: "“";
+            font-family: 'XBNiloofarRegular';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 2.5rem;
+            color: var(--gold);
+            line-height: 0;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: -10px;
+            text-align: left;
+        }
+
+        /* Closing Quote */
+        .quote-area::after {
+            content: "”";
+            font-family: 'XBNiloofarRegular';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 2.5rem;
+            color: var(--gold);
+            line-height: 0;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 0;
+            text-align: right;
+        }
+
+        /* Active State when clicked */
         .team-card.show-quote .quote-area {
-            max-height: 250px;
+            max-height: 250px; /* Expands to fit text */
             opacity: 1;
             margin-top: 1.5rem;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(212, 192, 139, 0.2);
         }
 
+        .team-card.show-quote .click-hint {
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+            overflow: hidden;
+        }
+
         /* Contact Section */
         .contact-content {
             text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .contact-email {
@@ -356,11 +412,12 @@
             font-weight: 700;
             color: var(--gold);
             text-decoration: none;
-            margin-top: 2rem;
+            margin: 2rem 0;
             padding: 1rem 2rem;
             border: 2px solid var(--gold);
             border-radius: 5px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            word-break: break-all; /* Ensures email doesn't overflow on small screens */
         }
 
         .contact-email:hover {
@@ -368,35 +425,61 @@
             color: var(--navy-blue);
         }
 
+        /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
+            background-color: var(--navy-blue);
             border-top: 1px solid rgba(212, 192, 139, 0.3);
+            font-size: 0.9rem;
         }
 
+        /* Loading Animations */
         @keyframes heroFadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
         @keyframes heroFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
 
+        /* Mobile Responsiveness Improvements */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            
+            /* Show Hamburger, Hide standard nav by default */
+            .hamburger { display: block; }
             .nav-links {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 72px;
+                top: 72px; /* sits right below nav bar */
                 left: 0;
                 width: 100%;
                 background-color: var(--light-navy);
                 padding: 1rem 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+                border-bottom: 2px solid var(--gold);
             }
-            .nav-links.active { display: flex; }
-            .hamburger { display: block; }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 1rem 0;
+                text-align: center;
+            }
+
+            .countdown-container { gap: 0.8rem; }
+            .time-box { min-width: 75px; padding: 1rem 0.5rem; }
+            .time-box span { font-size: 1.5rem; }
+            .time-box p { font-size: 0.75rem; }
+            
+            .section-container { padding: 4rem 5%; }
+            .team-card { padding: 2rem 1rem; }
+            .hero-logo { max-width: 180px; }
+            .contact-email { font-size: 1.2rem; padding: 1rem; }
         }
     </style>
 </head>
@@ -412,9 +495,9 @@
 
     <ul class="nav-links" id="nav-menu">
         <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-        <li><a href="/registration.html">Registration</a></li>
-        <li><a href="/guides.html">Committees</a></li>
-        <li><a href="/schedule.html">Schedule</a></li>
+        <li><a href="/registration.html" onclick="toggleMenu()">Registration</a></li>
+        <li><a href="/guides.html" onclick="toggleMenu()">Committees and Guides</a></li>
+        <li><a href="/schedule.html" onclick="toggleMenu()">Schedule</a></li>
         <li><a href="#about" onclick="toggleMenu()">About Us</a></li>
         <li><a href="#team" onclick="toggleMenu()">Team</a></li>
         <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
@@ -423,17 +506,30 @@
 
     <header id="home">
         <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo" class="hero-logo">
+        
         <h1 class="hero-title">PBSMUN '26</h1>
         <p class="hero-subtitle">Pace British School Model United Nations</p>
 
         <div class="countdown-container" id="timer-container">
-            <div class="time-box"><span id="days">00</span><p>Days</p></div>
-            <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
-            <div class="time-box"><span id="minutes">00</span><p>Minutes</p></div>
-            <div class="time-box"><span id="seconds">00</span><p>Seconds</p></div>
+            <div class="time-box">
+                <span id="days">00</span>
+                <p>Days</p>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <p>Hours</p>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <p>Minutes</p>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <p>Seconds</p>
+            </div>
         </div>
 
-        <a href="#team" class="btn hero-btn" style="opacity: 0; animation: heroFadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;">Meet the Team</a>
+        <a href="#team" class="btn">Meet the Team</a>
     </header>
 
     <section id="about" class="section-container bg-light">
@@ -441,51 +537,244 @@
         <div class="about-content scroll-reveal">
             <p>Welcome to the Pace British School Model United Nations (PBSMUN) 2026. We are dedicated to providing a platform for the leaders of tomorrow to engage in meaningful diplomatic debate, hone their public speaking skills, and tackle the world's most pressing issues.</p>
             <br>
-            <p>At PBSMUN, we believe in the power of youth to drive global change. Join us this September as we step into the shoes of global policymakers.</p>
-            
-            <button class="btn about-btn" onclick="document.getElementById('aboutModal').showModal()">More About Us</button>
+            <p>At PBSMUN, we believe in the power of youth to drive global change. Our conference brings together bright minds from across the region to simulate the complexities of international relations, fostering a spirit of collaboration, critical thinking, and mutual respect. Join us this September as we step into the shoes of global policymakers.</p>
         </div>
     </section>
-
-    <dialog id="aboutModal">
-        <button class="close-modal" onclick="document.getElementById('aboutModal').close()" aria-label="Close">&times;</button>
-        <div class="modal-content">
-            <h3>Our Mission</h3>
-            <p>PBSMUN '26 aims to create an environment where diplomacy meets innovation. Our mission is to empower students with the research, negotiation, and leadership skills necessary to navigate a globalized world.</p>
-            <br>
-            <p>We pride ourselves on high-quality academic standards and a welcoming atmosphere for both first-time delegates and experienced veterans. Our chairs are dedicated to fostering fair, inclusive, and rigorous debate across all committees.</p>
-        </div>
-    </dialog>
 
     <section id="team" class="section-container">
         <h2 class="section-title scroll-reveal">Meet the Team</h2>
         
         <h3 class="division-title scroll-reveal">The Secretariat</h3>
+        
         <div class="team-grid secretariat-row">
-            <div class="team-card scroll-reveal" onclick="this.classList.toggle('show-quote')">
+            <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Huzaifa Anwar" onerror="this.src='https://via.placeholder.com/150'">
+                    <img src="placeholder.jpg" alt="Huzaifa Anwar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Huzaifa Anwar</h3>
                 <p class="team-role">Secretary General</p>
+                <span class="click-hint">Click for quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
-            <div class="team-card scroll-reveal" onclick="this.classList.toggle('show-quote')">
+
+            <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Taha Yaseen" onerror="this.src='https://via.placeholder.com/150'">
+                    <img src="placeholder.jpg" alt="Taha Yaseen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Taha Yaseen</h3>
                 <p class="team-role">Deputy Secretary General</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+        </div>
+
+        <div class="team-grid secretariat-row" style="margin-bottom: 0;">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Rayyan Hassan" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Rayyan Hassan</h3>
+                <p class="team-role">Director General</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Malik Salahadeen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Malik Salahadeen</h3>
+                <p class="team-role">Head of Staff</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Media Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Manuel Dieudon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Manuel Dieudon</h3>
+                <p class="team-role">Head of Media</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Co-Head of Media</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Finance Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Rayyan Ali" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Rayyan Ali</h3>
+                <p class="team-role">Head of Finance</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Abdullah" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Abdullah</h3>
+                <p class="team-role">Co-Head of Finance</p>
+                <span class="click-hint">Click for quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
         
-        </section>
+        <h3 class="division-title scroll-reveal">Research Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Advit Kumar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Advit Kumar</h3>
+                <p class="team-role">Head of Research</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Co-Head of Research</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Crisis Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Head of Crisis</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Co-Head of Crisis</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Logistics Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Mohammed Matheen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Mohammed Matheen</h3>
+                <p class="team-role">Head of Logistics</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Co-Head of Logistics</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Delegate Affairs Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Mohammed Shahbaz" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Mohammed Shahbaz</h3>
+                <p class="team-role">Head of Delegate Affairs</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Life is roblox</p></div>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Anisa Qurbonalizoda" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Anisa Qurbonalizoda</h3>
+                <p class="team-role">Co-Head of Delegate Affairs</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Operations Team</h3>
+        <div class="team-grid">
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Ayaan Danish" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3>Ayaan Danish</h3>
+                <p class="team-role">Head of Operations</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+
+            <div class="team-card scroll-reveal">
+                <div class="team-photo-frame">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;">👤</span>
+                </div>
+                <h3 class="tba-text">Not Picked Yet</h3>
+                <p class="team-role">Co-Head of Operations</p>
+                <span class="click-hint">Click for quote</span>
+                <div class="quote-area"><p>Quote coming soon...</p></div>
+            </div>
+        </div>
+
+    </section>
 
     <section id="contact" class="section-container bg-light">
         <h2 class="section-title scroll-reveal">Contact Us</h2>
         <div class="contact-content scroll-reveal">
-            <p>Have questions? Reach out to our Secretariat via email.</p>
+            <p>Have questions about registration, committee allocations, or sponsorship opportunities? Our Secretariat is here to help. Reach out to us via email, and we will get back to you as soon as possible.</p>
             <a href="mailto:pbsmun26@gmail.com" class="contact-email">pbsmun26@gmail.com</a>
         </div>
     </section>
@@ -495,38 +784,83 @@
     </footer>
 
     <script>
+        // --- Mobile Menu Toggle ---
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
-            if (window.innerWidth <= 768) menu.classList.toggle('active');
+            // Only toggle if we are on mobile screen size
+            if (window.innerWidth <= 768) {
+                menu.classList.toggle('active');
+            }
         }
 
-        // Countdown Timer Logic
+        // --- Team Card Accessibility & Click Logic ---
+        // Dynamically add ARIA roles, tabindex, and click/keyboard events to cards
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.setAttribute('tabindex', '0'); // Makes it focusable via Tab key
+            card.setAttribute('role', 'button'); 
+            card.setAttribute('aria-expanded', 'false');
+
+            const toggleQuote = () => {
+                const isExpanded = card.classList.toggle('show-quote');
+                card.setAttribute('aria-expanded', isExpanded);
+            };
+
+            // Mouse click
+            card.addEventListener('click', toggleQuote);
+
+            // Keyboard "Enter" or "Space" key press
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault(); // Prevent page scrolling on spacebar
+                    toggleQuote();
+                }
+            });
+        });
+
+        // --- Countdown Timer Logic ---
         const countDownDate = new Date("Sep 25, 2026 08:00:00").getTime();
-        setInterval(function() {
+
+        const timerInterval = setInterval(function() {
             const now = new Date().getTime();
             const distance = countDownDate - now;
-            if (distance < 0) return;
-            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-            document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.getElementById("timer-container").innerHTML = "<h2 style='margin-bottom: 2rem;'>The Conference Has Begun!</h2>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
         }, 1000);
 
-        // Scroll Reveal Logic
+        // --- Repeating Premium Scroll Animation Logic ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px', 
+            threshold: 0.1 
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('show');
-                else entry.target.classList.remove('show');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-        
-        // Handle clicking outside the dialogue to close it
-        const modal = document.getElementById('aboutModal');
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.close();
-        });
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        revealElements.forEach(el => observer.observe(el));
     </script>
+
 </body>
 </html>
