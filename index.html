@@ -34,10 +34,10 @@
         }
 
         h1, h2, h3, h4 {
-   font-family: 'XBNiloofarRegular';
-   font-weight: normal;
-   font-style: normal;
-}
+           font-family: 'XBNiloofarRegular';
+           font-weight: normal;
+           font-style: normal;
+        }
 
         /* Navigation */
         nav {
@@ -238,6 +238,103 @@
             margin: 0 auto;
             font-size: 1.1rem;
         }
+        
+        #more-about-btn {
+            margin-top: 2rem;
+            animation: none; /* remove hero animation for this specific button */
+            opacity: 1; /* reset opacity since it uses scroll-reveal */
+        }
+
+        /* Modal / Popup Box Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden; 
+            background-color: rgba(22, 26, 41, 0.85); /* Matches navy-blue with opacity */
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--light-navy);
+            margin: 5% auto; 
+            padding: 2.5rem;
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            width: 80%; 
+            max-width: 800px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: translateY(-50px);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            color: var(--gold);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .scrollable-content {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 1.5rem;
+            text-align: left;
+        }
+
+        .scrollable-content h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .scrollable-content p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Custom Scrollbar for Modal */
+        .scrollable-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollable-content::-webkit-scrollbar-track {
+            background: var(--navy-blue);
+            border-radius: 4px;
+        }
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: var(--white);
+        }
 
         /* Meet The Team Section */
         .division-title {
@@ -251,7 +348,7 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* slightly smaller minmax for mobile */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
             gap: 2rem;
             justify-content: center;
         }
@@ -273,7 +370,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            outline: none; /* remove default browser outline */
+            outline: none; 
         }
 
         .team-card:hover, .team-card:focus {
@@ -385,7 +482,7 @@
 
         /* Active State when clicked */
         .team-card.show-quote .quote-area {
-            max-height: 250px; /* Expands to fit text */
+            max-height: 250px; 
             opacity: 1;
             margin-top: 1.5rem;
             padding-top: 1.5rem;
@@ -417,7 +514,7 @@
             border: 2px solid var(--gold);
             border-radius: 5px;
             transition: all 0.3s ease;
-            word-break: break-all; /* Ensures email doesn't overflow on small screens */
+            word-break: break-all; 
         }
 
         .contact-email:hover {
@@ -455,7 +552,7 @@
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 72px; /* sits right below nav bar */
+                top: 72px; 
                 left: 0;
                 width: 100%;
                 background-color: var(--light-navy);
@@ -480,6 +577,10 @@
             .team-card { padding: 2rem 1rem; }
             .hero-logo { max-width: 180px; }
             .contact-email { font-size: 1.2rem; padding: 1rem; }
+            
+            /* Modal adjustments for mobile */
+            .modal-content { width: 95%; padding: 1.5rem; margin: 15% auto; }
+            .scrollable-content { padding-right: 0.5rem; }
         }
     </style>
 </head>
@@ -538,6 +639,8 @@
             <p>Welcome to the Pace British School Model United Nations (PBSMUN) 2026. We are dedicated to providing a platform for the leaders of tomorrow to engage in meaningful diplomatic debate, hone their public speaking skills, and tackle the world's most pressing issues.</p>
             <br>
             <p>At PBSMUN, we believe in the power of youth to drive global change. Our conference brings together bright minds from across the region to simulate the complexities of international relations, fostering a spirit of collaboration, critical thinking, and mutual respect. Join us this September as we step into the shoes of global policymakers.</p>
+            
+            <button id="more-about-btn" class="btn scroll-reveal">More About Us</button>
         </div>
     </section>
 
@@ -783,20 +886,40 @@
         <p>&copy; 2026 Pace British School Model United Nations. All rights reserved.</p>
     </footer>
 
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal-btn">&times;</span>
+            <h2 class="section-title" style="margin-bottom: 1.5rem;">More About Us</h2>
+            
+            <div class="scrollable-content">
+                <h3>Our History</h3>
+                <p>Add your MUN's history here. You can talk about when it was founded, how it has grown over the years, and the milestones you've achieved so far. This scrollable area will expand downward as you add more text.</p>
+                
+                <h3>Our Experience</h3>
+                <p>Detail the experience of your Secretariat and staff. Share your team's collective years in Model UN, the number of conferences attended, and awards won to build credibility with potential delegates and sponsors.</p>
+                
+                <h3>Our Mission</h3>
+                <p>Explain the core values of PBSMUN. Whether it's fostering debate, building public speaking skills, or creating a welcoming environment for first-time delegates, this is where you can let your mission statement shine.</p>
+                
+                <p><i>You can keep adding paragraphs, images, or lists here. The box will handle the scrolling automatically!</i></p>
+                <br><br><br>
+                <p>(Extra spacing to demonstrate scrolling behavior)</p>
+            </div>
+        </div>
+    </div>
+
     <script>
         // --- Mobile Menu Toggle ---
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
-            // Only toggle if we are on mobile screen size
             if (window.innerWidth <= 768) {
                 menu.classList.toggle('active');
             }
         }
 
         // --- Team Card Accessibility & Click Logic ---
-        // Dynamically add ARIA roles, tabindex, and click/keyboard events to cards
         document.querySelectorAll('.team-card').forEach(card => {
-            card.setAttribute('tabindex', '0'); // Makes it focusable via Tab key
+            card.setAttribute('tabindex', '0'); 
             card.setAttribute('role', 'button'); 
             card.setAttribute('aria-expanded', 'false');
 
@@ -805,13 +928,10 @@
                 card.setAttribute('aria-expanded', isExpanded);
             };
 
-            // Mouse click
             card.addEventListener('click', toggleQuote);
-
-            // Keyboard "Enter" or "Space" key press
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault(); // Prevent page scrolling on spacebar
+                    e.preventDefault(); 
                     toggleQuote();
                 }
             });
@@ -860,6 +980,38 @@
 
         const revealElements = document.querySelectorAll('.scroll-reveal');
         revealElements.forEach(el => observer.observe(el));
+
+        // --- More About Us Modal Logic ---
+        const modal = document.getElementById("about-modal");
+        const btn = document.getElementById("more-about-btn");
+        const span = document.getElementById("close-modal-btn");
+
+        // Open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+            // slight delay to allow display:block to apply before adding class for fade-in effect
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+
+        // Close the modal when clicking on (x)
+        span.onclick = function() {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 300); // Wait for transition to finish
+        }
+
+        // Close the modal when clicking outside the box
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 300);
+            }
+        }
     </script>
 
 </body>
