@@ -4,18 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
+    <title>Pace British MUN 2026</title>
+    <style>
+      body {
+      margins: 0;
+      font-family: Arial, sans serif;
+      }
+    </style>
     <meta
       name="description"
-      content="High-performance HTML based website template."
+      content="The official website for Pace British School's Model United Nations 2026"
     />
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: ##060E2E;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;}
+
+    .logo
+     color: #cab922;
+     font-size: 20px;
+     font-weight: bold;}
+
+    .nav-links {
+      display: flex;
+      gap: 15px;}
+
+    .navlinks a {
+     color: #92866c;
+     text-decoration: none;
+     font-size: 16px;
+     padding: 6px 10px;
+     border-radius: 4px;
+     margin-left: 20px;
+  }
+
+    .nav-links a:hover {
+      background: #163f6b;
+    .nav-links {
+      margin-left: 20px;
+ }
+  }
+    .content {
+     padding-top: 70px;
+     padding-left: 20px;
+ }
+    @media (max-width: 600px) {
+    .nav-links {
+     flex-wrap: wrap;
+ }
+  }
+</style>
   </head>
   <body>
-    <p> PBSMUN 2026
-    </p>
+<div class="navbar">
+<div class="logo">PBS MUN</div>
+<div class="nav-links"> <a href="#">Committees</a> <a href="#">Scedule</a>
+<a href="#">Contact</a> </div>
+</div>
   </body>
 </html>
