@@ -108,7 +108,7 @@
         }
 
         /* Hero Section */
-        header {
+         header {
             text-align: center;
             padding: 5rem 2rem;
             min-height: 90vh;
@@ -116,7 +116,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at center, var(--light-navy) 0%, var(--navy-blue) 100%);
+            /* Lowkey Monochrome Assembly Image with Dark Overlay */
+            background: linear-gradient(
+                rgba(22, 26, 41, 0.88), 
+                rgba(22, 26, 41, 0.88)
+            ), 
+            url('https://static01.nyt.com/images/2019/09/27/world/un-explainer1/un-explainer1-articleLarge.jpg?quality=75&auto=webp&disable=upscale');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             border-bottom: 1px solid rgba(212, 192, 139, 0.15);
         }
 
@@ -639,7 +647,7 @@
 
     <ul class="nav-links" id="nav-menu">
         <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-        <li><a href="/registration.html" onclick="toggleMenu()">Registration</a></li>
+        <li><a href="/registration.html" onclick="toggleMenu()">Applications</a></li>
         <li><a href="/guides.html" onclick="toggleMenu()">Committees and Guides</a></li>
         <li><a href="/schedule.html" onclick="toggleMenu()">Schedule</a></li>
         <li><a href="#about" onclick="toggleMenu()">About Us</a></li>
