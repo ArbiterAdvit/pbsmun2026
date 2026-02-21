@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule | PBSMUN '26</title>
+    
     <link rel="icon" type="image/x-icon" href="/1_1770817820402_2cg59.png">
+    
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/xb-niloofar" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -398,6 +400,12 @@
             .nav-links li {
                 margin: 1rem 0;
                 text-align: center;
+                width: 100%; /* Ensures the list item spans the full width */
+            }
+
+            /* Stack the dropdown vertically so it doesn't push right */
+            .dropdown {
+                flex-direction: column;
             }
 
             /* Mobile Dropdown Fixes */
@@ -410,13 +418,13 @@
                 transform: none;
                 box-shadow: none;
                 border: none;
-                border-left: 2px solid var(--gold);
-                border-radius: 0;
                 background-color: transparent;
-                min-width: 100%;
+                width: 100%; /* Switched from min-width to width */
+                box-sizing: border-box; /* Prevents padding from causing overflow */
                 margin-top: 0.5rem;
                 display: none; 
             }
+            
             .dropdown-content.show {
                 display: block; 
                 animation: heroFadeIn 0.3s ease; 
@@ -427,7 +435,9 @@
                 text-align: center; 
             }
             .dropdown-content a:hover {
+                /* Remove the left-padding shift on mobile to keep it centered properly */
                 padding-left: 20px; 
+                color: var(--gold);
             }
             
             .section-container { padding: 4rem 5%; }
