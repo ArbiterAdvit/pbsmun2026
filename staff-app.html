@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* Color Palette & Variables (Matching index.html) */
         :root {
             --navy-blue: #161a29;
             --light-navy: #1f253a;
@@ -17,8 +18,15 @@
             --gold-shadow: rgba(212, 192, 139, 0.3);
         }
 
-        html { scroll-behavior: smooth; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -32,7 +40,7 @@
 
         h1, h2, h3 { font-family: 'XBNiloofarRegular'; font-weight: normal; }
 
-        /* --- Navigation --- */
+        /* --- Full Navigation Bar (Copied from index.html) --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -43,24 +51,103 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
 
-        .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.5rem; color: var(--white); text-decoration: none; font-family: 'XBNiloofarRegular'; }
-        .nav-logo img { height: 40px; }
-        .nav-links { list-style: none; display: flex; gap: 2rem; }
-        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-family: 'XBNiloofarRegular';
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-logo img { height: 40px; width: auto; }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
         .nav-links a:hover { color: var(--gold); }
+
+        /* Dropdown Menu Styles */
+        .dropdown { position: relative; display: flex; align-items: center; }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, 15px); 
+            background-color: var(--light-navy);
+            min-width: 260px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            border: 2px solid var(--gold); 
+            border-radius: 10px; 
+            z-index: 1001;
+            overflow: hidden;
+            margin-top: 15px; 
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; 
+        }
+
+        .dropdown-content a {
+            color: var(--white);
+            padding: 15px 25px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(212, 192, 139, 0.15);
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(212, 192, 139, 0.15); 
+            color: var(--gold);
+            padding-left: 32px; 
+        }
+
+        @media (min-width: 769px) {
+            .dropdown:hover .dropdown-content {
+                visibility: visible;
+                opacity: 1;
+                transform: translate(-50%, 0); 
+            }
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: var(--gold);
+        }
 
         /* --- Header --- */
         header {
             text-align: center;
             padding: 4rem 2rem;
-            background: linear-gradient(rgba(22, 26, 41, 0.9), rgba(22, 26, 41, 0.9)), url('https://static01.nyt.com/images/2019/09/27/world/un-explainer1/un-explainer1-articleLarge.jpg');
+            background: linear-gradient(rgba(22, 26, 41, 0.9), rgba(22, 26, 41, 0.9)), 
+            url('https://static01.nyt.com/images/2019/09/27/world/un-explainer1/un-explainer1-articleLarge.jpg');
             background-size: cover;
             border-bottom: 1px solid rgba(212, 192, 139, 0.15);
         }
 
-        .hero-title { font-size: 3.5rem; color: var(--gold); }
+        .hero-title { font-size: 3.5rem; color: var(--gold); text-shadow: 0 0 20px var(--gold-shadow); }
 
         /* --- Main Content --- */
         .main-content {
@@ -70,6 +157,7 @@
             flex-direction: column;
             align-items: center;
             gap: 2rem;
+            background-color: var(--navy-blue);
         }
 
         .info-card {
@@ -94,61 +182,76 @@
         .status-closed { background: #721c24; color: #f8d7da; border: 1px solid #f5c6cb; }
         .status-open { background: #155724; color: #d4edda; border: 1px solid #c3e6cb; }
 
-        .info-card h2 { color: var(--gold); margin-bottom: 1rem; font-size: 2rem; }
+        .info-card h2 { color: var(--gold); margin-bottom: 1rem; font-size: 2.2rem; }
         .info-card h3 { color: var(--gold); margin-top: 1.5rem; font-size: 1.4rem; }
-        .info-card p, .info-card li { color: #e0e0e0; margin-bottom: 1rem; }
+        .info-card p, .info-card li { color: #e0e0e0; margin-bottom: 1rem; font-size: 1.05rem; }
         .info-card ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
 
         .btn {
             background: linear-gradient(135deg, var(--gold) 0%, #ad9963 100%);
             color: var(--navy-blue);
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             display: inline-block;
             transition: 0.3s;
             margin-top: 1rem;
+            text-align: center;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px var(--gold-shadow); background: var(--white); }
 
         footer { text-align: center; padding: 2rem; background: var(--navy-blue); border-top: 2px solid var(--gold); color: rgba(255,255,255,0.7); }
 
+        /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
-            .info-card { padding: 1.5rem; }
-            .nav-links { display: none; }
+            .info-card { padding: 2rem 1.5rem; }
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 72px; 
+                left: 0;
+                width: 100%;
+                background-color: var(--light-navy); 
+                padding: 1rem 0;
+                border-bottom: 2px solid var(--gold);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { margin: 1rem 0; text-align: center; width: 100%; }
+            .dropdown-content { display: none; position: relative; transform: none; left: 0; top: 0; box-shadow: none; border: none; }
+            .dropdown-content.show { display: block; }
         }
     </style>
 </head>
 <body>
 
-     <nav>
-    <a href="index.html" class="nav-logo">
-        <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo" onerror="this.style.display='none'">
-        PBSMUN
-    </a>
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo">
+            PBSMUN
+        </a>
 
-    <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">☰</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-    <ul class="nav-links" id="nav-menu">
-        <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
-        
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown(event)">Applications</a>
-            <div class="dropdown-content" id="app-dropdown">
-                <a href="delegate-app.html" onclick="toggleMenu()">Delegate Applications</a>
-                <a href="chair-app.html" onclick="toggleMenu()">Chair Applications</a>
-                <a href="staff-app.html" onclick="toggleMenu()">Staff Applications</a>
-            </div>
-        </li>
-
-        <li><a href="guides.html" onclick="toggleMenu()">Guides</a></li>
-        <li><a href="schedule.html" onclick="toggleMenu()">Schedule</a></li>
-        <li><a href="index.html#about" onclick="toggleMenu()">About</a></li>
-        <li><a href="index.html#team" onclick="toggleMenu()">Team</a></li>
-        <li><a href="index.html#contact" onclick="toggleMenu()">Contact Us</a></li>
-    </ul>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" onclick="toggleDropdown(event)">Applications</a>
+                <div class="dropdown-content" id="app-dropdown">
+                    <a href="delegate-app.html">Delegate Applications</a>
+                    <a href="chair-app.html">Chair Applications</a>
+                    <a href="staff-app.html" style="color: var(--gold);">Staff Applications</a>
+                </div>
+            </li>
+            <li><a href="guides.html">Guides</a></li>
+            <li><a href="schedule.html">Schedule</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#team">Team</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
     </nav>
 
     <header>
@@ -157,33 +260,45 @@
 
     <section class="main-content">
         <div class="info-card">
-            <span class="status-badge status-closed">Closed</span>
+            <span class="status-badge status-closed">External: Closed</span>
             <h2>External Staff</h2>
-            <p>At this time, PBSMUN '26 is <strong>not accepting</strong> applications for external staff members. We appreciate the interest from the wider MUN community and encourage you to apply as a delegate when applications open.</p>
+            <p>At this time, PBSMUN '26 is <strong>not accepting</strong> applications for external staff members. We appreciate the interest from the wider MUN community and encourage you to join us as a delegate instead!</p>
         </div>
 
         <div class="info-card">
-            <span class="status-badge status-open">Open for Internal Students</span>
-            <h2>Internal Staff (Pace British School)</h2>
-            <p>We are currently looking for dedicated PBS students to join our logistics, media, and administrative teams.</p>
+            <span class="status-badge status-open">Internal: Open</span>
+            <h2>Internal Staff (PBS Students)</h2>
+            <p>We are currently recruiting dedicated students from <strong>Pace British School</strong> to join our Secretariat in making PBSMUN '26 a success.</p>
             
-            <h3>What we look for:</h3>
+            <h3>Core Requirements:</h3>
             <ul>
-                <li><strong>Motivation:</strong> A genuine drive to ensure the conference runs smoothly.</li>
-                <li><strong>Reliability:</strong> Staff members are the backbone of the event; punctuality and commitment are non-negotiable.</li>
-                <li><strong>Problem Solving:</strong> The ability to stay calm under pressure and help delegates with their needs.</li>
-                <li><strong>Teamwork:</strong> Collaborating with other departments to create a professional environment.</li>
+                <li><strong>Motivation:</strong> A desire to contribute to the school's MUN culture.</li>
+                <li><strong>Professionalism:</strong> Ability to represent the school with excellence.</li>
+                <li><strong>Dedication:</strong> Commitment to attending meetings and helping during the 2-day event.</li>
             </ul>
 
-            <p><em>Note: After submitting your application, our team will review your responses. Successful applicants will be waitlisted for an interview. Please note that submission does not guarantee a position.</em></p>
+            <p><em>Selected applicants will be waitlisted and contacted via email for an interview.</em></p>
 
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-aiDXyWRnT2lfUmjeVTmP8AksafFOIoBiAMObFdaMlcZTcA/viewform?usp=publish-editor" class="btn" target="_blank">Apply via Internal Form</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-aiDXyWRnT2lfUmjeVTmP8AksafFOIoBiAMObFdaMlcZTcA/viewform?usp=publish-editor" class="btn" target="_blank">Access Application Form</a>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2026 Pace British School Model United Nations. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        function toggleDropdown(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault(); 
+                document.getElementById('app-dropdown').classList.toggle('show');
+            }
+        }
+    </script>
 
 </body>
 </html>
