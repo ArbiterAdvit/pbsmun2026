@@ -123,17 +123,32 @@
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="nav-logo">
-            <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo">
-            PBSMUN
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="delegate-app.html">Delegates</a></li>
-            <li><a href="chair-app.html">Chairs</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
+     <nav>
+    <a href="index.html" class="nav-logo">
+        <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo" onerror="this.style.display='none'">
+        PBSMUN
+    </a>
+
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">☰</div>
+
+    <ul class="nav-links" id="nav-menu">
+        <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+        
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown(event)">Applications</a>
+            <div class="dropdown-content" id="app-dropdown">
+                <a href="delegate-app.html" onclick="toggleMenu()">Delegate Applications</a>
+                <a href="chair-app.html" onclick="toggleMenu()">Chair Applications</a>
+                <a href="staff-app.html" onclick="toggleMenu()">Staff Applications</a>
+            </div>
+        </li>
+
+        <li><a href="guides.html" onclick="toggleMenu()">Guides</a></li>
+        <li><a href="schedule.html" onclick="toggleMenu()">Schedule</a></li>
+        <li><a href="index.html#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="index.html#team" onclick="toggleMenu()">Team</a></li>
+        <li><a href="index.html#contact" onclick="toggleMenu()">Contact Us</a></li>
+    </ul>
     </nav>
 
     <header>
