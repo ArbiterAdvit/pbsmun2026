@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Color Palette & Variables (Matching index.html) */
+        /* --- Core Styles from index (3).html --- */
         :root {
             --navy-blue: #161a29;
             --light-navy: #1f253a;
@@ -33,14 +33,19 @@
             background-color: var(--navy-blue);
             color: var(--white);
             line-height: 1.6;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        h1, h2, h3 { font-family: 'XBNiloofarRegular'; font-weight: normal; }
+        h1, h2, h3, h4 {
+           font-family: 'XBNiloofarRegular';
+           font-weight: normal;
+           font-style: normal;
+        }
 
-        /* --- Full Navigation Bar (Copied from index.html) --- */
+        /* --- Navigation (Restored from index (3).html) --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -83,7 +88,6 @@
 
         .nav-links a:hover { color: var(--gold); }
 
-        /* Dropdown Menu Styles */
         .dropdown { position: relative; display: flex; align-items: center; }
 
         .dropdown-content {
@@ -113,13 +117,15 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             font-size: 0.95rem;
+            letter-spacing: 0.5px;
             border-bottom: 1px solid rgba(212, 192, 139, 0.15);
+            transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
         }
 
         .dropdown-content a:hover {
             background-color: rgba(212, 192, 139, 0.15); 
             color: var(--gold);
-            padding-left: 32px; 
+            padding-left: 32px;
         }
 
         @media (min-width: 769px) {
@@ -135,19 +141,25 @@
             cursor: pointer;
             font-size: 2rem;
             color: var(--gold);
+            user-select: none;
         }
 
-        /* --- Header --- */
+        /* --- Header / Hero --- */
         header {
             text-align: center;
             padding: 4rem 2rem;
             background: linear-gradient(rgba(22, 26, 41, 0.9), rgba(22, 26, 41, 0.9)), 
             url('https://static01.nyt.com/images/2019/09/27/world/un-explainer1/un-explainer1-articleLarge.jpg');
             background-size: cover;
+            background-position: center;
             border-bottom: 1px solid rgba(212, 192, 139, 0.15);
         }
 
-        .hero-title { font-size: 3.5rem; color: var(--gold); text-shadow: 0 0 20px var(--gold-shadow); }
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--gold-shadow);
+        }
 
         /* --- Main Content --- */
         .main-content {
@@ -156,102 +168,114 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
-            background-color: var(--navy-blue);
+            gap: 2.5rem;
         }
 
-        .info-card {
+        .app-card {
             background-color: var(--light-navy);
             padding: 3rem;
             border: 2px solid var(--gold);
             border-radius: 12px;
-            max-width: 800px;
+            max-width: 850px;
             width: 100%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .status-badge {
+        .status-tag {
             display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
             text-transform: uppercase;
+            margin-bottom: 1.5rem;
         }
-        .status-closed { background: #721c24; color: #f8d7da; border: 1px solid #f5c6cb; }
-        .status-open { background: #155724; color: #d4edda; border: 1px solid #c3e6cb; }
+        .tag-closed { background: #5c1a1a; color: #ffbaba; border: 1px solid #7a2a2a; }
+        .tag-open { background: #1a5c2d; color: #baffc9; border: 1px solid #2a7a3e; }
 
-        .info-card h2 { color: var(--gold); margin-bottom: 1rem; font-size: 2.2rem; }
-        .info-card h3 { color: var(--gold); margin-top: 1.5rem; font-size: 1.4rem; }
-        .info-card p, .info-card li { color: #e0e0e0; margin-bottom: 1rem; font-size: 1.05rem; }
-        .info-card ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        .app-card h2 { color: var(--gold); margin-bottom: 1rem; font-size: 2.2rem; }
+        .app-card h3 { color: var(--gold); margin-top: 1.5rem; margin-bottom: 0.8rem; font-size: 1.4rem; }
+        .app-card p, .app-card li { color: #e0e0e0; margin-bottom: 1rem; font-size: 1.05rem; }
+        .app-card ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
 
         .btn {
             background: linear-gradient(135deg, var(--gold) 0%, #ad9963 100%);
             color: var(--navy-blue);
-            padding: 1.2rem 2.5rem;
+            padding: 1rem 2.5rem;
             text-decoration: none;
             border-radius: 5px;
-            font-weight: bold;
+            font-weight: 600;
             display: inline-block;
             transition: 0.3s;
-            margin-top: 1rem;
-            text-align: center;
+            box-shadow: 0 4px 15px var(--gold-shadow);
+            border: none;
+            cursor: pointer;
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px var(--gold-shadow); background: var(--white); }
+        .btn:hover { background: var(--white); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255,255,255, 0.3); }
 
-        footer { text-align: center; padding: 2rem; background: var(--navy-blue); border-top: 2px solid var(--gold); color: rgba(255,255,255,0.7); }
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: var(--navy-blue);
+            border-top: 2px solid var(--gold);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
 
-        /* --- Mobile Responsiveness --- */
+        /* --- Mobile Adjustments (From index (3).html) --- */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
-            .info-card { padding: 2rem 1.5rem; }
             .hamburger { display: block; }
             .nav-links {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 72px; 
-                left: 0;
-                width: 100%;
+                top: 72px; left: 0; width: 100%;
                 background-color: var(--light-navy); 
                 padding: 1rem 0;
                 border-bottom: 2px solid var(--gold);
             }
             .nav-links.active { display: flex; }
             .nav-links li { margin: 1rem 0; text-align: center; width: 100%; }
-            .dropdown-content { display: none; position: relative; transform: none; left: 0; top: 0; box-shadow: none; border: none; }
+            .dropdown { flex-direction: column; }
+            .dropdown-content {
+                visibility: visible; opacity: 1; position: relative;
+                top: 0; left: 0; transform: none; display: none;
+                background-color: transparent; border: none; box-shadow: none;
+            }
             .dropdown-content.show { display: block; }
+            .app-card { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-            <a href="index.html" class="nav-logo">
-                <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo">
-                PBSMUN
-            </a>
-    
-            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <a href="index.html" class="nav-logo">
+            <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo">
+            PBSMUN
+        </a>
 
-            <ul class="nav-links" id="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" onclick="toggleDropdown(event)">Applications</a>
-                    <div class="dropdown-content" id="app-dropdown">
-                        <a href="delegate-app.html">Delegate Applications</a>
-                        <a href="chair-app.html">Chair Applications</a>
-                        <a href="staff-app.html" style="color: var(--gold);">Staff Applications</a>
-                    </div>
-                </li>
-                <li><a href="guides.html">Guides</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#team">Team</a></li>
-                <li><a href="index.html#contact">Contact Us</a></li>
-            </ul>
+        <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">☰</div>
+
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown(event)">Applications</a>
+                <div class="dropdown-content" id="app-dropdown">
+                    <a href="delegate-app.html" onclick="toggleMenu()">Delegate Applications</a>
+                    <a href="chair-app.html" onclick="toggleMenu()">Chair Applications</a>
+                    <a href="staff-app.html" onclick="toggleMenu()">Staff Applications</a>
+                </div>
+            </li>
+
+            <li><a href="guides.html" onclick="toggleMenu()">Guides</a></li>
+            <li><a href="schedule.html" onclick="toggleMenu()">Schedule</a></li>
+            <li><a href="index.html#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="index.html#team" onclick="toggleMenu()">Team</a></li>
+            <li><a href="index.html#contact" onclick="toggleMenu()">Contact Us</a></li>
+        </ul>
     </nav>
 
     <header>
@@ -259,27 +283,28 @@
     </header>
 
     <section class="main-content">
-        <div class="info-card">
-            <span class="status-badge status-closed">External: Closed</span>
-            <h2>External Staff</h2>
-            <p>At this time, PBSMUN '26 is <strong>not accepting</strong> applications for external staff members. We appreciate the interest from the wider MUN community and encourage you to join us as a delegate instead!</p>
+        <div class="app-card">
+            <span class="status-tag tag-closed">External: Closed</span>
+            <h2>External Staff Applications</h2>
+            <p>We are currently <strong>not accepting</strong> external staff applications for PBSMUN '26. We appreciate your interest and encourage external applicants to join us as delegates when those applications open!</p>
         </div>
 
-        <div class="info-card">
-            <span class="status-badge status-open">Internal: Open</span>
+        <div class="app-card">
+            <span class="status-tag tag-open">Internal: Open</span>
             <h2>Internal Staff (PBS Students)</h2>
-            <p>We are currently recruiting dedicated students from <strong>Pace British School</strong> to join our Secretariat in making PBSMUN '26 a success.</p>
+            <p>Are you a Pace British School student looking to help shape the next great MUN conference? We are recruiting for our logistics, media, and operations teams.</p>
             
-            <h3>Core Requirements:</h3>
+            <h3>What you need to bring:</h3>
             <ul>
-                <li><strong>Motivation:</strong> A desire to contribute to the school's MUN culture.</li>
-                <li><strong>Professionalism:</strong> Ability to represent the school with excellence.</li>
-                <li><strong>Dedication:</strong> Commitment to attending meetings and helping during the 2-day event.</li>
+                <li><strong>Motivation:</strong> A strong drive to contribute to the success of our school's conference.</li>
+                <li><strong>Professionalism:</strong> You represent the face of PBSMUN to all visiting delegates.</li>
+                <li><strong>Dedication:</strong> Commitment to attending all preparatory meetings and both days of the event.</li>
+                <li><strong>Teamwork:</strong> Ability to collaborate across different departments under pressure.</li>
             </ul>
 
-            <p><em>Selected applicants will be waitlisted and contacted via email for an interview.</em></p>
+            <p><em>Please note: After submission, our team will review your application. Successful candidates will be waitlisted and contacted via school email for an interview.</em></p>
 
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-aiDXyWRnT2lfUmjeVTmP8AksafFOIoBiAMObFdaMlcZTcA/viewform?usp=publish-editor" class="btn" target="_blank">Access Application Form</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-aiDXyWRnT2lfUmjeVTmP8AksafFOIoBiAMObFdaMlcZTcA/viewform?usp=publish-editor" class="btn" target="_blank">Access Internal Application Form</a>
         </div>
     </section>
 
@@ -289,7 +314,10 @@
 
     <script>
         function toggleMenu() {
-            document.getElementById('nav-menu').classList.toggle('active');
+            const menu = document.getElementById('nav-menu');
+            if (window.innerWidth <= 768) {
+                menu.classList.toggle('active');
+            }
         }
 
         function toggleDropdown(e) {
