@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PBSMUN | Pace British School Model United Nations</title>
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/xb-niloofar" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         /* Color Palette & Variables */
         :root {
-            --navy-blue: #161a29; 
+            --navy-blue: #161a29;
             --light-navy: #1f253a;
             --gold: #d4c08b;      
             --white: #ffffff;
@@ -77,7 +79,7 @@
         }
 
         .nav-logo img {
-            height: 40px; 
+            height: 40px;
             width: auto;
         }
 
@@ -85,6 +87,7 @@
             list-style: none;
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -96,6 +99,65 @@
 
         .nav-links a:hover {
             color: var(--gold);
+        }
+
+        /* --- Dropdown Menu Styles --- */
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, 15px); 
+            background-color: var(--light-navy);
+            min-width: 260px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            border: 2px solid var(--gold); 
+            border-radius: 10px; 
+            z-index: 1001;
+            overflow: hidden;
+            margin-top: 15px; 
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; 
+        }
+
+        /* UPDATED DROPDOWN TEXT STYLING */
+        .dropdown-content a {
+            color: var(--white);
+            padding: 15px 25px; /* Adjusted padding for left alignment */
+            text-decoration: none;
+            display: block;
+            text-align: left; /* Left alignment looks much cleaner for dropdowns */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600; /* Matched the font weight of the main nav links */
+            font-size: 0.95rem;
+            letter-spacing: 0.5px; /* Adds slight spacing to match nav */
+            border-bottom: 1px solid rgba(212, 192, 139, 0.15);
+            transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease; /* Added padding transition */
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(212, 192, 139, 0.15); 
+            color: var(--gold);
+            padding-left: 32px; /* Smooth slide-to-right effect on hover */
+        }
+
+        /* Desktop Hover Behavior */
+        @media (min-width: 769px) {
+            .dropdown:hover .dropdown-content {
+                visibility: visible;
+                opacity: 1;
+                transform: translate(-50%, 0); 
+            }
         }
 
         /* Mobile Hamburger Menu */
@@ -236,14 +298,14 @@
         }
 
         .bg-light {
-            background-color: var(--light-navy); 
+            background-color: var(--light-navy);
         }
 
         /* Lightweight Scroll Animations */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 0.8s ease-out, transform: 0.8s ease-out;
         }
 
         .scroll-reveal.show {
@@ -267,7 +329,7 @@
 
         /* Modal / Popup Box Styles */
         .modal {
-            display: none; 
+            display: none;
             position: fixed; 
             z-index: 2000; 
             left: 0;
@@ -403,13 +465,13 @@
             border: 2px solid rgba(212, 192, 139, 0.2);
             border-radius: 12px;
             padding: 3rem 1.5rem;
-            text-align: center; 
+            text-align: center;
             transition: transform 0.3s ease, border-color 0.3s ease; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            outline: none; 
+            outline: none;
         }
 
         .team-card:hover, .team-card:focus {
@@ -528,7 +590,7 @@
 
         /* Active State when clicked */
         .team-card.show-quote .quote-area {
-            max-height: 350px; 
+            max-height: 350px;
             opacity: 1;
             margin-top: 1.5rem;
             border-top: 1px solid rgba(212, 192, 139, 0.3);
@@ -541,30 +603,45 @@
             overflow: hidden;
         }
 
-        /* Contact Section */
+        /* --- Updated Contact & Social Section --- */
         .contact-content {
             text-align: center;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .contact-email {
-            display: inline-block;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gold);
-            text-decoration: none;
-            margin: 3rem 0;
-            padding: 1.5rem 3rem;
-            border: 3px solid var(--gold);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            word-break: break-all; 
-            background: var(--navy-blue);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap; 
         }
 
-        .contact-email:hover {
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            background: var(--navy-blue);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor; 
+            transition: fill 0.3s ease;
+        }
+
+        .contact-btn:hover {
             background-color: var(--gold);
             color: var(--navy-blue);
             box-shadow: 0 8px 25px var(--gold-shadow);
@@ -617,6 +694,36 @@
                 text-align: center;
             }
 
+            /* Mobile Dropdown Fixes */
+            .dropdown-content {
+                visibility: visible;
+                opacity: 1;
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-left: 2px solid var(--gold);
+                border-radius: 0;
+                background-color: transparent;
+                min-width: 100%;
+                margin-top: 0.5rem;
+                display: none; 
+            }
+            .dropdown-content.show {
+                display: block; 
+                animation: heroFadeIn 0.3s ease; 
+            }
+            .dropdown-content a {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                text-align: center; /* Centered looks better on mobile specifically */
+            }
+            .dropdown-content a:hover {
+                padding-left: 20px; /* Disable the slide effect on mobile */
+            }
+
             .countdown-container { gap: 0.8rem; }
             .time-box { min-width: 80px; padding: 1rem 0.5rem; }
             .time-box span { font-size: 1.8rem; }
@@ -625,7 +732,8 @@
             .section-container { padding: 4rem 5%; }
             .team-card { padding: 2rem 1.5rem; }
             .hero-logo { max-width: 180px; }
-            .contact-email { font-size: 1.2rem; padding: 1rem 2rem; }
+            
+            .contact-btn { font-size: 1rem; padding: 1rem 1.5rem; width: 100%; justify-content: center; }
             
             .modal-content { width: 92%; padding: 2rem; margin: 15% auto; }
             .scrollable-content { padding-right: 0.5rem; max-height: 50vh; }
@@ -646,13 +754,22 @@
     <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">☰</div>
 
     <ul class="nav-links" id="nav-menu">
-        <li><a href="#home" onclick="toggleMenu()">ʜᴏᴍᴇ</a></li>
-        <li><a href="/registration.html" onclick="toggleMenu()">ᴀᴘᴘʟɪᴄᴀᴛɪᴏɴꜱ</a></li>
-        <li><a href="/guides.html" onclick="toggleMenu()">ᴄᴏᴍᴍɪᴛᴛᴇᴇꜱ ᴀɴᴅ ɢᴜɪᴅᴇꜱ</a></li>
-        <li><a href="/schedule.html" onclick="toggleMenu()">ꜱᴄʜᴇᴅᴜʟᴇ</a></li>
-        <li><a href="#about" onclick="toggleMenu()">ᴀʙᴏᴜᴛ ᴜꜱ</a></li>
-        <li><a href="#team" onclick="toggleMenu()">ᴛᴇᴀᴍ</a></li>
-        <li><a href="#contact" onclick="toggleMenu()">ᴄᴏɴᴛᴀᴄᴛ</a></li>
+        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+        
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown(event)">Applications</a>
+            <div class="dropdown-content" id="app-dropdown">
+                <a href="/delegate-app.html" onclick="toggleMenu()">Delegate Applications</a>
+                <a href="/chair-app.html" onclick="toggleMenu()">Chair Applications</a>
+                <a href="/staff-app.html" onclick="toggleMenu()">Staff Member Applications</a>
+            </div>
+        </li>
+
+        <li><a href="/guides.html" onclick="toggleMenu()">Guides</a></li>
+        <li><a href="/schedule.html" onclick="toggleMenu()">Schedule</a></li>
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#team" onclick="toggleMenu()">Team</a></li>
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
     </ul>
     </nav>
 
@@ -660,7 +777,7 @@
         <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo" class="hero-logo">
         
         <h1 class="hero-title">PBSMUN '26</h1>
-        <p class="hero-subtitle">ᴘᴀᴄᴇ ʙʀɪᴛɪꜱʜ ꜱᴄʜᴏᴏʟ ᴍᴏᴅᴇʟ ᴜɴɪᴛᴇᴅ ɴᴀᴛɪᴏɴꜱ</p>
+        <p class="hero-subtitle">Pace British School Model United Nations</p>
 
         <div class="countdown-container" id="timer-container">
             <div class="time-box">
@@ -681,30 +798,30 @@
             </div>
         </div>
 
-        <a href="#team" class="btn">ᴍᴇᴇᴛ ᴛʜᴇ ᴛᴇᴀᴍ</a>
+        <a href="#team" class="btn">Meet The Team</a>
     </header>
 
     <section id="about" class="section-container bg-light">
-        <h2 class="section-title scroll-reveal">ᴀʙᴏᴜᴛ ᴘʙꜱᴍᴜɴ</h2>
+        <h2 class="section-title scroll-reveal">About Us</h2>
         <div class="about-content scroll-reveal">
             <p>Welcome to the Pace British School Model United Nations (PBSMUN) 2026. We are dedicated to providing a platform for the leaders of tomorrow to engage in meaningful diplomatic debate, hone their public speaking skills, and tackle the world's most pressing issues.</p>
             <br>
             <p>At PBSMUN, we believe in the power of youth to drive global change. Our conference brings together bright minds from across the region to simulate the complexities of international relations, fostering a spirit of collaboration, critical thinking, and mutual respect. Join us this September as we step into the shoes of global policymakers.</p>
             
-            <button id="more-about-btn" class="btn scroll-reveal">ᴍᴏʀᴇ ᴀʙᴏᴜᴛ ᴜꜱ</button>
+            <button id="more-about-btn" class="btn scroll-reveal">Learn More</button>
         </div>
     </section>
 
     <section id="team" class="section-container">
-        <h2 class="section-title scroll-reveal">ᴍᴇᴇᴛ ᴛʜᴇ ᴛᴇᴀᴍ</h2>
+        <h2 class="section-title scroll-reveal">Meet Our Secretariat</h2>
         
-        <h3 class="division-title scroll-reveal">ᴛʜᴇ ꜱᴇᴄʀᴇᴛᴀʀɪᴀᴛ</h3>
+        <h3 class="division-title scroll-reveal">Executive Board</h3>
         
         <div class="team-grid secretariat-row">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Huzaifa Anwar" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Huzaifa Anwar</h3>
                 <p class="team-role">Secretary General</p>
@@ -712,10 +829,10 @@
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
-            <div class="team-card scroll-reveal">
+             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Taha Yaseen" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Taha Yaseen</h3>
                 <p class="team-role">Deputy Secretary General</p>
@@ -728,23 +845,23 @@
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Rayyan Hassan" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Rayyan Hassan</h3>
                 <p class="team-role">Director General</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Malik Salahadeen" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Malik Salahadeen</h3>
                 <p class="team-role">Head of Staff</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -753,23 +870,23 @@
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Manuel Dieudon" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Manuel Dieudon</h3>
                 <p class="team-role">Head of Media</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Media</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -778,23 +895,23 @@
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Rayyan Ali" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Rayyan Ali</h3>
                 <p class="team-role">Head of Finance</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Abdullah" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Abdullah</h3>
                 <p class="team-role">Co-Head of Finance</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
         
@@ -802,24 +919,24 @@
         <div class="team-grid">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Advit Kumar" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                     <img src="placeholder.jpg" alt="Advit Kumar" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Advit Kumar</h3>
                 <p class="team-role">Head of Research</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Research</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -828,23 +945,23 @@
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Head of Crisis</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Crisis</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -853,23 +970,23 @@
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Mohammed Matheen" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Mohammed Matheen</h3>
                 <p class="team-role">Head of Logistics</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Logistics</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -877,24 +994,24 @@
         <div class="team-grid">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Mohammed Shahbaz" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                     <img src="placeholder.jpg" alt="Mohammed Shahbaz" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Mohammed Shahbaz</h3>
                 <p class="team-role">Head of Delegate Affairs</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Life is roblox</p></div>
+                 <div class="quote-area"><p>Life is roblox</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Anisa Qurbonalizoda" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Anisa Qurbonalizoda</h3>
                 <p class="team-role">Co-Head of Delegate Affairs</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -902,24 +1019,24 @@
         <div class="team-grid">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Ayaan Danish" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                     <img src="placeholder.jpg" alt="Ayaan Danish" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3>Ayaan Danish</h3>
                 <p class="team-role">Head of Operations</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
                     <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="fallback-icon" style="display:none;">👤</span>
+                    <span class="fallback-icon" style="display:none;"></span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Operations</p>
                 <span class="click-hint">Tap to reveal quote</span>
-                <div class="quote-area"><p>Quote coming soon...</p></div>
+                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
 
@@ -928,8 +1045,19 @@
     <section id="contact" class="section-container bg-light">
         <h2 class="section-title scroll-reveal">Contact Us</h2>
         <div class="contact-content scroll-reveal">
-            <p>Have questions about registration, committee allocations, or sponsorship opportunities? Our Secretariat is here to help. Reach out to us via email, and we will get back to you as soon as possible.</p>
-            <a href="mailto:pbsmun26@gmail.com" class="contact-email">pbsmun26@gmail.com</a>
+            <p>Have questions about registration, committee allocations, or sponsorship opportunities? Our Secretariat is here to help. Reach out to us via email or send us a DM on Instagram.</p>
+            
+            <div class="contact-links">
+                <a href="mailto:pbsmun26@gmail.com" class="contact-btn">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/></svg>
+                    pbsmun26@gmail.com
+                </a>
+                
+                <a href="https://www.instagram.com/pbsmun_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                    <svg viewBox="0 0 24 24"><path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2ZM7.6 4C5.6 4 4 5.6 4 7.6V16.4C4 18.4 5.6 20 7.6 20H16.4C18.4 20 20 18.4 20 16.4V7.6C20 5.6 18.4 4 16.4 4H7.6ZM12 9.25C13.52 9.25 14.75 10.48 14.75 12C14.75 13.52 13.52 14.75 12 14.75C10.48 14.75 9.25 13.52 9.25 12C9.25 10.48 10.48 9.25 12 9.25ZM12 7.25C9.38 7.25 7.25 9.38 7.25 12C7.25 14.62 9.38 16.75 12 16.75C14.62 16.75 16.75 14.62 16.75 12C16.75 9.38 14.62 7.25 12 7.25ZM17 6C17.55 6 18 6.45 18 7C18 7.55 17.55 8 17 8C16.45 8 16 7.55 16 7C16 6.45 16.45 6 17 6Z"/></svg>
+                    @pbsmun_
+                </a>
+            </div>
         </div>
     </section>
 
@@ -968,6 +1096,14 @@
             }
         }
 
+        // --- Mobile Dropdown Toggle ---
+        function toggleDropdown(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault(); // Prevents default anchor click
+                document.getElementById('app-dropdown').classList.toggle('show');
+            }
+        }
+
         // --- Team Card Accessibility & Click Logic ---
         document.querySelectorAll('.team-card').forEach(card => {
             card.setAttribute('tabindex', '0'); 
@@ -982,6 +1118,7 @@
             };
 
             card.addEventListener('click', toggleQuote);
+ 
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault(); 
@@ -992,7 +1129,6 @@
 
         // --- Countdown Timer Logic ---
         const countDownDate = new Date("Sep 25, 2026 08:00:00").getTime();
-
         const timerInterval = setInterval(function() {
             const now = new Date().getTime();
             const distance = countDownDate - now;
@@ -1020,18 +1156,15 @@
             rootMargin: '0px 0px -20px 0px', 
             threshold: 0.1 
         };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
                 } else {
-                    // Added this back in: Removes the class when it leaves the screen so it animates again!
                     entry.target.classList.remove('show');
                 }
             });
         }, observerOptions);
-
         document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
         // --- More About Us Modal Logic ---
