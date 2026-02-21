@@ -6,12 +6,13 @@
     <title>PBSMUN | Pace British School Model United Nations</title>
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/xb-niloofar" type="text/css"/>
     <style>
-        /* Color Palette */
+        /* Color Palette & Variables */
         :root {
             --navy-blue: #161a29; 
             --light-navy: #1f253a;
             --gold: #d4c08b;      
             --white: #ffffff;
+            --gold-shadow: rgba(212, 192, 139, 0.3);
         }
 
         html {
@@ -25,12 +26,23 @@
             box-sizing: border-box;
         }
 
+        /* Stable, Crash-Free Solid Background */
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--navy-blue);
             color: var(--white);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        body::-webkit-scrollbar {
+            width: 10px;
+            background: var(--navy-blue);
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: var(--gold);
+            border-radius: 5px;
         }
 
         h1, h2, h3, h4 {
@@ -50,6 +62,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
 
         .nav-logo {
@@ -58,8 +71,6 @@
             gap: 10px;
             font-size: 1.5rem;
             font-family: 'XBNiloofarRegular';
-            font-weight: normal;
-            font-style: normal;
             color: var(--white);
             text-decoration: none;
             letter-spacing: 2px;
@@ -80,7 +91,7 @@
             color: var(--white);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
@@ -106,21 +117,23 @@
             justify-content: center;
             align-items: center;
             background: radial-gradient(circle at center, var(--light-navy) 0%, var(--navy-blue) 100%);
+            border-bottom: 1px solid rgba(212, 192, 139, 0.15);
         }
 
         .hero-logo {
             max-width: 250px;
             margin-bottom: 2rem;
             filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5));
-            animation: heroFadeIn 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation: heroFadeIn 1.5s ease-out forwards;
         }
 
         .hero-title {
             font-size: 4rem;
             margin-bottom: 0.5rem;
             letter-spacing: 2px;
+            text-shadow: 0 0 20px var(--gold-shadow);
             opacity: 0;
-            animation: heroFadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+            animation: heroFadeInUp 1.5s ease-out 0.3s forwards;
         }
 
         .hero-subtitle {
@@ -129,7 +142,7 @@
             margin-bottom: 3rem;
             color: var(--white);
             opacity: 0;
-            animation: heroFadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+            animation: heroFadeInUp 1.5s ease-out 0.6s forwards;
         }
 
         /* Countdown Timer */
@@ -140,17 +153,17 @@
             flex-wrap: wrap;
             justify-content: center;
             opacity: 0;
-            animation: heroFadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+            animation: heroFadeInUp 1.5s ease-out 0.9s forwards;
         }
 
         .time-box {
             background-color: rgba(212, 192, 139, 0.1);
-            border: 1px solid var(--gold);
+            border: 2px solid var(--gold);
             padding: 1.5rem;
             border-radius: 8px;
             min-width: 120px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .time-box span {
@@ -158,8 +171,6 @@
             font-size: 2.5rem;
             font-weight: 700;
             font-family: 'XBNiloofarRegular';
-            font-weight: normal;
-            font-style: normal;
             color: var(--gold);
         }
 
@@ -172,23 +183,25 @@
 
         /* Buttons */
         .btn {
-            background-color: var(--gold);
+            background: linear-gradient(135deg, var(--gold) 0%, #ad9963 100%);
             color: var(--navy-blue);
             padding: 1rem 2.5rem;
             font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             border: none;
             cursor: pointer;
             display: inline-block;
             opacity: 0;
-            animation: heroFadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+            box-shadow: 0 4px 15px var(--gold-shadow);
+            animation: heroFadeInUp 1.5s ease-out 1.2s forwards;
         }
 
         .btn:hover {
-            background-color: var(--white);
+            background: var(--white);
+            box-shadow: 0 8px 25px rgba(255,255,255, 0.3);
             transform: translateY(-3px);
         }
 
@@ -202,33 +215,32 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             position: relative;
+            text-shadow: 0 0 10px var(--gold-shadow);
         }
 
         .section-title::after {
             content: '';
             width: 80px;
             height: 3px;
-            background-color: var(--gold);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
             display: block;
             margin: 1rem auto 0;
         }
 
         .bg-light {
-            background-color: var(--light-navy);
+            background-color: var(--light-navy); 
         }
 
-        /* Premium Scroll Animation Classes */
+        /* Lightweight Scroll Animations */
         .scroll-reveal {
             opacity: 0;
-            transform: translateY(60px) scale(0.98);
-            transition: opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1), 
-                        transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-            will-change: opacity, transform;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
         .scroll-reveal.show {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
 
         /* About Us */
@@ -241,8 +253,8 @@
         
         #more-about-btn {
             margin-top: 2rem;
-            animation: none; /* remove hero animation for this specific button */
-            opacity: 1; /* reset opacity since it uses scroll-reveal */
+            animation: none; 
+            opacity: 1; 
         }
 
         /* Modal / Popup Box Styles */
@@ -255,8 +267,7 @@
             width: 100%; 
             height: 100%; 
             overflow: hidden; 
-            background-color: rgba(22, 26, 41, 0.85); /* Matches navy-blue with opacity */
-            backdrop-filter: blur(5px);
+            background-color: rgba(15, 18, 30, 0.95);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -269,19 +280,24 @@
         .modal-content {
             background-color: var(--light-navy);
             margin: 5% auto; 
-            padding: 2.5rem;
+            padding: 3rem;
             border: 2px solid var(--gold);
             border-radius: 12px;
             width: 80%; 
             max-width: 800px;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transform: translateY(-50px);
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 40px rgba(0,0,0,0.8), 0 0 15px var(--gold-shadow);
+            transform: translateY(-30px);
+            transition: transform 0.4s ease-out;
         }
 
         .modal.show .modal-content {
             transform: translateY(0);
+        }
+
+        .modal-content h2 {
+            color: var(--gold);
+            text-shadow: 0 0 10px var(--gold-shadow);
         }
 
         .close-modal {
@@ -289,15 +305,16 @@
             position: absolute;
             top: 15px;
             right: 25px;
-            font-size: 35px;
+            font-size: 40px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         .close-modal:hover,
         .close-modal:focus {
             color: var(--white);
+            text-shadow: 0 0 15px var(--gold);
             text-decoration: none;
         }
 
@@ -306,18 +323,21 @@
             overflow-y: auto;
             padding-right: 1.5rem;
             text-align: left;
+            border-top: 1px solid rgba(212, 192, 139, 0.3);
+            padding-top: 1.5rem;
         }
 
         .scrollable-content h3 {
             color: var(--gold);
             font-size: 1.8rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
         }
 
         .scrollable-content p {
             margin-bottom: 1rem;
             font-size: 1.05rem;
+            color: #e0e0e0;
         }
 
         /* Custom Scrollbar for Modal */
@@ -325,48 +345,59 @@
             width: 8px;
         }
         .scrollable-content::-webkit-scrollbar-track {
-            background: var(--navy-blue);
+            background: rgba(22, 26, 41, 0.5);
             border-radius: 4px;
         }
         .scrollable-content::-webkit-scrollbar-thumb {
-            background: var(--gold);
+            background: linear-gradient(to bottom, var(--gold), #ad9963);
             border-radius: 4px;
         }
-        .scrollable-content::-webkit-scrollbar-thumb:hover {
-            background: var(--white);
-        }
 
-        /* Meet The Team Section */
+        /* Meet The Team Section - PERFECT CENTERING */
         .division-title {
             font-size: 2rem;
             margin-top: 4rem;
             margin-bottom: 1.5rem;
-            text-align: center;
             color: var(--white);
             letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .division-title::before, .division-title::after {
+             content: "—";
+             color: var(--gold);
+             margin: 0 15px;
+             opacity: 0.6;
         }
 
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 2rem;
+            gap: 2.5rem;
             justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
+        /* Specific alignment for Secretariat to force a 2x2 rectangular block structure */
         .team-grid.secretariat-row {
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
+            max-width: 750px;
+            margin: 0 auto 2.5rem auto;
         }
 
-        /* Interactive Team Cards */
+        /* Interactive Team Cards - Optimized */
         .team-card {
             background-color: var(--light-navy);
-            border: 1px solid rgba(212, 192, 139, 0.2);
+            border: 2px solid rgba(212, 192, 139, 0.2);
             border-radius: 12px;
-            padding: 3rem 2rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 3rem 1.5rem;
+            text-align: center; 
+            transition: transform 0.3s ease, border-color 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -374,8 +405,7 @@
         }
 
         .team-card:hover, .team-card:focus {
-            transform: translateY(-10px) !important;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transform: translateY(-8px);
             border-color: var(--gold);
         }
 
@@ -390,7 +420,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-card:hover .team-photo-frame {
+            transform: scale(1.03);
         }
 
         .team-photo-frame img {
@@ -400,17 +434,15 @@
         }
 
         .fallback-icon {
-            font-size: 4rem;
-            color: rgba(212, 192, 139, 0.4);
+            font-size: 4.5rem;
+            color: rgba(212, 192, 139, 0.5);
         }
 
         .team-card h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
             color: var(--white);
-            font-family: 'XBNiloofarRegular';
-           font-weight: normal;
-           font-style: normal;
+            text-align: center;
         }
 
         .team-role {
@@ -419,6 +451,8 @@
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
         .tba-text {
@@ -426,67 +460,70 @@
             font-style: italic;
         }
 
-        /* Quote Expansion Styling */
+        /* Quote Expansion Styling - Perfect Centering & Lightweight transitions */
         .click-hint {
             display: block;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
             margin-top: 1rem;
-            transition: opacity 0.3s;
+            transition: opacity 0.3s ease;
+            font-style: italic;
+            text-align: center;
         }
 
         .quote-area {
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease; 
             font-style: italic;
             color: #e0e0e0;
-            font-size: 1rem;
+            font-size: 1.05rem;
+            background: rgba(22, 26, 41, 0.6);
+            border-radius: 8px;
+            text-align: center; 
         }
 
         .quote-area p {
             margin: 0;
+            padding: 1rem;
             position: relative;
+            text-align: center; 
+            line-height: 1.5;
         }
 
         /* Opening Quote */
         .quote-area::before {
             content: "“";
             font-family: 'XBNiloofarRegular';
-            font-weight: normal;
-            font-style: normal;
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--gold);
             line-height: 0;
             display: block;
-            margin-top: 15px;
-            margin-bottom: -10px;
-            text-align: left;
+            margin: 20px auto 0 auto;
+            text-align: center;
+            opacity: 0.7;
         }
 
         /* Closing Quote */
         .quote-area::after {
             content: "”";
             font-family: 'XBNiloofarRegular';
-            font-weight: normal;
-            font-style: normal;
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--gold);
             line-height: 0;
             display: block;
-            margin-top: 15px;
-            margin-bottom: 0;
-            text-align: right;
+            margin: 10px auto 10px auto;
+            text-align: center;
+            opacity: 0.7;
         }
 
         /* Active State when clicked */
         .team-card.show-quote .quote-area {
-            max-height: 250px; 
+            max-height: 350px; 
             opacity: 1;
             margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(212, 192, 139, 0.2);
+            border-top: 1px solid rgba(212, 192, 139, 0.3);
         }
 
         .team-card.show-quote .click-hint {
@@ -509,44 +546,48 @@
             font-weight: 700;
             color: var(--gold);
             text-decoration: none;
-            margin: 2rem 0;
-            padding: 1rem 2rem;
-            border: 2px solid var(--gold);
+            margin: 3rem 0;
+            padding: 1.5rem 3rem;
+            border: 3px solid var(--gold);
             border-radius: 5px;
             transition: all 0.3s ease;
             word-break: break-all; 
+            background: var(--navy-blue);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         .contact-email:hover {
             background-color: var(--gold);
             color: var(--navy-blue);
+            box-shadow: 0 8px 25px var(--gold-shadow);
+            transform: translateY(-3px);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
             background-color: var(--navy-blue);
-            border-top: 1px solid rgba(212, 192, 139, 0.3);
+            border-top: 2px solid var(--gold);
             font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
         }
 
-        /* Loading Animations */
+        /* Animations */
         @keyframes heroFadeInUp {
-            from { opacity: 0; transform: translateY(40px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes heroFadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Mobile Responsiveness Improvements */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.2rem; }
-            .hero-subtitle { font-size: 1.1rem; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.2rem; }
             
-            /* Show Hamburger, Hide standard nav by default */
             .hamburger { display: block; }
             .nav-links {
                 display: none;
@@ -555,9 +596,9 @@
                 top: 72px; 
                 left: 0;
                 width: 100%;
-                background-color: var(--light-navy);
+                background-color: var(--light-navy); 
                 padding: 1rem 0;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
                 border-bottom: 2px solid var(--gold);
             }
             .nav-links.active {
@@ -569,18 +610,20 @@
             }
 
             .countdown-container { gap: 0.8rem; }
-            .time-box { min-width: 75px; padding: 1rem 0.5rem; }
-            .time-box span { font-size: 1.5rem; }
-            .time-box p { font-size: 0.75rem; }
+            .time-box { min-width: 80px; padding: 1rem 0.5rem; }
+            .time-box span { font-size: 1.8rem; }
+            .time-box p { font-size: 0.8rem; }
             
             .section-container { padding: 4rem 5%; }
-            .team-card { padding: 2rem 1rem; }
+            .team-card { padding: 2rem 1.5rem; }
             .hero-logo { max-width: 180px; }
-            .contact-email { font-size: 1.2rem; padding: 1rem; }
+            .contact-email { font-size: 1.2rem; padding: 1rem 2rem; }
             
-            /* Modal adjustments for mobile */
-            .modal-content { width: 95%; padding: 1.5rem; margin: 15% auto; }
-            .scrollable-content { padding-right: 0.5rem; }
+            .modal-content { width: 92%; padding: 2rem; margin: 15% auto; }
+            .scrollable-content { padding-right: 0.5rem; max-height: 50vh; }
+            .close-modal { top: 10px; right: 15px; }
+            
+            .team-grid.secretariat-row { max-width: 100%; }
         }
     </style>
 </head>
@@ -652,23 +695,23 @@
         <div class="team-grid secretariat-row">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Huzaifa Anwar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Huzaifa Anwar" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Huzaifa Anwar</h3>
                 <p class="team-role">Secretary General</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Taha Yaseen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Taha Yaseen" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Taha Yaseen</h3>
                 <p class="team-role">Deputy Secretary General</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
@@ -676,23 +719,23 @@
         <div class="team-grid secretariat-row" style="margin-bottom: 0;">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Rayyan Hassan" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Rayyan Hassan" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Rayyan Hassan</h3>
                 <p class="team-role">Director General</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Malik Salahadeen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Malik Salahadeen" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Malik Salahadeen</h3>
                 <p class="team-role">Head of Staff</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
@@ -701,23 +744,23 @@
         <div class="team-grid">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Manuel Dieudon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Manuel Dieudon" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Manuel Dieudon</h3>
                 <p class="team-role">Head of Media</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Media</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
@@ -726,23 +769,23 @@
         <div class="team-grid">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Rayyan Ali" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Rayyan Ali" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Rayyan Ali</h3>
                 <p class="team-role">Head of Finance</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Abdullah" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Abdullah" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Abdullah</h3>
                 <p class="team-role">Co-Head of Finance</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
@@ -751,23 +794,23 @@
         <div class="team-grid">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Advit Kumar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Advit Kumar" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Advit Kumar</h3>
                 <p class="team-role">Head of Research</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Research</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
@@ -776,23 +819,23 @@
         <div class="team-grid">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Head of Crisis</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Crisis</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
@@ -801,23 +844,23 @@
         <div class="team-grid">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Mohammed Matheen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Mohammed Matheen" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Mohammed Matheen</h3>
                 <p class="team-role">Head of Logistics</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Logistics</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
@@ -826,23 +869,23 @@
         <div class="team-grid">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Mohammed Shahbaz" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Mohammed Shahbaz" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Mohammed Shahbaz</h3>
                 <p class="team-role">Head of Delegate Affairs</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Life is roblox</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Anisa Qurbonalizoda" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Anisa Qurbonalizoda" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Anisa Qurbonalizoda</h3>
                 <p class="team-role">Co-Head of Delegate Affairs</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
@@ -851,23 +894,23 @@
         <div class="team-grid">
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Ayaan Danish" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Ayaan Danish" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3>Ayaan Danish</h3>
                 <p class="team-role">Head of Operations</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
 
             <div class="team-card scroll-reveal">
                 <div class="team-photo-frame">
-                    <img src="placeholder.jpg" alt="Not Picked Yet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="placeholder.jpg" alt="Not Picked Yet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="fallback-icon" style="display:none;">👤</span>
                 </div>
                 <h3 class="tba-text">Not Picked Yet</h3>
                 <p class="team-role">Co-Head of Operations</p>
-                <span class="click-hint">Click for quote</span>
+                <span class="click-hint">Tap to reveal quote</span>
                 <div class="quote-area"><p>Quote coming soon...</p></div>
             </div>
         </div>
@@ -926,6 +969,8 @@
             const toggleQuote = () => {
                 const isExpanded = card.classList.toggle('show-quote');
                 card.setAttribute('aria-expanded', isExpanded);
+                const hint = card.querySelector('.click-hint');
+                if (hint) hint.textContent = isExpanded ? "" : "Tap to reveal quote";
             };
 
             card.addEventListener('click', toggleQuote);
@@ -946,7 +991,7 @@
 
             if (distance < 0) {
                 clearInterval(timerInterval);
-                document.getElementById("timer-container").innerHTML = "<h2 style='margin-bottom: 2rem;'>The Conference Has Begun!</h2>";
+                document.getElementById("timer-container").innerHTML = "<h2 style='margin-bottom: 2rem; color: var(--gold);'>The Conference Has Begun!</h2>";
                 return;
             }
 
@@ -961,10 +1006,10 @@
             document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
         }, 1000);
 
-        // --- Repeating Premium Scroll Animation Logic ---
+        // --- Repeating Scroll Animation Logic ---
         const observerOptions = {
             root: null,
-            rootMargin: '0px 0px -50px 0px', 
+            rootMargin: '0px 0px -20px 0px', 
             threshold: 0.1 
         };
 
@@ -973,43 +1018,37 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
                 } else {
+                    // Added this back in: Removes the class when it leaves the screen so it animates again!
                     entry.target.classList.remove('show');
                 }
             });
         }, observerOptions);
 
-        const revealElements = document.querySelectorAll('.scroll-reveal');
-        revealElements.forEach(el => observer.observe(el));
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
         // --- More About Us Modal Logic ---
         const modal = document.getElementById("about-modal");
         const btn = document.getElementById("more-about-btn");
         const span = document.getElementById("close-modal-btn");
 
-        // Open the modal
         btn.onclick = function() {
             modal.style.display = "block";
-            // slight delay to allow display:block to apply before adding class for fade-in effect
-            setTimeout(() => {
-                modal.classList.add('show');
-            }, 10);
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    modal.classList.add('show');
+                });
+            });
         }
 
-        // Close the modal when clicking on (x)
         span.onclick = function() {
             modal.classList.remove('show');
-            setTimeout(() => {
-                modal.style.display = "none";
-            }, 300); // Wait for transition to finish
+            setTimeout(() => modal.style.display = "none", 300);
         }
 
-        // Close the modal when clicking outside the box
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.classList.remove('show');
-                setTimeout(() => {
-                    modal.style.display = "none";
-                }, 300);
+                setTimeout(() => modal.style.display = "none", 300);
             }
         }
     </script>
