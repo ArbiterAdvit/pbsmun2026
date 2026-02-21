@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>PBSMUN | Schedule </title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule | PBSMUN '26</title>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/xb-niloofar" type="text/css"/>
     <style>
-        /* Color Palette */
+        /* Color Palette & Variables */
         :root {
             --navy-blue: #161a29; 
             --light-navy: #1f253a;
             --gold: #d4c08b;      
             --white: #ffffff;
+            --gold-shadow: rgba(212, 192, 139, 0.4);
         }
 
         html {
@@ -25,6 +26,7 @@
             box-sizing: border-box;
         }
 
+        /* Stable, Crash-Free Solid Background */
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--navy-blue);
@@ -33,11 +35,503 @@
             overflow-x: hidden;
         }
 
+        /* Custom Scrollbar */
+        body::-webkit-scrollbar {
+            width: 10px;
+            background: var(--navy-blue);
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: var(--gold);
+            border-radius: 5px;
+        }
+
         h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
+           font-family: 'XBNiloofarRegular';
+           font-weight: normal;
+           font-style: normal;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: var(--light-navy);
+            border-bottom: 2px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-family: 'XBNiloofarRegular';
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-logo img {
+            height: 40px; 
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
             color: var(--gold);
         }
-      </style>
-  </head>
-  <body> Schedule </body>
+
+        /* Mobile Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: var(--gold);
+            user-select: none;
+        }
+
+        /* Page Header */
+        header {
+            text-align: center;
+            padding: 6rem 2rem 4rem 2rem;
+            background: radial-gradient(circle at center, var(--light-navy) 0%, var(--navy-blue) 100%);
+            border-bottom: 1px solid rgba(212, 192, 139, 0.15);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px var(--gold-shadow);
+            opacity: 0;
+            animation: heroFadeInUp 1s ease-out forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: heroFadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        /* General Sections */
+        .section-container {
+            padding: 5rem 10%;
+        }
+
+        /* Lightweight Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Schedule Layout */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .day-card {
+            background-color: var(--light-navy);
+            border: 2px solid rgba(212, 192, 139, 0.15);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Soft gold glow on the top edge of the card */
+        .day-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 15px rgba(212, 192, 139, 0.1);
+        }
+        
+        .day-card:hover::before {
+            opacity: 1;
+        }
+
+        .day-header-container {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(212, 192, 139, 0.2);
+        }
+
+        .day-title {
+            font-family: 'XBNiloofarRegular';
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.2rem;
+            text-shadow: 0 0 10px rgba(212, 192, 139, 0.2);
+        }
+
+        .day-date {
+            font-size: 0.95rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* Timeline Items - Upgraded with Hover Effects */
+        .schedule-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0.8rem;
+            padding: 1rem 1.5rem;
+            border-left: 2px solid var(--gold);
+            position: relative;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: default;
+        }
+
+        .schedule-item:hover {
+            background-color: rgba(212, 192, 139, 0.05);
+            transform: translateX(8px);
+        }
+
+        .schedule-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Glowing Timeline Dots */
+        .schedule-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 1.2rem;
+            width: 12px;
+            height: 12px;
+            background-color: var(--navy-blue);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--gold-shadow);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .schedule-item:hover::before {
+            background-color: var(--gold);
+            box-shadow: 0 0 12px var(--gold);
+        }
+
+        .time {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.4rem;
+            letter-spacing: 1px;
+        }
+
+        .activity {
+            font-size: 1.15rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        /* Styling for Break / Lunch blocks */
+        .item-break {
+            border-left-color: rgba(212, 192, 139, 0.4);
+        }
+        
+        .item-break::before {
+            border-color: rgba(212, 192, 139, 0.5);
+            box-shadow: none;
+        }
+        
+        .item-break .time {
+            color: rgba(212, 192, 139, 0.7);
+        }
+
+        .item-break .activity {
+            color: #a0a0a0;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background-color: var(--navy-blue);
+            border-top: 2px solid var(--gold);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes heroFadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.6rem; }
+            .hero-subtitle { font-size: 1rem; }
+            
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 72px; 
+                left: 0;
+                width: 100%;
+                background-color: var(--light-navy); 
+                padding: 1rem 0;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+                border-bottom: 2px solid var(--gold);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 1rem 0;
+                text-align: center;
+            }
+            
+            .section-container { padding: 4rem 5%; }
+            .day-card { padding: 2rem 1rem; }
+            .schedule-item { padding: 1rem; }
+            .schedule-item:hover { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+
+   <nav>
+    <a href="/index.html" class="nav-logo">
+        <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo" onerror="this.style.display='none'">
+        PBSMUN
+    </a>
+
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">☰</div>
+
+    <ul class="nav-links" id="nav-menu">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/registration.html">Registration</a></li>
+        <li><a href="/guides.html">Committees and Guides</a></li>
+        <li><a href="/schedule.html" class="active">Schedule</a></li>
+        <li><a href="/index.html#about">About Us</a></li>
+        <li><a href="/index.html#team">Team</a></li>
+        <li><a href="/index.html#contact">Contact</a></li>
+    </ul>
+    </nav>
+
+    <header>
+        <h1 class="hero-title">Conference Schedule</h1>
+        <p class="hero-subtitle">September 25 - 27, 2026</p>
+    </header>
+
+    <section class="section-container">
+        <div class="schedule-grid">
+            
+            <div class="day-card scroll-reveal">
+                <div class="day-header-container">
+                    <h2 class="day-title">Day 1</h2>
+                    <p class="day-date">Friday, September 25</p>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">2:00 PM – 2:30 PM</span>
+                    <span class="activity">Registration & Check-in</span>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">2:30 PM – 3:00 PM</span>
+                    <span class="activity">Opening Ceremony</span>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">3:00 PM – 4:30 PM</span>
+                    <span class="activity">Committee Session 1</span>
+                </div>
+                
+                <div class="schedule-item item-break">
+                    <span class="time">4:30 PM – 4:50 PM</span>
+                    <span class="activity">Refreshment Break</span>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">4:50 PM – 6:20 PM</span>
+                    <span class="activity">Committee Session 2</span>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">6:20 PM – 7:00 PM</span>
+                    <span class="activity">Debrief, Announcements & Wrap-up</span>
+                </div>
+            </div>
+
+            <div class="day-card scroll-reveal">
+                <div class="day-header-container">
+                    <h2 class="day-title">Day 2</h2>
+                    <p class="day-date">Saturday, September 26</p>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">8:00 AM – 8:20 AM</span>
+                    <span class="activity">Arrival</span>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">8:20 AM – 10:00 AM</span>
+                    <span class="activity">Committee Session 3</span>
+                </div>
+                
+                <div class="schedule-item item-break">
+                    <span class="time">10:00 AM – 10:15 AM</span>
+                    <span class="activity">Refreshment Break</span>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">10:15 AM – 11:55 AM</span>
+                    <span class="activity">Committee Session 4</span>
+                </div>
+                
+                <div class="schedule-item item-break">
+                    <span class="time">11:55 AM – 12:35 PM</span>
+                    <span class="activity">Refreshment / Lunch Break</span>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">12:35 PM – 2:15 PM</span>
+                    <span class="activity">Committee Session 5</span>
+                </div>
+
+                <div class="schedule-item item-break">
+                    <span class="time">2:15 PM – 2:30 PM</span>
+                    <span class="activity">Break</span>
+                </div>
+
+                <div class="schedule-item">
+                    <span class="time">2:30 PM – 4:10 PM</span>
+                    <span class="activity">Committee Session 6</span>
+                </div>
+
+                <div class="schedule-item">
+                    <span class="time">4:10 PM – 6:00 PM</span>
+                    <span class="activity">Social Evening & Dinner</span>
+                </div>
+            </div>
+
+            <div class="day-card scroll-reveal">
+                <div class="day-header-container">
+                    <h2 class="day-title">Day 3</h2>
+                    <p class="day-date">Sunday, September 27</p>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">7:40 AM – 8:00 AM</span>
+                    <span class="activity">Arrival</span>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">8:00 AM – 9:30 AM</span>
+                    <span class="activity">Committee Session 7</span>
+                </div>
+                
+                <div class="schedule-item item-break">
+                    <span class="time">9:30 AM – 9:50 AM</span>
+                    <span class="activity">Refreshment Break</span>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">10:00 AM – 11:00 AM</span>
+                    <span class="activity">Crisis Session</span>
+                </div>
+                
+                <div class="schedule-item item-break">
+                    <span class="time">11:10 AM – 12:10 PM</span>
+                    <span class="activity">Break</span>
+                </div>
+                
+                <div class="schedule-item">
+                    <span class="time">12:10 PM – 1:30 PM</span>
+                    <span class="activity">Award Ceremony</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Pace British School Model United Nations. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            if (window.innerWidth <= 768) {
+                menu.classList.toggle('active');
+            }
+        }
+
+        // --- Repeating Scroll Animation Logic ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -20px 0px', 
+            threshold: 0.1 
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
 </html>
