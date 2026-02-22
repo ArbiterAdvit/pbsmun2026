@@ -118,7 +118,7 @@
         .about-content { text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; }
         #more-about-btn { margin-top: 2rem; animation: none; opacity: 1; }
 
-        /* Modal Styles - Expanded Size & Mobile Optimised */
+        /* Modal Styles */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(15, 18, 30, 0.95); opacity: 0; transition: opacity 0.3s ease; }
         .modal.show { display: block; opacity: 1; }
         .modal-content { background-color: var(--light-navy); margin: 3% auto; padding: 3rem; border: 2px solid var(--gold); border-radius: 12px; width: 90%; max-width: 1100px; position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.8), 0 0 15px var(--gold-shadow); transform: translateY(-30px); transition: transform 0.4s ease-out; }
@@ -139,18 +139,16 @@
         .scrollable-content::-webkit-scrollbar-track { background: rgba(22, 26, 41, 0.5); border-radius: 4px; }
         .scrollable-content::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--gold), #ad9963); border-radius: 4px; }
 
-        /* Founder Section inside Modal - Updated to Right Side, Square, Smooth Corners */
         .founder-section { display: flex; gap: 2.5rem; align-items: center; margin-bottom: 1.5rem; margin-top: 0.5rem; }
-        
         .founder-text { flex: 1; }
-        .founder-text p { margin-bottom: 0; /* Remove margin as it sits next to the image */ }
+        .founder-text p { margin-bottom: 0; }
         
         .founder-photo { 
             width: 160px; 
             height: 160px; 
             flex-shrink: 0; 
             border: 3px solid var(--gold); 
-            border-radius: 20px; /* Smooth rounded square corners */
+            border-radius: 20px; 
             background-color: var(--navy-blue); 
             box-shadow: 0 0 15px rgba(212, 192, 139, 0.2); 
             overflow: hidden; 
@@ -158,13 +156,85 @@
         }
         .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* SG Formal Intro Section */
-        .sg-intro-container { display: flex; align-items: center; justify-content: center; gap: 4rem; width: 75vw; min-height: 75vh; max-width: 1400px; margin: 0 auto 4rem auto; background-color: var(--light-navy); padding: 4rem; border-radius: 15px; border: 1px solid rgba(212, 192, 139, 0.15); border-top: 4px solid var(--gold); box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
-        .sg-intro-text { text-align: left; flex: 1; }
-        .sg-intro-text h3 { color: var(--gold); font-size: 2.2rem; margin-bottom: 1.5rem; font-family: 'XBNiloofarRegular', sans-serif; letter-spacing: 1px; }
-        .sg-intro-text p { color: var(--white); font-size: 1.15rem; line-height: 1.8; opacity: 0.9; }
-        .sg-intro-photo { flex-shrink: 0; width: 320px; height: 420px; border-radius: 15px; border: 3px solid var(--gold); overflow: hidden; box-shadow: 0 0 25px rgba(212, 192, 139, 0.3); background-color: var(--navy-blue); }
+        /* SG Formal Intro Section - Centered Layout */
+        .sg-intro-container { 
+            display: flex; 
+            flex-direction: column; /* Stacks the picture and text vertically */
+            align-items: center;    /* Centers everything horizontally */
+            gap: 3rem; 
+            width: 85vw; 
+            max-width: 1000px;      /* Slightly narrower so the text doesn't stretch too far */
+            margin: 0 auto 4rem auto; 
+            background-color: var(--light-navy); 
+            padding: 4rem; 
+            border-radius: 15px; 
+            border: 1px solid rgba(212, 192, 139, 0.15); 
+            border-top: 4px solid var(--gold); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
+        }
+        
+        .sg-profile {
+            order: -1; /* This moves the picture to the TOP (above the text) */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            width: 320px;
+        }
+
+        .sg-intro-text { 
+            text-align: left; 
+            width: 100%; 
+        }
+        
+        .sg-intro-text h3 { 
+            color: var(--gold); 
+            font-size: 2.2rem; 
+            margin-bottom: 2rem; 
+            font-family: 'XBNiloofarRegular', sans-serif; 
+            letter-spacing: 1px; 
+            text-transform: uppercase;
+            text-align: center; /* Centers the heading under the picture */
+        }
+        
+        .sg-intro-text p { 
+            color: var(--white); 
+            font-size: 1.1rem; 
+            line-height: 1.8; 
+            opacity: 0.9; 
+            margin-bottom: 1.5rem; 
+            text-align: justify; 
+        }
+        
+        .sg-intro-photo { 
+            width: 100%; 
+            height: 420px; 
+            border-radius: 15px; 
+            border: 3px solid var(--gold); 
+            overflow: hidden; 
+            box-shadow: 0 0 25px rgba(212, 192, 139, 0.3); 
+            background-color: var(--navy-blue); 
+            margin-bottom: 1.5rem; 
+        }
         .sg-intro-photo img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Signature/Title under photo */
+        .sg-signature { text-align: center; }
+        .sg-signature h4 { 
+            font-size: 1.25rem; 
+            color: var(--white); 
+            letter-spacing: 2px; 
+            margin-bottom: 0.2rem; 
+            text-transform: uppercase; 
+            font-family: 'XBNiloofarRegular', sans-serif;
+        }
+        .sg-signature h5 { 
+            font-size: 1rem; 
+            color: var(--gold); 
+            letter-spacing: 1.5px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+        }
 
         /* Meet The Team Section */
         .division-title { font-size: 2rem; margin-top: 4rem; margin-bottom: 1.5rem; color: var(--white); letter-spacing: 1px; display: flex; justify-content: center; align-items: center; text-align: center; width: 100%; }
@@ -315,7 +385,7 @@
             .dropdown { flex-direction: column; }
             .dropdown-content { visibility: visible; opacity: 1; position: relative; top: 0; left: 0; transform: none; box-shadow: none; border: none; background-color: transparent; width: 100%; box-sizing: border-box; margin-top: 0.5rem; display: none; }
             .dropdown-content.show { display: block; animation: heroFadeIn 0.3s ease; }
-            .dropdown-content a { padding: 12px 20px; font-size: 1rem; text-align: center; } /* Larger tap target */
+            .dropdown-content a { padding: 12px 20px; font-size: 1rem; text-align: center; } 
             
             .countdown-container { gap: 0.8rem; }
             .time-box { min-width: 75px; padding: 1rem 0.5rem; }
@@ -326,37 +396,38 @@
             .team-card { padding: 2.5rem 1.5rem; }
             .hero-logo { max-width: 180px; }
 
-            .sg-intro-container { flex-direction: column-reverse; width: 95vw; min-height: auto; text-align: center; padding: 2.5rem 1.5rem; gap: 2rem; }
-            .sg-intro-text { text-align: center; }
+            .sg-intro-container { flex-direction: column; width: 95vw; min-height: auto; text-align: center; padding: 2.5rem 1.5rem; gap: 2rem; align-items: center; }
+            .sg-intro-text p { text-align: left; }
             .sg-intro-text h3 { font-size: 1.8rem; }
-            .sg-intro-photo { width: 250px; height: 320px; } 
+            .sg-profile { width: 100%; max-width: 300px; }
+            .sg-intro-photo { width: 100%; height: 350px; }
             
             /* Modal / About Us optimizations */
             .modal-content { 
                 width: 95%; 
-                padding: 1.5rem; /* Reduced padding to fit screen better */
+                padding: 1.5rem; 
                 margin: 5% auto; 
             }
-            .close-modal { top: 5px; right: 10px; font-size: 35px; } /* Easier close area */
+            .close-modal { top: 5px; right: 10px; font-size: 35px; }
             .scrollable-content { padding-right: 0.5rem; max-height: 75vh; }
             .scrollable-content h3 { font-size: 1.5rem; }
             .scrollable-content p { font-size: 1rem; }
             
             /* Founder Section stacked on mobile */
             .founder-section { 
-                flex-direction: column-reverse; /* Puts photo above text */
+                flex-direction: column-reverse; 
                 align-items: center; 
                 text-align: center; 
                 gap: 1.5rem;
             }
-            .founder-photo { width: 150px; height: 150px; } /* Perfect square for mobile too */
+            .founder-photo { width: 150px; height: 150px; } 
             
             .contact-btn { font-size: 1rem; padding: 1rem 1.5rem; width: 100%; justify-content: center; }
             .team-grid.secretariat-row { max-width: 100%; }
             
             .carousel-slide h2 { font-size: 2.2rem !important; }
             .carousel-slide p { font-size: 1.2rem; }
-            .carousel-btn { padding: 10px; font-size: 2.5rem; } /* Ensures easy tap on mobile */
+            .carousel-btn { padding: 10px; font-size: 2.5rem; } 
         }
     </style>
 </head>
@@ -435,28 +506,29 @@
         <div class="sg-intro-container scroll-reveal">
             <div class="sg-intro-text">
                 <h3>Welcome from the Secretary-General</h3>
-                <p>I am delighted to welcome you all to our first ever PACE British School Model United Nations Conference (PBSMUN). Being your Secretary-General for this conference is more than just a title to me, it is a responsibility and a chance I truly appreciate.
-                    
-
-I used to sit nervously in committee sessions as a delegate, and now I am leading this conference. I’ve seen firsthand just how powerful MUN's can be .It is about more than just speeches and resolutions. It is a place where people start to build confidence, question their views, make friends, and leaders begin to find their voice. MUN has changed how I see things, how I talk, and how I understand what is going on around me, and I hope this conference has the same impact on you.
-
-We live in a time where people are more connected than ever, but somehow, that connection does not always bring us together like it should. Problems around the world do not stop at borders, and finding answers means working together. Each of you stands for a country, a perspective, and a duty. During this conference, you will spend time debating, negotiating, making compromises, and working together. Along the way, you will see that diplomacy isn’t just about winning debates but about creating an understanding environment.
-
-This conference is a place not only to talk but to listen, not just to compete but to learn and grow. If this is your first time as a delegate or you have done it before, I invite you to push yourself a little, speak up with confidence, and really get involved. The difference you make here might be bigger than you think.
-
-Our MUN trusts that young leaders can make a difference. We believe that change does not start in big rooms filled with power, it starts with people talking, sharing ideas, and those who have the courage to think in new ways. Over the next few sessions, I hope you push yourself a bit, encourage each other, and above all, have a great time along the way.
-
-On behalf of the whole Secretariat, I am contented to welcome you to PBSMUN 2026, where ideas come to life and future leaders start their journey.
-
-I am eager to see the diplomacy, passion, and brilliance you all will bring to each committee.
-
-Warm Regards,
-
-Huzaifa Anwar
-Secretary General, PBSMUN 2026</p>
+                <p>I am delighted to welcome you all to our first ever PACE British School Model United Nations Conference (PBSMUN). Being your Secretary-General for this conference is more than just a title to me, it is a responsibility and a chance I truly appreciate.</p>
+                
+                <p>I used to sit nervously in committee sessions as a delegate, and now I am leading this conference. I’ve seen firsthand just how powerful MUN's can be. It is about more than just speeches and resolutions. It is a place where people start to build confidence, question their views, make friends, and leaders begin to find their voice. MUN has changed how I see things, how I talk, and how I understand what is going on around me, and I hope this conference has the same impact on you.</p>
+                
+                <p>We live in a time where people are more connected than ever, but somehow, that connection does not always bring us together like it should. Problems around the world do not stop at borders, and finding answers means working together. Each of you stands for a country, a perspective, and a duty. During this conference, you will spend time debating, negotiating, making compromises, and working together. Along the way, you will see that diplomacy isn’t just about winning debates but about creating an understanding environment.</p>
+                
+                <p>This conference is a place not only to talk but to listen, not just to compete but to learn and grow. If this is your first time as a delegate or you have done it before, I invite you to push yourself a little, speak up with confidence, and really get involved. The difference you make here might be bigger than you think.</p>
+                
+                <p>Our MUN trusts that young leaders can make a difference. We believe that change does not start in big rooms filled with power, it starts with people talking, sharing ideas, and those who have the courage to think in new ways. Over the next few sessions, I hope you push yourself a bit, encourage each other, and above all, have a great time along the way.</p>
+                
+                <p>On behalf of the whole Secretariat, I am contented to welcome you to PBSMUN 2026, where ideas come to life and future leaders start their journey.</p>
+                
+                <p>I am eager to see the diplomacy, passion, and brilliance you all will bring to each committee.</p>
             </div>
-            <div class="sg-intro-photo">
-                <img src="placeholder.jpg" alt="Secretary General" loading="lazy">
+
+            <div class="sg-profile">
+                <div class="sg-intro-photo">
+                    <img src="placeholder.jpg" alt="Secretary General" loading="lazy">
+                </div>
+                <div class="sg-signature">
+                    <h4>Huzaifa Anwar</h4>
+                    <h5>Secretary General</h5>
+                </div>
             </div>
         </div>
         
