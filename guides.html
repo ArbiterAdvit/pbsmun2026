@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- BRANDING VARIABLES (Synced with Index (4)) --- */
+        /* --- BRANDING VARIABLES --- */
         :root {
             --navy-blue: #161a29;
             --light-navy: #1f253a;
@@ -34,7 +34,7 @@
 
         h1, h2, h3, h4 { font-family: 'XBNiloofarRegular'; font-weight: normal; }
 
-        /* --- NAVIGATION (Synced with Index (4)) --- */
+        /* --- NAVIGATION --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -209,7 +209,7 @@
         .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .scroll-reveal.show { opacity: 1; transform: translateY(0); }
 
-        /* --- MOBILE STYLES (Synced with Index (4)) --- */
+        /* --- MOBILE STYLES --- */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-links {
@@ -270,33 +270,33 @@
 
     <section class="section-container">
         
-        <h3 class="division-title scroll-reveal">Boys' Division</h3>
+        <h3 class="division-title scroll-reveal">Boys' Assembly</h3>
         <div class="committee-grid">
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Junior', 'Committee 1')">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Junior', 'Committee 1', 'bg-guides/boys-com1.pdf')">
                 <div class="committee-logo">🏛️</div>
                 <span class="level-tag level-junior">Junior</span>
                 <h3>Committee 1</h3>
                 <p>Foundational diplomacy for emerging voices.</p>
             </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 2')">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 2', 'bg-guides/boys-com2.pdf')">
                 <div class="committee-logo">🌍</div>
                 <span class="level-tag level-beginner">Beginner</span>
                 <h3>Committee 2</h3>
                 <p>Exploring the mechanics of global governance.</p>
             </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 3')">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 3', 'bg-guides/boys-com3.pdf')">
                 <div class="committee-logo">⚖️</div>
                 <span class="level-tag level-beginner">Beginner</span>
                 <h3>Committee 3</h3>
                 <p>Navigating international law and legal frameworks.</p>
             </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Intermediate', 'Committee 4')">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Intermediate', 'Committee 4', 'bg-guides/boys-com4.pdf')">
                 <div class="committee-logo">🛡️</div>
                 <span class="level-tag level-intermediate">Intermediate</span>
                 <h3>Committee 4</h3>
                 <p>Strategizing against complex security threats.</p>
             </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Advanced', 'Committee 5')">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Advanced', 'Committee 5', 'bg-guides/boys-com5.pdf')">
                 <div class="committee-logo">⚔️</div>
                 <span class="level-tag level-advanced">Advanced</span>
                 <h3>Committee 5</h3>
@@ -304,33 +304,33 @@
             </div>
         </div>
 
-        <h3 class="division-title scroll-reveal">Girls' Division</h3>
+        <h3 class="division-title scroll-reveal">Girls' Assembly</h3>
         <div class="committee-grid">
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Junior', 'Committee 1')">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Junior', 'Committee 1', 'bg-guides/girls-com1.pdf')">
                 <div class="committee-logo">🏛️</div>
                 <span class="level-tag level-junior">Junior</span>
                 <h3>Committee 1</h3>
                 <p>Empowering the next generation of leadership.</p>
             </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 2')">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 2', 'bg-guides/girls-com2.pdf')">
                 <div class="committee-logo">🌍</div>
                 <span class="level-tag level-beginner">Beginner</span>
                 <h3>Committee 2</h3>
                 <p>Analyzing cross-border cooperation strategies.</p>
             </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 3')">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 3', 'bg-guides/girls-com3.pdf')">
                 <div class="committee-logo">⚖️</div>
                 <span class="level-tag level-beginner">Beginner</span>
                 <h3>Committee 3</h3>
                 <p>Human rights and legislative advocacy.</p>
             </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Intermediate', 'Committee 4')">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Intermediate', 'Committee 4', 'bg-guides/girls-com4.pdf')">
                 <div class="committee-logo">🛡️</div>
                 <span class="level-tag level-intermediate">Intermediate</span>
                 <h3>Committee 4</h3>
                 <p>Mitigating socio-economic global challenges.</p>
             </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Advanced', 'Committee 5')">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Advanced', 'Committee 5', 'bg-guides/girls-com5.pdf')">
                 <div class="committee-logo">⚔️</div>
                 <span class="level-tag level-advanced">Advanced</span>
                 <h3>Committee 5</h3>
@@ -355,7 +355,7 @@
             <div class="modal-body">
                 <div class="info-grid">
                     <div class="info-card full-width">
-                        <h4>Committee Mandate</h4>
+                        <h4>Committee Overview</h4>
                         <p id="m-desc">Comprehensive details regarding this committee's jurisdiction and diplomatic objectives will be provided in the official background guides.</p>
                     </div>
                     
@@ -373,12 +373,17 @@
                         <p>Specialized research briefs will be accessible to registered delegates.</p>
                     </div>
                 </div>
+                
+                <div style="text-align: center; margin-top: 2.5rem;">
+                    <a id="m-guide-btn" href="#" target="_blank" class="btn-gold" style="padding: 1rem 2rem; font-size: 1rem;">Download Background Guide</a>
+                </div>
+
             </div>
         </div>
     </div>
 
     <script>
-        // --- Navigation Logic (Synced with Index (4)) ---
+        // --- Navigation Logic ---
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
             if (window.innerWidth <= 768) {
@@ -408,10 +413,20 @@
 
         // --- Modal Control ---
         const modal = document.getElementById('committee-modal');
-        function openCommittee(level, title) {
+        function openCommittee(level, title, guideUrl) {
             document.getElementById('m-title').innerText = title;
             document.getElementById('m-tag').innerText = level;
             document.getElementById('m-tag').className = 'level-tag level-' + level.toLowerCase();
+            
+            // Handle the dynamic background guide button
+            const guideBtn = document.getElementById('m-guide-btn');
+            if (guideUrl) {
+                guideBtn.href = guideUrl;
+                guideBtn.style.display = 'inline-block'; // Show button if a link is provided
+            } else {
+                guideBtn.style.display = 'none'; // Hide button if there is no link
+            }
+
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
             setTimeout(() => { modal.classList.add('active'); }, 10);
