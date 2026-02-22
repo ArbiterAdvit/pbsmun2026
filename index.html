@@ -151,7 +151,6 @@
             padding-left: 32px; 
         }
 
-        /* Desktop Hover Behavior */
         @media (min-width: 769px) {
             .dropdown:hover .dropdown-content {
                 visibility: visible;
@@ -160,7 +159,6 @@
             }
         }
 
-        /* Mobile Hamburger Menu */
         .hamburger {
             display: none;
             cursor: pointer;
@@ -173,7 +171,6 @@
          header {
             text-align: center;
             padding: 2rem;
-            /* Calc ensures it's perfectly centered in the visible viewport under the nav */
             min-height: calc(100vh - 80px); 
             display: flex;
             flex-direction: column;
@@ -218,7 +215,6 @@
             animation: heroFadeInUp 1.5s ease-out 0.6s forwards;
         }
 
-        /* Countdown Timer */
         .countdown-container {
             display: flex;
             gap: 1.5rem;
@@ -246,7 +242,6 @@
             font-weight: 700;
             font-family: 'XBNiloofarRegular';
             color: var(--gold);
-            /* Heavy Blur Re-applied */
             filter: blur(8px);
             opacity: 0.8;
             user-select: none; 
@@ -260,7 +255,6 @@
             margin-top: 0.5rem;
         }
 
-        /* Buttons */
         .btn {
             background: linear-gradient(135deg, var(--gold) 0%, #ad9963 100%);
             color: var(--navy-blue);
@@ -285,7 +279,6 @@
             transform: translateY(-3px);
         }
 
-        /* General Sections */
         .section-container {
             padding: 5rem 10%;
         }
@@ -311,7 +304,6 @@
             background-color: var(--light-navy);
         }
 
-        /* Lightweight Scroll Animations */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -323,7 +315,6 @@
             transform: translateY(0);
         }
 
-        /* About Us */
         .about-content {
             text-align: center;
             max-width: 800px;
@@ -337,7 +328,7 @@
             opacity: 1; 
         }
 
-        /* Modal / Popup Box Styles */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed; 
@@ -420,17 +411,63 @@
             color: #e0e0e0;
         }
 
-        /* Custom Scrollbar for Modal */
-        .scrollable-content::-webkit-scrollbar {
-            width: 8px;
+        .scrollable-content::-webkit-scrollbar { width: 8px; }
+        .scrollable-content::-webkit-scrollbar-track { background: rgba(22, 26, 41, 0.5); border-radius: 4px; }
+        .scrollable-content::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--gold), #ad9963); border-radius: 4px; }
+
+        /* --- UPDATED SG Formal Intro Section --- */
+        .sg-intro-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            width: 75vw; /* 75% of screen width */
+            min-height: 75vh; /* 75% of screen height */
+            max-width: 1400px;
+            margin: 0 auto 4rem auto;
+            background-color: var(--light-navy);
+            padding: 4rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 192, 139, 0.15);
+            border-top: 4px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
-        .scrollable-content::-webkit-scrollbar-track {
-            background: rgba(22, 26, 41, 0.5);
-            border-radius: 4px;
+
+        .sg-intro-text {
+            text-align: left;
+            flex: 1; /* Takes up the remaining space dynamically */
         }
-        .scrollable-content::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, var(--gold), #ad9963);
-            border-radius: 4px;
+
+        .sg-intro-text h3 {
+            color: var(--gold);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'XBNiloofarRegular', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .sg-intro-text p {
+            color: var(--white);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .sg-intro-photo {
+            flex-shrink: 0;
+            width: 320px;
+            height: 420px;
+            border-radius: 15px;
+            border: 3px solid var(--gold);
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(212, 192, 139, 0.3);
+            background-color: var(--navy-blue);
+        }
+
+        .sg-intro-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Meet The Team Section */
@@ -463,20 +500,17 @@
             margin: 0 auto;
         }
 
-        /* Specific alignment for Secretariat */
         .team-grid.secretariat-row {
             max-width: 750px;
             margin: 0 auto 2.5rem auto;
         }
 
-        /* Wrapper to isolate Scroll Transition from Hover Transition */
         .card-wrapper {
             display: flex;
             justify-content: center;
             width: 100%;
         }
 
-        /* Interactive Team Cards */
         .team-card {
             background-color: var(--light-navy);
             border: 1px solid rgba(212, 192, 139, 0.15);
@@ -500,11 +534,12 @@
             box-shadow: 0 10px 30px rgba(212, 192, 139, 0.15);
         }
 
+        /* --- UPDATED Team Photo Frames (Square with Smooth Edges) --- */
         .team-photo-frame {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px; 
             margin: 0 auto 1.5rem auto;
-            border-radius: 50%;
+            border-radius: 25px; /* Creates the smooth rounded square look */
             border: 3px solid var(--gold);
             background-color: var(--navy-blue);
             overflow: hidden;
@@ -538,7 +573,6 @@
             text-align: center;
         }
 
-        /* Gold Pill-Badge Role Text */
         .team-role {
             font-size: 0.85rem;
             font-weight: 700;
@@ -559,7 +593,6 @@
             font-style: italic;
         }
 
-        /* Quote Expansion Styling */
         .click-hint {
             display: block;
             font-size: 0.85rem;
@@ -615,7 +648,6 @@
             opacity: 0.7;
         }
 
-        /* Active State when clicked */
         .team-card.show-quote .quote-area {
             max-height: 350px;
             opacity: 1;
@@ -630,7 +662,6 @@
             overflow: hidden;
         }
 
-        /* Contact & Social Section */
         .contact-content {
             text-align: center;
             max-width: 800px;
@@ -661,21 +692,9 @@
             transition: all 0.3s ease;
         }
 
-        .contact-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor; 
-            transition: fill 0.3s ease;
-        }
+        .contact-btn svg { width: 24px; height: 24px; fill: currentColor; transition: fill 0.3s ease; }
+        .contact-btn:hover { background-color: var(--gold); color: var(--navy-blue); box-shadow: 0 8px 25px var(--gold-shadow); transform: translateY(-3px); }
 
-        .contact-btn:hover {
-            background-color: var(--gold);
-            color: var(--navy-blue);
-            box-shadow: 0 8px 25px var(--gold-shadow);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
         footer {
             text-align: center;
             padding: 3rem 2rem;
@@ -685,15 +704,8 @@
             color: rgba(255,255,255,0.7);
         }
 
-        /* Animations */
-        @keyframes heroFadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes heroFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes heroFadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
@@ -702,57 +714,22 @@
             
             .hamburger { display: block; }
             .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 72px; 
-                left: 0;
-                width: 100%;
-                background-color: var(--light-navy); 
-                padding: 1rem 0;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-                border-bottom: 2px solid var(--gold);
+                display: none; flex-direction: column; position: absolute;
+                top: 72px; left: 0; width: 100%; background-color: var(--light-navy); 
+                padding: 1rem 0; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border-bottom: 2px solid var(--gold);
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links li {
-                margin: 1rem 0;
-                text-align: center;
-                width: 100%;
-            }
+            .nav-links.active { display: flex; }
+            .nav-links li { margin: 1rem 0; text-align: center; width: 100%; }
 
-            .dropdown {
-                flex-direction: column;
-            }
-
+            .dropdown { flex-direction: column; }
             .dropdown-content {
-                visibility: visible;
-                opacity: 1;
-                position: relative;
-                top: 0;
-                left: 0;
-                transform: none;
-                box-shadow: none;
-                border: none;
-                background-color: transparent;
-                width: 100%; 
-                box-sizing: border-box; 
-                margin-top: 0.5rem;
-                display: none; 
+                visibility: visible; opacity: 1; position: relative; top: 0; left: 0; transform: none;
+                box-shadow: none; border: none; background-color: transparent; width: 100%; 
+                box-sizing: border-box; margin-top: 0.5rem; display: none; 
             }
-            .dropdown-content.show {
-                display: block; 
-                animation: heroFadeIn 0.3s ease; 
-            }
-            .dropdown-content a {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-                text-align: center; 
-            }
-            .dropdown-content a:hover {
-                padding-left: 20px; 
-            }
+            .dropdown-content.show { display: block; animation: heroFadeIn 0.3s ease; }
+            .dropdown-content a { padding: 10px 20px; font-size: 0.9rem; text-align: center; }
+            .dropdown-content a:hover { padding-left: 20px; }
 
             .countdown-container { gap: 0.8rem; }
             .time-box { min-width: 80px; padding: 1rem 0.5rem; }
@@ -762,13 +739,23 @@
             .section-container { padding: 4rem 5%; }
             .team-card { padding: 2rem 1.5rem; }
             .hero-logo { max-width: 180px; }
+
+            /* Mobile SG Intro Layout updates */
+            .sg-intro-container {
+                flex-direction: column-reverse; /* Reverses order on mobile so photo is on top */
+                width: 90vw; /* Fit mobile screens better */
+                min-height: auto; /* Allow natural height on mobile */
+                text-align: center;
+                padding: 3rem 1.5rem;
+                gap: 2rem;
+            }
+            .sg-intro-text { text-align: center; }
+            .sg-intro-photo { width: 250px; height: 320px; } /* Slightly scaled down photo for mobile */
             
             .contact-btn { font-size: 1rem; padding: 1rem 1.5rem; width: 100%; justify-content: center; }
-            
             .modal-content { width: 92%; padding: 2rem; margin: 15% auto; }
             .scrollable-content { padding-right: 0.5rem; max-height: 50vh; }
             .close-modal { top: 10px; right: 15px; }
-            
             .team-grid.secretariat-row { max-width: 100%; }
         }
     </style>
@@ -844,6 +831,16 @@
 
     <section id="team" class="section-container">
         <h2 class="section-title scroll-reveal">MEET OUR SECRETARIAT</h2>
+
+        <div class="sg-intro-container scroll-reveal">
+            <div class="sg-intro-text">
+                <h3>Welcome from the Secretary-General</h3>
+                <p>[Your formal introduction will go here. You can use this space to welcome the delegates, outline your vision for the conference, and set the tone for PBSMUN '26. You can type multiple paragraphs here and it will seamlessly fill the large space we have created!]</p>
+            </div>
+            <div class="sg-intro-photo">
+                <img src="placeholder.jpg" alt="Secretary General" loading="lazy">
+            </div>
+        </div>
         
         <h3 class="division-title scroll-reveal">EXECUTIVE BOARD</h3>
         
@@ -1165,7 +1162,7 @@
         // --- Mobile Dropdown Toggle ---
         function toggleDropdown(e) {
             if (window.innerWidth <= 768) {
-                e.preventDefault(); // Prevents default anchor click
+                e.preventDefault(); 
                 document.getElementById('app-dropdown').classList.toggle('show');
             }
         }
