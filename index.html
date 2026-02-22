@@ -55,7 +55,7 @@
         .nav-logo img { height: 40px; width: auto; }
 
         .nav-links { list-style: none; display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; transition: color 0.3s ease; padding: 0.5rem; }
         .nav-links a:hover { color: var(--gold); }
 
         /* Dropdown Menu Styles */
@@ -78,7 +78,7 @@
 
         @media (min-width: 769px) { .dropdown:hover .dropdown-content { visibility: visible; opacity: 1; transform: translate(-50%, 0); } }
 
-        .hamburger { display: none; cursor: pointer; font-size: 2rem; color: var(--gold); user-select: none; }
+        .hamburger { display: none; cursor: pointer; font-size: 2rem; color: var(--gold); user-select: none; padding: 0.5rem; }
 
         /* Hero Section */
          header {
@@ -115,24 +115,48 @@
         .scroll-reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .scroll-reveal.show { opacity: 1; transform: translateY(0); }
 
-        .about-content { text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; }
+        .about-content { text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; }
         #more-about-btn { margin-top: 2rem; animation: none; opacity: 1; }
 
-        /* Modal Styles */
+        /* Modal Styles - Expanded Size & Mobile Optimised */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(15, 18, 30, 0.95); opacity: 0; transition: opacity 0.3s ease; }
         .modal.show { display: block; opacity: 1; }
-        .modal-content { background-color: var(--light-navy); margin: 5% auto; padding: 3rem; border: 2px solid var(--gold); border-radius: 12px; width: 80%; max-width: 800px; position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.8), 0 0 15px var(--gold-shadow); transform: translateY(-30px); transition: transform 0.4s ease-out; }
+        .modal-content { background-color: var(--light-navy); margin: 3% auto; padding: 3rem; border: 2px solid var(--gold); border-radius: 12px; width: 90%; max-width: 1100px; position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.8), 0 0 15px var(--gold-shadow); transform: translateY(-30px); transition: transform 0.4s ease-out; }
         .modal.show .modal-content { transform: translateY(0); }
         .modal-content h2 { color: var(--gold); text-shadow: 0 0 10px var(--gold-shadow); }
-        .close-modal { color: var(--gold); position: absolute; top: 15px; right: 25px; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s ease; }
+        
+        .close-modal { 
+            color: var(--gold); position: absolute; top: 15px; right: 25px; 
+            font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s ease; 
+            padding: 5px 15px; z-index: 10;
+        }
         .close-modal:hover { color: var(--white); text-shadow: 0 0 15px var(--gold); text-decoration: none; }
 
-        .scrollable-content { max-height: 60vh; overflow-y: auto; padding-right: 1.5rem; text-align: left; border-top: 1px solid rgba(212, 192, 139, 0.3); padding-top: 1.5rem; }
-        .scrollable-content h3 { color: var(--gold); font-size: 1.8rem; margin-top: 2rem; margin-bottom: 0.8rem; }
-        .scrollable-content p { margin-bottom: 1rem; font-size: 1.05rem; color: #e0e0e0; }
+        .scrollable-content { max-height: 70vh; overflow-y: auto; padding-right: 1.5rem; text-align: left; border-top: 1px solid rgba(212, 192, 139, 0.3); padding-top: 1.5rem; }
+        .scrollable-content h3 { color: var(--gold); font-size: 1.8rem; margin-top: 2rem; margin-bottom: 0.8rem; line-height: 1.3; }
+        .scrollable-content p { margin-bottom: 1.2rem; font-size: 1.05rem; color: #e0e0e0; line-height: 1.8; }
         .scrollable-content::-webkit-scrollbar { width: 8px; }
         .scrollable-content::-webkit-scrollbar-track { background: rgba(22, 26, 41, 0.5); border-radius: 4px; }
         .scrollable-content::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--gold), #ad9963); border-radius: 4px; }
+
+        /* Founder Section inside Modal - Updated to Right Side, Square, Smooth Corners */
+        .founder-section { display: flex; gap: 2.5rem; align-items: center; margin-bottom: 1.5rem; margin-top: 0.5rem; }
+        
+        .founder-text { flex: 1; }
+        .founder-text p { margin-bottom: 0; /* Remove margin as it sits next to the image */ }
+        
+        .founder-photo { 
+            width: 160px; 
+            height: 160px; 
+            flex-shrink: 0; 
+            border: 3px solid var(--gold); 
+            border-radius: 20px; /* Smooth rounded square corners */
+            background-color: var(--navy-blue); 
+            box-shadow: 0 0 15px rgba(212, 192, 139, 0.2); 
+            overflow: hidden; 
+            display: flex; justify-content: center; align-items: center; 
+        }
+        .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
 
         /* SG Formal Intro Section */
         .sg-intro-container { display: flex; align-items: center; justify-content: center; gap: 4rem; width: 75vw; min-height: 75vh; max-width: 1400px; margin: 0 auto 4rem auto; background-color: var(--light-navy); padding: 4rem; border-radius: 15px; border: 1px solid rgba(212, 192, 139, 0.15); border-top: 4px solid var(--gold); box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
@@ -150,7 +174,7 @@
         .team-grid.secretariat-row { max-width: 750px; margin: 0 auto 2.5rem auto; }
         .card-wrapper { display: flex; justify-content: center; width: 100%; }
 
-        /* Team Cards - Reverted to uploaded index (8).html format */
+        /* Team Cards */
         .team-card {
             background-color: var(--light-navy);
             border: 1px solid rgba(212, 192, 139, 0.15);
@@ -173,7 +197,7 @@
             width: 180px;
             height: 180px; 
             margin: 0 auto 1.5rem auto;
-            border-radius: 25px; /* Creates the smooth rounded square look */
+            border-radius: 25px; 
             border: 3px solid var(--gold);
             background-color: var(--navy-blue);
             overflow: hidden;
@@ -195,13 +219,7 @@
         .info-grid-container { padding: 5rem 10%; background-color: var(--navy-blue); }
         .info-grid { display: grid; grid-template-columns: 1fr 2.5fr 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
         
-        /* Information Wrappers & Boxes (Fixes Scroll Animations) */
-        .info-wrapper {
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
-
+        .info-wrapper { display: flex; width: 100%; height: 100%; }
         .box-dates { grid-column: 1; grid-row: 1; }
         .box-ages { grid-column: 1; grid-row: 2; }
         .box-events { grid-column: 2; grid-row: 1 / 3; }
@@ -225,16 +243,12 @@
             width: 100%;
             height: 100%;
         }
-        .info-box:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 25px rgba(212, 192, 139, 0.3); 
-        }
-
+        .info-box:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(212, 192, 139, 0.3); }
         .info-wrapper.box-events .info-box { padding: 0; position: relative; }
 
         .box-title { color: var(--white); font-family: 'XBNiloofarRegular', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; letter-spacing: 2px; }
         .box-content { color: var(--gold); font-size: 1.2rem; font-weight: 600; }
-        .box-content a { color: var(--gold); text-decoration: none; }
+        .box-content a { color: var(--gold); text-decoration: none; padding: 0.5rem; }
         .box-content a:hover { text-decoration: underline; }
         .info-icon { width: 50px; height: 50px; fill: var(--gold); margin-bottom: 1rem; opacity: 0.8; }
 
@@ -249,13 +263,10 @@
             100% { text-shadow: 0 0 15px rgba(212,192,139,0.9), 0 0 25px rgba(212,192,139,0.6); }
         }
 
-        @keyframes fadeEffect { 
-            from { opacity: 0; transform: translateY(10px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
+        @keyframes fadeEffect { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .events-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(22, 26, 41, 0.8), rgba(22, 26, 41, 0.9)), url('https://static01.nyt.com/images/2019/09/27/world/un-explainer1/un-explainer1-articleLarge.jpg?quality=75&auto=webp&disable=upscale'); background-size: cover; background-position: center; z-index: 0; opacity: 0.3; pointer-events: none; }
-        .events-content { position: relative; z-index: 1; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem; }
+        .events-content { position: relative; z-index: 1; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
         
         .carousel-container { display: flex; align-items: center; justify-content: space-between; width: 100%; position: relative; height: 100%; }
         .carousel-slide { display: none; text-align: center; width: 100%; animation: fadeEffect 0.6s ease-out; }
@@ -265,30 +276,13 @@
         .carousel-slide h3 { color: var(--gold); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; animation: textGlowGold 2s infinite alternate ease-in-out; }
         .carousel-slide p { color: var(--white); font-size: 1.8rem; font-weight: 300; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
 
-        /* Cleaned Up Carousel Arrow Buttons */
         .carousel-btn { 
-            background: transparent; 
-            border: none; 
-            color: var(--gold); 
-            font-size: 2.8rem; 
-            cursor: pointer; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.1s ease; 
-            z-index: 10; 
-            padding: 10px;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
+            background: transparent; border: none; color: var(--gold); font-size: 2.8rem; cursor: pointer; 
+            display: flex; justify-content: center; align-items: center; transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.1s ease; 
+            z-index: 10; padding: 15px; user-select: none; -webkit-tap-highlight-color: transparent;
         }
-        .carousel-btn:hover { 
-            color: var(--white); 
-            text-shadow: 0 0 15px var(--gold), 0 0 25px var(--gold); 
-        }
-        .carousel-btn:active {
-            transform: scale(0.85); /* Smooth click animation */
-            text-shadow: 0 0 5px var(--gold);
-        }
+        .carousel-btn:hover { color: var(--white); text-shadow: 0 0 15px var(--gold), 0 0 25px var(--gold); }
+        .carousel-btn:active { transform: scale(0.85); text-shadow: 0 0 5px var(--gold); }
 
         /* Contact Section */
         .contact-content { text-align: center; max-width: 800px; margin: 0 auto; }
@@ -302,19 +296,17 @@
         @keyframes heroFadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Mobile Responsiveness */
+        /* --- MOBILE RESPONSIVENESS (IMPROVED ACCESSIBILITY) --- */
         @media (max-width: 900px) {
             .info-grid { grid-template-columns: 1fr; }
-            .box-dates { grid-column: 1; grid-row: auto; }
-            .box-ages { grid-column: 1; grid-row: auto; }
-            .box-events { grid-column: 1; grid-row: auto; min-height: 300px; }
-            .box-location { grid-column: 1; grid-row: auto; }
-            .box-reg { grid-column: 1; grid-row: auto; }
+            .box-dates, .box-ages, .box-location, .box-reg { grid-column: 1; grid-row: auto; }
+            .box-events { grid-column: 1; grid-row: auto; min-height: 350px; }
         }
 
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1.2rem; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .section-title { font-size: 2rem; }
             
             .hamburger { display: block; }
             .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; width: 100%; background-color: var(--light-navy); padding: 1rem 0; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border-bottom: 2px solid var(--gold); }
@@ -323,30 +315,48 @@
             .dropdown { flex-direction: column; }
             .dropdown-content { visibility: visible; opacity: 1; position: relative; top: 0; left: 0; transform: none; box-shadow: none; border: none; background-color: transparent; width: 100%; box-sizing: border-box; margin-top: 0.5rem; display: none; }
             .dropdown-content.show { display: block; animation: heroFadeIn 0.3s ease; }
-            .dropdown-content a { padding: 10px 20px; font-size: 0.9rem; text-align: center; }
-            .dropdown-content a:hover { padding-left: 20px; }
-
+            .dropdown-content a { padding: 12px 20px; font-size: 1rem; text-align: center; } /* Larger tap target */
+            
             .countdown-container { gap: 0.8rem; }
-            .time-box { min-width: 80px; padding: 1rem 0.5rem; }
-            .time-box span { font-size: 1.8rem; }
-            .time-box p { font-size: 0.8rem; }
+            .time-box { min-width: 75px; padding: 1rem 0.5rem; }
+            .time-box span { font-size: 1.5rem; }
+            .time-box p { font-size: 0.75rem; }
             
             .section-container, .info-grid-container { padding: 4rem 5%; }
-            .team-card { padding: 2rem 1.5rem; }
+            .team-card { padding: 2.5rem 1.5rem; }
             .hero-logo { max-width: 180px; }
 
-            .sg-intro-container { flex-direction: column-reverse; width: 90vw; min-height: auto; text-align: center; padding: 3rem 1.5rem; gap: 2rem; }
+            .sg-intro-container { flex-direction: column-reverse; width: 95vw; min-height: auto; text-align: center; padding: 2.5rem 1.5rem; gap: 2rem; }
             .sg-intro-text { text-align: center; }
+            .sg-intro-text h3 { font-size: 1.8rem; }
             .sg-intro-photo { width: 250px; height: 320px; } 
             
+            /* Modal / About Us optimizations */
+            .modal-content { 
+                width: 95%; 
+                padding: 1.5rem; /* Reduced padding to fit screen better */
+                margin: 5% auto; 
+            }
+            .close-modal { top: 5px; right: 10px; font-size: 35px; } /* Easier close area */
+            .scrollable-content { padding-right: 0.5rem; max-height: 75vh; }
+            .scrollable-content h3 { font-size: 1.5rem; }
+            .scrollable-content p { font-size: 1rem; }
+            
+            /* Founder Section stacked on mobile */
+            .founder-section { 
+                flex-direction: column-reverse; /* Puts photo above text */
+                align-items: center; 
+                text-align: center; 
+                gap: 1.5rem;
+            }
+            .founder-photo { width: 150px; height: 150px; } /* Perfect square for mobile too */
+            
             .contact-btn { font-size: 1rem; padding: 1rem 1.5rem; width: 100%; justify-content: center; }
-            .modal-content { width: 92%; padding: 2rem; margin: 15% auto; }
-            .scrollable-content { padding-right: 0.5rem; max-height: 50vh; }
-            .close-modal { top: 10px; right: 15px; }
             .team-grid.secretariat-row { max-width: 100%; }
             
-            .carousel-slide h2 { font-size: 2.5rem !important; }
-            .carousel-slide p { font-size: 1.3rem; }
+            .carousel-slide h2 { font-size: 2.2rem !important; }
+            .carousel-slide p { font-size: 1.2rem; }
+            .carousel-btn { padding: 10px; font-size: 2.5rem; } /* Ensures easy tap on mobile */
         }
     </style>
 </head>
@@ -759,14 +769,26 @@
             <div class="scrollable-content">
                 <h3>About Pace British School </h3>
                 <p>Opened in 2019, Pace British School is a Cambridge International Curriculum School alongside offering Edexcel IGCSE’s in Years 10 and 11. The school focuses on academic exelence while encouraging growth and development within a robust and inclusive system made to foster learners for a bright future. </p>
+                
                 <h3>Our History</h3>
-                <p>The first iteration of PBSMUN hopes to support the founder of the PACE Group, Dr. PA Ibrahim Haji's belief that education should not merely impart knowledge but translate it into actions that benefit humanity. Three years ago, the Pace British Lunchtime Club was founded by the Head-boy and the Head-girl at that time, the MUN lunchtime club was comprised of many beginners and the lunchtime club served to help students prepair for their first MUN elsewhere. </p>
+                <div class="founder-section">
+                    <div class="founder-text">
+                        <p>The first iteration of PBSMUN hopes to support the founder of the PACE Group, Dr. PA Ibrahim Haji's belief that education should not merely impart knowledge but translate it into actions that benefit humanity. Three years ago, the Pace British Lunchtime Club was founded by the Head-boy and the Head-girl at that time, the MUN lunchtime club was comprised of many beginners and the lunchtime club served to help students prepair for their first MUN elsewhere. </p>
+                    </div>
+                    <div class="founder-photo">
+                        <img src="placeholder.jpg" alt="Dr. PA Ibrahim Haji" loading="lazy">
+                    </div>
+                </div>
                 
                 <h3>Our Experience</h3>
                 <p>Our student-led staff has experience many aspects of MUNs, ranging from delegates with many Best Delegate, Best Research, Best Orator and Honourable Mention Awards, staff with experience as chairs and experience in organizing other events within and outside Pace British School, such as our Bake Sale and Sports day, alongside student leadership roles such as headboy and headgirl, prefect and student council.</p>
                 
                 <h3>Our Mission</h3>
                 <p> The first iteration of PBSMUN aims to grant students a chance to develop their organization skills as they overcome many adversities to bring everyone a welcoming space for growth whilst being a space to appreciate, encourage and develop our core values, which entail being ambitious, internationally minded, inclusive and kind, environmentally responsible alongside the Islamic Values. </p>
+                
+                <div style="text-align: center; margin-top: 3rem; margin-bottom: 1.5rem;">
+                    <a href="https://pacebritish.com/" target="_blank" rel="noopener noreferrer" class="btn" style="opacity: 1; animation: none;">Learn More at Pace British</a>
+                </div>
             </div>
         </div>
     </div>
