@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Conference | PBSMUN</title>
     <link rel="icon" type="image/x-icon" href="/1_1770817820402_2cg59.png">
-    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/xb-niloofar" type="text/css"/>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/xb-niloofar" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Color Palette & Variables (Matching your main page) */
+        /* Shared Variables - Synced with index (3).html */
         :root {
             --navy-blue: #161a29;
             --light-navy: #1f253a;
@@ -18,15 +18,8 @@
             --gold-shadow: rgba(212, 192, 139, 0.3);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -34,28 +27,12 @@
             color: var(--white);
             line-height: 1.6;
             overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
-        /* Custom Scrollbar */
-        body::-webkit-scrollbar {
-            width: 10px;
-            background: var(--navy-blue);
-        }
-        body::-webkit-scrollbar-thumb {
-            background-color: var(--gold);
-            border-radius: 5px;
-        }
+        body::-webkit-scrollbar { width: 10px; background: var(--navy-blue); }
+        body::-webkit-scrollbar-thumb { background-color: var(--gold); border-radius: 5px; }
 
-        h1, h2, h3, h4 {
-           font-family: 'XBNiloofarRegular';
-           font-weight: normal;
-           font-style: normal;
-        }
-
-        /* --- Navigation --- */
+        /* --- NAVIGATION --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -69,257 +46,133 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-family: 'XBNiloofarRegular';
-            color: var(--white);
-            text-decoration: none;
-            letter-spacing: 2px;
-        }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-family: 'XBNiloofarRegular'; color: var(--white); text-decoration: none; letter-spacing: 2px; }
+        .nav-logo img { height: 40px; width: auto; }
+        
+        .nav-links { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--gold); }
 
-        .nav-logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        /* Dropdown Menu Styles */
-        .dropdown {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
+        .dropdown { position: relative; display: flex; align-items: center; }
         .dropdown-content {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translate(-50%, 15px); 
-            background-color: var(--light-navy);
-            min-width: 260px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            border: 2px solid var(--gold); 
-            border-radius: 10px; 
-            z-index: 1001;
-            overflow: hidden;
-            margin-top: 15px; 
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; 
+            visibility: hidden; opacity: 0; position: absolute; top: 100%; left: 50%;
+            transform: translate(-50%, 15px); background-color: var(--light-navy);
+            min-width: 260px; box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            border: 2px solid var(--gold); border-radius: 10px; z-index: 1001;
+            overflow: hidden; margin-top: 15px; transition: all 0.3s ease; 
         }
-
         .dropdown-content a {
-            color: var(--white);
-            padding: 15px 25px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid rgba(212, 192, 139, 0.15);
-            transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+            color: var(--white); padding: 15px 25px; text-decoration: none; display: block;
+            text-align: left; font-weight: 600; font-size: 0.95rem; border-bottom: 1px solid rgba(212, 192, 139, 0.15);
         }
-
-        .dropdown-content a:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-content a:hover {
-            background-color: rgba(212, 192, 139, 0.15); 
-            color: var(--gold);
-            padding-left: 32px; 
-        }
+        .dropdown-content a:hover { background-color: rgba(212, 192, 139, 0.15); color: var(--gold); }
 
         @media (min-width: 769px) {
-            .dropdown:hover .dropdown-content {
-                visibility: visible;
-                opacity: 1;
-                transform: translate(-50%, 0); 
-            }
+            .dropdown:hover .dropdown-content { visibility: visible; opacity: 1; transform: translate(-50%, 0); }
         }
 
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 2rem;
-            color: var(--gold);
-            user-select: none;
-        }
+        .hamburger { display: none; cursor: pointer; font-size: 2rem; color: var(--gold); }
 
-        /* --- Header / Hero --- */
+        /* --- HERO SECTION --- */
         header {
             text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(
-                rgba(22, 26, 41, 0.92), 
-                rgba(22, 26, 41, 0.92)
-            ), 
+            padding: 8rem 2rem 6rem;
+            background: linear-gradient(rgba(22, 26, 41, 0.9), rgba(22, 26, 41, 0.9)), 
             url('https://static01.nyt.com/images/2019/09/27/world/un-explainer1/un-explainer1-articleLarge.jpg?quality=75&auto=webp&disable=upscale');
-            background-size: cover;
-            background-position: center;
-            border-bottom: 1px solid rgba(212, 192, 139, 0.15);
+            background-size: cover; background-position: center; background-attachment: fixed;
+            border-bottom: 2px solid var(--gold-shadow);
         }
 
-        .hero-title {
-            font-size: 3.5rem;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px var(--gold-shadow);
-            color: var(--gold);
-            animation: heroFadeInUp 1s ease-out forwards;
+        .hero-title { font-size: 4rem; font-family: 'XBNiloofarRegular'; margin-bottom: 0.5rem; text-shadow: 0 0 20px var(--gold-shadow); }
+        .hero-subtitle { font-size: 1.2rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; font-weight: 300; }
+
+        /* --- COMMITTEE GRID --- */
+        .section-container { padding: 5rem 10%; }
+        .division-title {
+            font-size: 2.2rem; color: var(--gold); text-align: center; margin-bottom: 3rem;
+            font-family: 'XBNiloofarRegular'; display: flex; align-items: center; justify-content: center; gap: 20px;
+        }
+        .division-title::before, .division-title::after { content: ""; height: 1px; width: 60px; background: var(--gold); opacity: 0.4; }
+
+        .committee-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem;
+            margin-bottom: 6rem; max-width: 1200px; margin-left: auto; margin-right: auto;
         }
 
-        /* --- Main Content Section --- */
-        .main-content {
-            flex: 1; /* Pushes footer to the bottom */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 4rem 10%;
-            background-color: var(--light-navy);
+        .committee-card {
+            background-color: var(--light-navy); border: 1px solid rgba(212, 192, 139, 0.15);
+            border-radius: 15px; padding: 3rem 2rem; text-align: center; cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex: 1 1 300px; max-width: 350px; display: flex; flex-direction: column; align-items: center;
         }
 
-        .coming-soon-card {
-            background-color: var(--navy-blue);
-            padding: 4rem 3rem;
-            border: 2px solid var(--gold);
-            border-radius: 12px;
-            max-width: 700px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(0,0,0,0.6), 0 0 10px var(--gold-shadow);
-            animation: heroFadeInUp 1.2s ease-out forwards;
+        .committee-card:hover {
+            transform: translateY(-10px); border-color: var(--gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px var(--gold-shadow);
         }
 
-        .coming-soon-card h2 {
-            color: var(--gold);
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 10px var(--gold-shadow);
+        .committee-logo {
+            width: 90px; height: 90px; border-radius: 50%; background-color: var(--navy-blue);
+            border: 2px solid var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center;
         }
 
-        .coming-soon-card p {
-            font-size: 1.1rem;
-            color: #e0e0e0;
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-        }
+        .committee-card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--white); font-family: 'XBNiloofarRegular'; }
+        .committee-card p { color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1; }
 
-        /* --- Buttons --- */
-        .btn {
+        /* --- LEVEL TAGS --- */
+        .level-tag { padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px; }
+        .level-junior { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.3); }
+        .level-beginner { background: rgba(212, 192, 139, 0.08); color: rgba(212, 192, 139, 0.8); border: 1px solid rgba(212, 192, 139, 0.4); }
+        .level-intermediate { background: rgba(212, 192, 139, 0.15); color: var(--gold); border: 1px solid var(--gold); }
+        .level-advanced { background: var(--gold); color: var(--navy-blue); border: 1px solid var(--gold); }
+
+        /* --- MODAL POPUP --- */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 18, 30, 0.95); z-index: 2000; backdrop-filter: blur(8px); overflow-y: auto; padding: 2rem;
+        }
+        .modal-content {
+            background-color: var(--light-navy); max-width: 900px; margin: 2rem auto;
+            border: 2px solid var(--gold); border-radius: 20px; position: relative;
+            transform: scale(0.9) translateY(20px); opacity: 0; transition: all 0.4s ease;
+        }
+        .modal-overlay.active .modal-content { transform: scale(1) translateY(0); opacity: 1; }
+
+        .modal-header { padding: 4rem 3rem 2rem; text-align: center; border-bottom: 1px solid rgba(212, 192, 139, 0.1); }
+        .modal-header h2 { font-size: 3rem; color: var(--gold); font-family: 'XBNiloofarRegular'; }
+
+        .modal-body { padding: 3rem; }
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+
+        /* Spacing Fix: Full width classes */
+        .full-width { grid-column: 1 / -1; }
+        .info-card { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 1.5rem; border-left: 3px solid var(--gold); }
+        .info-card h4 { color: var(--gold); margin-bottom: 0.5rem; letter-spacing: 1px; font-family: 'XBNiloofarRegular'; font-size: 1.2rem; }
+
+        .close-btn { position: absolute; top: 20px; right: 25px; font-size: 2.5rem; color: var(--gold); cursor: pointer; }
+
+        /* --- DELEGATE RESOURCES SECTION --- */
+        .resources-box { max-width: 900px; margin: 4rem auto 0; border: 2px solid var(--gold); background: var(--light-navy); padding: 3.5rem 2rem; border-radius: 15px; text-align: center; }
+        .resources-box h2 { font-family: 'XBNiloofarRegular'; font-size: 2.5rem; color: var(--gold); margin-bottom: 1.5rem; }
+        .resources-box p { max-width: 700px; margin: 0 auto 2rem; font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.8; }
+
+        .btn-gold {
             background: linear-gradient(135deg, var(--gold) 0%, #ad9963 100%);
-            color: var(--navy-blue);
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            border: none;
-            cursor: pointer;
-            display: inline-block;
-            box-shadow: 0 4px 15px var(--gold-shadow);
+            color: var(--navy-blue); padding: 1.2rem 2.5rem; text-decoration: none; border-radius: 5px;
+            font-weight: 700; display: inline-block; transition: 0.3s; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
         }
+        .btn-gold:hover { background: var(--white); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
 
-        .btn:hover {
-            background: var(--white);
-            box-shadow: 0 8px 25px rgba(255,255,255, 0.3);
-            transform: translateY(-3px);
-        }
+        /* --- ANIMATIONS (WITH RE-TRIGGER) --- */
+        .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .scroll-reveal.show { opacity: 1; transform: translateY(0); }
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--navy-blue);
-            border-top: 2px solid var(--gold);
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        /* --- Animations --- */
-        @keyframes heroFadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.2rem; }
-            .coming-soon-card { padding: 3rem 1.5rem; }
-            .coming-soon-card h2 { font-size: 2rem; }
-            
             .hamburger { display: block; }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 72px; 
-                left: 0;
-                width: 100%;
-                background-color: var(--light-navy); 
-                padding: 1rem 0;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-                border-bottom: 2px solid var(--gold);
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links li {
-                margin: 1rem 0;
-                text-align: center;
-                width: 100%;
-            }
-
-            .dropdown { flex-direction: column; }
-
-            .dropdown-content {
-                visibility: visible;
-                opacity: 1;
-                position: relative;
-                top: 0;
-                left: 0;
-                transform: none;
-                box-shadow: none;
-                border: none;
-                background-color: transparent;
-                width: 100%; 
-                box-sizing: border-box; 
-                margin-top: 0.5rem;
-                display: none; 
-            }
-            .dropdown-content.show {
-                display: block; 
-            }
-            .dropdown-content a {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-                text-align: center; 
-            }
-            .dropdown-content a:hover {
-                padding-left: 20px; 
-            }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; width: 100%; background: var(--light-navy); padding: 1rem 0; border-bottom: 2px solid var(--gold); }
+            .nav-links.active { display: flex; }
+            .info-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -327,67 +180,171 @@
 
     <nav>
         <a href="index.html" class="nav-logo">
-            <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo">
-            PBSMUN
+            <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo"> PBSMUN
         </a>
-
-        <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">☰</div>
-
+        <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">☰</div>
         <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
-            
+            <li><a href="index.html">Home</a></li>
             <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown(event)">Applications</a>
-                <div class="dropdown-content" id="app-dropdown">
-                    <a href="/delegate-app.html" onclick="toggleMenu()">Delegate Applications</a>
-                    <a href="/chair-app.html" onclick="toggleMenu()">Chair Applications</a>
-                    <a href="/staff-app.html" onclick="toggleMenu()">Staff Applications</a>
+                <a href="javascript:void(0)">Applications</a>
+                <div class="dropdown-content">
+                    <a href="/delegate-app.html">Delegate Applications</a>
+                    <a href="/chair-app.html">Chair Applications</a>
+                    <a href="/staff-app.html">Staff Applications</a>
                 </div>
             </li>
-
-            <li><a href="/guides.html" onclick="toggleMenu()">The Conference</a></li>
-            <li><a href="/schedule-coming-soon.html" onclick="toggleMenu()">Schedule</a></li>
-            <li><a href="index.html#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="index.html#team" onclick="toggleMenu()">Team</a></li>
-            <li><a href="index.html#contact" onclick="toggleMenu()">Contact Us</a></li>
+            <li><a href="#" style="color: var(--gold);">The Conference</a></li>
+            <li><a href="/schedule.html">Schedule</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
         </ul>
     </nav>
 
     <header>
-        <h1 class="hero-title">The Conference</h1>
+        <h1 class="hero-title scroll-reveal">The Conference</h1>
+        <p class="hero-subtitle scroll-reveal">Official PBSMUN 2026 Committees</p>
     </header>
 
-    <section class="main-content">
-        <div class="coming-soon-card">
-            <h2>Coming Soon!</h2>
-            <p>
-                We are thrilled to see your interest in participating in PBSMUN '26! However, Conference details are not fully avaliable yet. 
-                <br><br>
-                Please check back closer to the conference date or follow our official Instagram page to be the first to know when details go live. We can't wait to see you step into the shoes of global policymakers.
-            </p>
-            <a href="index.html" class="btn">Return to Homepage</a>
+    <section class="section-container">
+        
+        <h3 class="division-title scroll-reveal">Boys' Division</h3>
+        <div class="committee-grid">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Junior', 'Committee 1')">
+                <div class="committee-logo">🏛️</div>
+                <span class="level-tag level-junior">Junior</span>
+                <h3>Committee 1</h3>
+                <p>Foundational diplomacy for emerging voices.</p>
+            </div>
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 2')">
+                <div class="committee-logo">🌍</div>
+                <span class="level-tag level-beginner">Beginner</span>
+                <h3>Committee 2</h3>
+                <p>Exploring the mechanics of global governance.</p>
+            </div>
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 3')">
+                <div class="committee-logo">⚖️</div>
+                <span class="level-tag level-beginner">Beginner</span>
+                <h3>Committee 3</h3>
+                <p>Navigating international law and legal frameworks.</p>
+            </div>
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Intermediate', 'Committee 4')">
+                <div class="committee-logo">🛡️</div>
+                <span class="level-tag level-intermediate">Intermediate</span>
+                <h3>Committee 4</h3>
+                <p>Strategizing against complex security threats.</p>
+            </div>
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Advanced', 'Committee 5')">
+                <div class="committee-logo">⚔️</div>
+                <span class="level-tag level-advanced">Advanced</span>
+                <h3>Committee 5</h3>
+                <p>High-intensity crisis and resolution management.</p>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Girls' Division</h3>
+        <div class="committee-grid">
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Junior', 'Committee 1')">
+                <div class="committee-logo">🏛️</div>
+                <span class="level-tag level-junior">Junior</span>
+                <h3>Committee 1</h3>
+                <p>Empowering the next generation of leadership.</p>
+            </div>
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 2')">
+                <div class="committee-logo">🌍</div>
+                <span class="level-tag level-beginner">Beginner</span>
+                <h3>Committee 2</h3>
+                <p>Analyzing cross-border cooperation strategies.</p>
+            </div>
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 3')">
+                <div class="committee-logo">⚖️</div>
+                <span class="level-tag level-beginner">Beginner</span>
+                <h3>Committee 3</h3>
+                <p>Human rights and legislative advocacy.</p>
+            </div>
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Intermediate', 'Committee 4')">
+                <div class="committee-logo">🛡️</div>
+                <span class="level-tag level-intermediate">Intermediate</span>
+                <h3>Committee 4</h3>
+                <p>Mitigating socio-economic global challenges.</p>
+            </div>
+            <div class="committee-card scroll-reveal" onclick="openCommittee('Advanced', 'Committee 5')">
+                <div class="committee-logo">⚔️</div>
+                <span class="level-tag level-advanced">Advanced</span>
+                <h3>Committee 5</h3>
+                <p>Specialized summits for veteran delegates.</p>
+            </div>
+        </div>
+
+        <div class="resources-box scroll-reveal">
+            <h2>Delegate Resources</h2>
+            <p>The PBSMUN Delegate Guide is an essential comprehensive manual designed to equip participants with the technical mastery required for high-level diplomacy. It encompasses the official Rules of Procedure, nuances of parliamentary debate, and strategic guidelines for position paper composition, ensuring every delegate can navigate the floor with professional confidence and poise.</p>
+            <a href="PBSMUN DELEGATE GUIDE.pdf" target="_blank" class="btn-gold">Download Official Guide</a>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Pace British School Model United Nations. All rights reserved.</p>
-    </footer>
+    <div id="committee-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="toggleModal()">&times;</span>
+            <div class="modal-header">
+                <span id="m-tag" class="level-tag">Level</span>
+                <h2 id="m-title">Committee Name</h2>
+            </div>
+            <div class="modal-body">
+                <div class="info-grid">
+                    <div class="info-card full-width">
+                        <h4>Committee Mandate</h4>
+                        <p id="m-desc">Comprehensive details regarding this committee's jurisdiction and diplomatic objectives will be provided in the official background guides.</p>
+                    </div>
+                    
+                    <div class="info-card full-width" style="background: rgba(212, 192, 139, 0.05);">
+                        <h4>Chairing Team</h4>
+                        <p><strong>Head Chair:</strong> To Be Announced<br><strong>Deputy Chair:</strong> To Be Announced</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Topic 1</h4>
+                        <p>Detailed topic outlines are currently under review by the Secretariat.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Topic 2</h4>
+                        <p>Specialized research briefs will be accessible to registered delegates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            if (window.innerWidth <= 768) {
-                menu.classList.toggle('active');
-            }
-        }
+        // --- Re-triggering Scroll Animation Logic ---
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    // This line ensures it animates again when you scroll back up
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
-        function toggleDropdown(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault(); 
-                document.getElementById('app-dropdown').classList.toggle('show');
-            }
+        // --- Modal Control ---
+        const modal = document.getElementById('committee-modal');
+        function openCommittee(level, title) {
+            document.getElementById('m-title').innerText = title;
+            document.getElementById('m-tag').innerText = level;
+            document.getElementById('m-tag').className = 'level-tag level-' + level.toLowerCase();
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => { modal.classList.add('active'); }, 10);
         }
+        function toggleModal() {
+            modal.classList.remove('active');
+            setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }, 400);
+        }
+        function closeModal(e) { if (e.target === modal) toggleModal(); }
+        document.addEventListener('keydown', (e) => { if (e.key === "Escape") toggleModal(); });
     </script>
-
 </body>
 </html>
