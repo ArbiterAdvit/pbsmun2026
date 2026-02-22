@@ -156,14 +156,16 @@
         }
         .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* SG Formal Intro Section - Centered Layout */
+        /* SG Formal Intro Section - Right Center Layout */
         .sg-intro-container { 
             display: flex; 
-            flex-direction: column; /* Stacks the picture and text vertically */
-            align-items: center;    /* Centers everything horizontally */
-            gap: 3rem; 
+            flex-direction: row;    /* Puts text and image side-by-side */
+            align-items: center;    /* Centers them vertically */
+            justify-content: space-between; 
+            gap: 4rem; 
             width: 85vw; 
-            max-width: 1000px;      /* Slightly narrower so the text doesn't stretch too far */
+            min-height: 75vh; 
+            max-width: 1400px; 
             margin: 0 auto 4rem auto; 
             background-color: var(--light-navy); 
             padding: 4rem; 
@@ -174,7 +176,6 @@
         }
         
         .sg-profile {
-            order: -1; /* This moves the picture to the TOP (above the text) */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -184,7 +185,7 @@
 
         .sg-intro-text { 
             text-align: left; 
-            width: 100%; 
+            flex: 1; 
         }
         
         .sg-intro-text h3 { 
@@ -194,7 +195,7 @@
             font-family: 'XBNiloofarRegular', sans-serif; 
             letter-spacing: 1px; 
             text-transform: uppercase;
-            text-align: center; /* Centers the heading under the picture */
+            text-align: left;
         }
         
         .sg-intro-text p { 
@@ -396,9 +397,9 @@
             .team-card { padding: 2.5rem 1.5rem; }
             .hero-logo { max-width: 180px; }
 
-            .sg-intro-container { flex-direction: column; width: 95vw; min-height: auto; text-align: center; padding: 2.5rem 1.5rem; gap: 2rem; align-items: center; }
+            .sg-intro-container { flex-direction: column-reverse; width: 95vw; min-height: auto; text-align: center; padding: 2.5rem 1.5rem; gap: 2rem; align-items: center; }
             .sg-intro-text p { text-align: left; }
-            .sg-intro-text h3 { font-size: 1.8rem; }
+            .sg-intro-text h3 { font-size: 1.8rem; text-align: center; }
             .sg-profile { width: 100%; max-width: 300px; }
             .sg-intro-photo { width: 100%; height: 350px; }
             
@@ -519,11 +520,14 @@
                 <p>On behalf of the whole Secretariat, I am contented to welcome you to PBSMUN 2026, where ideas come to life and future leaders start their journey.</p>
                 
                 <p>I am eager to see the diplomacy, passion, and brilliance you all will bring to each committee.</p>
+                <br>
+                <p>Warm regards,</p>
+                <p>Huzaifa Anwar<br>Secretary General, PBSMUN 2026</p>
             </div>
 
             <div class="sg-profile">
                 <div class="sg-intro-photo">
-                    <img src="placeholder.jpg" alt="sg_huzaifa.jpg" loading="lazy">
+                    <img src="placeholder.jpg" alt="Secretary General" loading="lazy">
                 </div>
                 <div class="sg-signature">
                     <h4>Huzaifa Anwar</h4>
