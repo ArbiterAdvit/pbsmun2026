@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Core Styles from index (3).html --- */
+        /* --- Core Styles --- */
         :root {
             --navy-blue: #161a29;
             --light-navy: #1f253a;
@@ -39,13 +39,23 @@
             min-height: 100vh;
         }
 
+        /* Custom Scrollbar */
+        body::-webkit-scrollbar {
+            width: 10px;
+            background: var(--navy-blue);
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: var(--gold);
+            border-radius: 5px;
+        }
+
         h1, h2, h3, h4 {
            font-family: 'XBNiloofarRegular';
            font-weight: normal;
            font-style: normal;
         }
 
-        /* --- Navigation (Restored from index (3).html) --- */
+        /* --- Navigation --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -147,11 +157,12 @@
         /* --- Header / Hero --- */
         header {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 6rem 2rem;
             background: linear-gradient(rgba(22, 26, 41, 0.9), rgba(22, 26, 41, 0.9)), 
             url('https://static01.nyt.com/images/2019/09/27/world/un-explainer1/un-explainer1-articleLarge.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             border-bottom: 1px solid rgba(212, 192, 139, 0.15);
         }
 
@@ -159,6 +170,8 @@
             font-size: 3.5rem;
             color: var(--gold);
             text-shadow: 0 0 20px var(--gold-shadow);
+            opacity: 0; /* Starts hidden for animation */
+            animation: heroFadeInUp 1.5s ease-out forwards;
         }
 
         /* --- Main Content --- */
@@ -222,9 +235,26 @@
             font-size: 0.9rem;
         }
 
-        /* --- Mobile Adjustments (From index (3).html) --- */
+        /* --- Animations (Synced with Index) --- */
+        @keyframes heroFadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Mobile Adjustments --- */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.2rem; }
+            .hero-title { font-size: 2.5rem; }
             .hamburger { display: block; }
             .nav-links {
                 display: none;
@@ -283,13 +313,13 @@
     </header>
 
     <section class="main-content">
-        <div class="app-card">
+        <div class="app-card scroll-reveal">
             <span class="status-tag tag-closed">External: Closed</span>
             <h2>External Staff Applications</h2>
             <p>We are currently <strong>not accepting</strong> external staff applications for PBSMUN '26. We appreciate your interest and encourage external applicants to join us as delegates when those applications open!</p>
         </div>
 
-        <div class="app-card">
+        <div class="app-card scroll-reveal">
             <span class="status-tag tag-open">Internal: Open</span>
             <h2>Internal Staff (PBS Students)</h2>
             <p>Are you a Pace British School student looking to help shape the next great MUN conference? We are recruiting for our logistics, media, and operations teams.</p>
@@ -326,6 +356,23 @@
                 document.getElementById('app-dropdown').classList.toggle('show');
             }
         }
+
+        // --- Repeating Scroll Animation Logic ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -20px 0px', 
+            threshold: 0.1 
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
     </script>
 
 </body>
