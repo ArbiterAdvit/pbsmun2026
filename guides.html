@@ -18,8 +18,10 @@
             --gold-shadow: rgba(212, 192, 139, 0.3);
         }
 
+
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -29,10 +31,13 @@
             overflow-x: hidden;
         }
 
+
         body::-webkit-scrollbar { width: 10px; background: var(--navy-blue); }
         body::-webkit-scrollbar-thumb { background-color: var(--gold); border-radius: 5px; }
 
+
         h1, h2, h3, h4 { font-family: 'XBNiloofarRegular'; font-weight: normal; }
+
 
         /* --- NAVIGATION --- */
         nav {
@@ -48,6 +53,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
 
+
         .nav-logo {
             display: flex;
             align-items: center;
@@ -60,6 +66,7 @@
         }
         .nav-logo img { height: 40px; width: auto; }
 
+
         .nav-links { list-style: none; display: flex; gap: 2rem; align-items: center; }
         .nav-links a {
             color: var(--white);
@@ -69,6 +76,7 @@
             font-family: 'Montserrat', sans-serif;
         }
         .nav-links a:hover { color: var(--gold); }
+
 
         /* Dropdown Styles */
         .dropdown { position: relative; display: flex; align-items: center; }
@@ -90,6 +98,7 @@
             transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; 
         }
 
+
         .dropdown-content a {
             color: var(--white);
             padding: 15px 25px;
@@ -107,6 +116,7 @@
             padding-left: 32px;
         }
 
+
         @media (min-width: 769px) {
             .dropdown:hover .dropdown-content {
                 visibility: visible;
@@ -115,7 +125,9 @@
             }
         }
 
+
         .hamburger { display: none; cursor: pointer; font-size: 2rem; color: var(--gold); }
+
 
         /* --- HERO SECTION --- */
         header {
@@ -127,8 +139,63 @@
             border-bottom: 2px solid var(--gold-shadow);
         }
 
+
         .hero-title { font-size: 4rem; margin-bottom: 0.5rem; text-shadow: 0 0 20px var(--gold-shadow); }
         .hero-subtitle { font-size: 1.2rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; font-weight: 300; font-family: 'Montserrat', sans-serif; }
+
+
+ /* Conference Details Grid Section */
+        .info-grid-container { padding: 5rem 10%; background-color: var(--navy-blue); }
+        .info-grid { display: grid; grid-template-columns: 1fr 2.5fr 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        
+        .info-wrapper { display: flex; width: 100%; height: 100%; }
+        .box-dates { grid-column: 1; grid-row: 1; }
+        .box-ages { grid-column: 1; grid-row: 2; }
+        .box-events { grid-column: 2; grid-row: 1 / 3; }
+        .box-location { grid-column: 3; grid-row: 1; }
+        .box-reg { grid-column: 3; grid-row: 2; cursor: pointer; }
+
+
+        .info-box { 
+            background-color: var(--light-navy); 
+            border: 2px solid var(--gold); 
+            border-radius: 12px; 
+            padding: 2.5rem 1.5rem; 
+            text-align: center; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            overflow: hidden;
+            transform: translateZ(0); 
+            width: 100%;
+            height: 100%;
+        }
+        .info-box:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(212, 192, 139, 0.3); }
+        .info-wrapper.box-events .info-box { padding: 0; position: relative; }
+
+
+        .box-title { color: var(--white); font-family: 'XBNiloofarRegular', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; letter-spacing: 2px; }
+        .box-content { color: var(--gold); font-size: 1.2rem; font-weight: 600; }
+        .box-content a { color: var(--gold); text-decoration: none; padding: 0.5rem; }
+        .box-content a:hover { text-decoration: underline; }
+        .info-icon { width: 50px; height: 50px; fill: var(--gold); margin-bottom: 1rem; opacity: 0.8; }
+        
+
+
+.info-box:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(212, 192, 139, 0.3); }
+.box-title { color: var(--white); font-family: 'XBNiloofarRegular', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; }
+.box-content { color: var(--gold); font-size: 1.2rem; font-weight: 600; }
+
+
+/* Responsive adjustments for the grid */
+@media (max-width: 900px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .box-dates, .box-ages, .box-events, .box-location, .box-reg { grid-column: 1; grid-row: auto; }
+}        
+
 
         /* --- COMMITTEE GRID & SECTIONS --- */
         .section-container { padding: 5rem 10%; }
@@ -138,10 +205,12 @@
         }
         .division-title::before, .division-title::after { content: ""; height: 1px; width: 60px; background: var(--gold); opacity: 0.4; }
 
+
         .committee-grid {
             display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem;
             margin-bottom: 6rem; max-width: 1200px; margin-left: auto; margin-right: auto;
         }
+
 
         .committee-card {
             background-color: var(--light-navy); border: 1px solid rgba(212, 192, 139, 0.15);
@@ -154,13 +223,16 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px var(--gold-shadow);
         }
 
+
         .committee-logo {
             width: 90px; height: 90px; border-radius: 50%; background-color: var(--navy-blue);
             border: 2px solid var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center;
         }
 
+
         .committee-card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--white); }
         .committee-card p { font-family: 'Montserrat', sans-serif; color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1; }
+
 
         /* Level Tags */
         .level-tag { font-family: 'Montserrat', sans-serif; padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px; }
@@ -168,6 +240,7 @@
         .level-beginner { background: rgba(212, 192, 139, 0.08); color: rgba(212, 192, 139, 0.8); border: 1px solid rgba(212, 192, 139, 0.4); }
         .level-intermediate { background: rgba(212, 192, 139, 0.15); color: var(--gold); border: 1px solid var(--gold); }
         .level-advanced { background: var(--gold); color: var(--navy-blue); border: 1px solid var(--gold); }
+
 
         /* --- MODAL POPUP --- */
         .modal-overlay {
@@ -181,22 +254,28 @@
         }
         .modal-overlay.active .modal-content { transform: scale(1) translateY(0); opacity: 1; }
 
+
         .modal-header { padding: 4rem 3rem 2rem; text-align: center; border-bottom: 1px solid rgba(212, 192, 139, 0.1); }
         .modal-header h2 { font-size: 3rem; color: var(--gold); }
 
+
         .modal-body { padding: 3rem; }
         .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+
 
         .full-width { grid-column: 1 / -1; }
         .info-card { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 1.5rem; border-left: 3px solid var(--gold); }
         .info-card h4 { color: var(--gold); margin-bottom: 0.5rem; letter-spacing: 1px; font-size: 1.2rem; }
 
+
         .close-btn { position: absolute; top: 20px; right: 25px; font-size: 2.5rem; color: var(--gold); cursor: pointer; line-height: 1; }
+
 
         /* --- DELEGATE RESOURCES --- */
         .resources-box { max-width: 900px; margin: 4rem auto 0; border: 2px solid var(--gold); background: var(--light-navy); padding: 3.5rem 2rem; border-radius: 15px; text-align: center; }
         .resources-box h2 { font-size: 2.5rem; color: var(--gold); margin-bottom: 1.5rem; }
         .resources-box p { font-family: 'Montserrat', sans-serif; max-width: 700px; margin: 0 auto 2rem; font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.8; }
+
 
         .btn-gold {
             background: linear-gradient(135deg, var(--gold) 0%, #ad9963 100%);
@@ -211,9 +290,11 @@
             cursor: not-allowed;
         }
 
+
         /* --- ANIMATIONS (RE-TRIGGER) --- */
         .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .scroll-reveal.show { opacity: 1; transform: translateY(0); }
+
 
         /* --- MOBILE STYLES --- */
         @media (max-width: 768px) {
@@ -229,6 +310,7 @@
             .nav-links.active { display: flex; }
             .nav-links li { margin: 1rem 0; text-align: center; width: 100%; }
 
+
             .dropdown { flex-direction: column; }
             .dropdown-content {
                 visibility: visible; opacity: 1; position: relative; top: 0; left: 0;
@@ -238,6 +320,7 @@
             .dropdown-content.show { display: block; }
             .dropdown-content a { text-align: center; }
             .dropdown-content a:hover { padding-left: 25px; }
+
 
             .hero-title { font-size: 2.8rem; }
             
@@ -250,11 +333,11 @@
             .info-grid { grid-template-columns: 1fr; gap: 1rem; }
             .info-card { padding: 1rem; }
             .close-btn { top: 10px; right: 15px; font-size: 2rem; }
-
-        
+        }
     </style>
 </head>
 <body>
+
 
     <nav>
         <a href="index.html" class="nav-logo">
@@ -279,10 +362,81 @@
         </ul>
     </nav>
 
+
     <header>
         <h1 class="hero-title scroll-reveal">The Conference</h1>
         <p class="hero-subtitle scroll-reveal">Official PBSMUN 2026 Committees</p>
     </header>
+
+
+<section class="info-grid-container scroll-reveal">
+    <div class="info-grid">
+        
+        <div class="info-wrapper box-dates">
+            <div class="info-box">
+                <h3 class="box-title">Dates</h3>
+                <p class="box-content">May 9th - 10th<br>2025</p>
+            </div>
+        </div>
+
+
+        <div class="info-wrapper box-ages">
+            <div class="info-box">
+                <h3 class="box-title">Ages</h3>
+                <p class="box-content">Years 7 - 13<br>(Ages 11-18)</p>
+            </div>
+        </div>
+
+
+        <div class="info-wrapper box-events">
+            <div class="info-box">
+                <div class="events-bg"></div>
+                <div class="events-content">
+                    <div class="carousel-container">
+                        <button class="carousel-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                        <div class="carousel-slide active">
+                            <h3>Day 1</h3>
+                            <h2>Opening</h2>
+                            <p>Ceremony & Lobbying</p>
+                        </div>
+                        <div class="carousel-slide">
+                            <h3>Day 2</h3>
+                            <h2>Debate</h2>
+                            <p>General Assembly</p>
+                        </div>
+                        <div class="carousel-slide">
+                            <h3>Closing</h3>
+                            <h2>Awards</h2>
+                            <p>Grand Finale</p>
+                        </div>
+                        <button class="carousel-btn next" onclick="changeSlide(1)">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="info-wrapper box-location">
+            <div class="info-box">
+                <h3 class="box-title">Location</h3>
+                <p class="box-content">Pace British School<br>Sharjah, UAE</p>
+            </div>
+        </div>
+
+
+        <div class="info-wrapper box-reg" onclick="window.location.href='/registration'">
+            <div class="info-box">
+                <h3 class="box-title">Register</h3>
+                <p class="box-content">Join the<br>Conference</p>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+
+
 
     <section class="section-container">
         
@@ -320,6 +474,7 @@
             </div>
         </div>
 
+
         <h3 class="division-title scroll-reveal">Girls' Assembly</h3>
         <div class="committee-grid">
             <div class="committee-card scroll-reveal" onclick="openCommittee('Junior', 'Committee 1', '#')">
@@ -354,12 +509,14 @@
             </div>
         </div>
 
+
         <div class="resources-box scroll-reveal">
             <h2>Delegate Resources</h2>
             <p>The PBSMUN Delegate Guide is an essential comprehensive manual designed to equip participants with the technical mastery required for high-level diplomacy. It encompasses the official Rules of Procedure, nuances of parliamentary debate, and strategic guidelines for position paper composition, ensuring every delegate can navigate the floor with professional confidence and poise.</p>
             <a href="#" onclick="event.preventDefault();" class="btn-gold coming-soon">Coming Soon</a>
         </div>
     </section>
+
 
     <div id="committee-modal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -380,6 +537,7 @@
                         <p><strong>Head Chair:</strong> To Be Announced<br><strong>Deputy Chair:</strong> To Be Announced</p>
                     </div>
 
+
                     <div class="info-card">
                         <h4>Topic 1</h4>
                         <p>Detailed topic outlines are currently under review by the Secretariat.</p>
@@ -394,9 +552,11 @@
                     <a id="m-guide-btn" href="#" onclick="event.preventDefault();" class="btn-gold coming-soon" style="padding: 1rem 2rem; font-size: 1rem;">Coming Soon</a>
                 </div>
 
+
             </div>
         </div>
     </div>
+
 
     <script>
         // --- Navigation Logic ---
@@ -407,12 +567,14 @@
             }
         }
 
+
         function toggleDropdown(e) {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
                 document.getElementById('app-dropdown').classList.toggle('show');
             }
         }
+
 
         // --- Re-triggering Scroll Animations ---
         const observerOptions = { threshold: 0.1 };
@@ -427,6 +589,7 @@
         }, observerOptions);
         document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
+
         // --- Modal Control ---
         const modal = document.getElementById('committee-modal');
         function openCommittee(level, title, guideUrl) {
@@ -438,6 +601,7 @@
             const guideBtn = document.getElementById('m-guide-btn');
             // Hardcoded to # as it's coming soon, but keeping logic in case you add links later
             guideBtn.href = "#"; 
+
 
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
