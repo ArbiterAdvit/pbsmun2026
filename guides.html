@@ -251,43 +251,7 @@
             .info-card { padding: 1rem; }
             .close-btn { top: 10px; right: 15px; font-size: 2rem; }
 
-            /* Conference Details Grid Section */
-        .info-grid-container { padding: 5rem 10%; background-color: var(--navy-blue); }
-        .info-grid { display: grid; grid-template-columns: 1fr 2.5fr 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
         
-        .info-wrapper { display: flex; width: 100%; height: 100%; }
-        .box-dates { grid-column: 1; grid-row: 1; }
-        .box-ages { grid-column: 1; grid-row: 2; }
-        .box-events { grid-column: 2; grid-row: 1 / 3; }
-        .box-location { grid-column: 3; grid-row: 1; }
-        .box-reg { grid-column: 3; grid-row: 2; cursor: pointer; }
-
-        .info-box { 
-            background-color: var(--light-navy); 
-            border: 2px solid var(--gold); 
-            border-radius: 12px; 
-            padding: 2.5rem 1.5rem; 
-            text-align: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-            overflow: hidden;
-            transform: translateZ(0); 
-            width: 100%;
-            height: 100%;
-        }
-        .info-box:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(212, 192, 139, 0.3); }
-        .info-wrapper.box-events .info-box { padding: 0; position: relative; }
-
-        .box-title { color: var(--white); font-family: 'XBNiloofarRegular', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; letter-spacing: 2px; }
-        .box-content { color: var(--gold); font-size: 1.2rem; font-weight: 600; }
-        .box-content a { color: var(--gold); text-decoration: none; padding: 0.5rem; }
-        .box-content a:hover { text-decoration: underline; }
-        .info-icon { width: 50px; height: 50px; fill: var(--gold); margin-bottom: 1rem; opacity: 0.8; }
-        }
     </style>
 </head>
 <body>
@@ -319,55 +283,6 @@
         <h1 class="hero-title scroll-reveal">The Conference</h1>
         <p class="hero-subtitle scroll-reveal">Official PBSMUN 2026 Committees</p>
     </header>
-
-    <section class="info-grid-container">
-        <h2 class="section-title scroll-reveal">CONFERENCE DETAILS</h2>
-        
-        <div class="info-grid">
-            <div class="info-wrapper box-dates scroll-reveal">
-                <div class="info-box">
-                    <svg class="info-icon" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
-                    <div class="box-title">SAVE THE DATES</div>
-                    <div class="box-content">Coming Soon</div>
-                </div>
-            </div>
-
-            <div class="info-wrapper box-ages scroll-reveal">
-                <div class="info-box">
-                    <svg class="info-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-                    <div class="box-title">OPEN TO</div>
-                    <div class="box-content">Ages 11 - 18</div>
-                </div>
-            </div>
-
-            <div class="info-wrapper box-events scroll-reveal">
-                <div class="info-box">
-                    <div class="events-bg"></div>
-                    <div class="events-content">
-                        <div class="carousel-container">
-                            <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
-                            
-                            <div class="carousel-slide active">
-                                <h2>EVENTS</h2>
-                            </div>
-                            <div class="carousel-slide">
-                                <h3>Day 1</h3>
-                                <p>Opening Ceremony</p>
-                            </div>
-                            <div class="carousel-slide">
-                                <h3>Day 2</h3>
-                                <p>Social Evening</p>
-                            </div>
-                            <div class="carousel-slide">
-                                <h3>Day 3</h3>
-                                <p>Closing Ceremony</p>
-                            </div>
-                            
-                            <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
     <section class="section-container">
         
