@@ -138,6 +138,11 @@
             border-bottom: 1px solid rgba(212, 192, 139, 0.15);
         }
 
+        /* Fix background-attachment scroll lag on mobile */
+        @media (hover: none) and (pointer: coarse) {
+            header { background-attachment: scroll; }
+        }
+
         .hero-logo { max-width: 250px; margin: 0 auto 2rem auto; display: block; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); animation: heroFadeIn 1.5s ease-out forwards; }
         .hero-title { font-size: 4rem; margin: 0 auto 0.5rem auto; text-align: center; letter-spacing: 2px; text-shadow: 0 0 20px var(--gold-shadow); opacity: 0; animation: heroFadeInUp 1.5s ease-out 0.3s forwards; }
         .hero-subtitle { font-size: 1.5rem; font-weight: 300; margin: 0 auto 3rem auto; text-align: center; color: var(--white); opacity: 0; animation: heroFadeInUp 1.5s ease-out 0.6s forwards; }
@@ -416,7 +421,7 @@
 
     <nav>
         <a href="#home" class="nav-logo">
-            <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo"> PBSMUN
+            <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo" loading="lazy" decoding="async"> PBSMUN
         </a>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
         <ul class="nav-links" id="nav-menu">
@@ -438,7 +443,7 @@
     </nav>
 
     <header id="home">
-        <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo" class="hero-logo">
+        <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo" class="hero-logo" loading="lazy" decoding="async">
         
         <h1 class="hero-title">PBSMUN '26</h1>
         <p class="hero-subtitle">Pace British School Model United Nations</p>
@@ -502,7 +507,7 @@
 
             <div class="sg-profile">
                 <div class="sg-intro-photo">
-                    <img src="Huzaifa Main.jpeg" alt="Secretary General" loading="lazy">
+                    <img src="Huzaifa Main.jpeg" alt="Secretary General" loading="lazy" decoding="async">
                 </div>
                 <div class="sg-signature">
                     <h4>Huzaifa Anwar</h4>
@@ -517,7 +522,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Huzaifa.jpeg" alt="Huzaifa Anwar" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Huzaifa.jpeg" alt="Huzaifa Anwar" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Huzaifa Anwar</h3>
@@ -528,7 +533,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Taha.png" alt="Taha Yaseen" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Taha.png" alt="Taha Yaseen" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Taha Yaseen</h3>
@@ -541,7 +546,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Khadeeja.png" alt="Khadeeja Dua" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Khadeeja.png" alt="Khadeeja Dua" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Khadeeja Dua</h3>
@@ -552,7 +557,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Rameen.jpeg" alt="Rameen Adnan" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Rameen.jpeg" alt="Rameen Adnan" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Rameen Adnan</h3>
@@ -566,11 +571,25 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Rayan.jpeg" alt="Rayan Hassan" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Rayan.jpeg" alt="Rayan Hassan" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Rayan Hassan</h3>
                     <p class="team-role">Director General</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="division-title scroll-reveal">Finance Team</h3>
+        <div class="team-grid">
+            <div class="card-wrapper scroll-reveal">
+                <div class="team-card">
+                    <div class="team-photo-frame">
+                        <img src="Rayyan.png" alt="Rayyan Ali" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="fallback-icon" style="display:none;"></span>
+                    </div>
+                    <h3>Rayyan Ali</h3>
+                    <p class="team-role">Head of Finance</p>
                 </div>
             </div>
         </div>
@@ -580,7 +599,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Dhruv.jpeg" alt="Dhruv Kanchan" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Dhruv.jpeg" alt="Dhruv Kanchan" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Dhruv Kanchan</h3>
@@ -591,36 +610,11 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Masah.jpeg" alt="Masah Mohamed" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Masah.jpeg" alt="Masah Mohamed" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Masah Mohamed</h3>
                     <p class="team-role">Head of Media</p>
-                </div>
-            </div>
-        </div>
-
-        <h3 class="division-title scroll-reveal">Finance Team</h3>
-        <div class="team-grid">
-            <div class="card-wrapper scroll-reveal">
-                <div class="team-card">
-                    <div class="team-photo-frame">
-                        <img src="Rayyan.png" alt="Rayyan Ali" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <span class="fallback-icon" style="display:none;"></span>
-                    </div>
-                    <h3>Rayyan Ali</h3>
-                    <p class="team-role">Head of Finance</p>
-                </div>
-            </div>
-
-            <div class="card-wrapper scroll-reveal">
-                <div class="team-card">
-                    <div class="team-photo-frame">
-                        <img src="placeholder.jpg" alt="Manhal Aamir" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <span class="fallback-icon" style="display:none;"></span>
-                    </div>
-                    <h3>Manhal Aamir</h3>
-                    <p class="team-role">Head of Finance</p>
                 </div>
             </div>
         </div>
@@ -630,7 +624,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                         <img src="Advit.jpeg" alt="Advit Kumar" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                         <img src="Advit.jpeg" alt="Advit Kumar" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Advit Kumar</h3>
@@ -641,7 +635,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="placeholder.jpg" alt="Nahrin Akter" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="placeholder.jpg" alt="Nahrin Akter" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Nahrin Akter</h3>
@@ -655,7 +649,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="placeholder.jpg" alt="Izzah Tayyab" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="placeholder.jpg" alt="Izzah Tayyab" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Izzah Tayyab</h3>
@@ -666,7 +660,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Zainab M.jpeg" alt="Zainab Fatima" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Zainab M.jpeg" alt="Zainab Fatima" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Zainab Fatima</h3>
@@ -680,7 +674,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Mateen.png" alt="Muhammad Mateen" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Mateen.png" alt="Muhammad Mateen" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Muhammad Mateen</h3>
@@ -691,7 +685,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Ifrah.jpeg" alt="Ifrah Inam" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Ifrah.jpeg" alt="Ifrah Inam" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Ifrah Inam</h3>
@@ -705,7 +699,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                         <img src="Shahbaz.jpeg" alt="Mohammed Shahbaz" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                         <img src="Shahbaz.jpeg" alt="Mohammed Shahbaz" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Mohammed Shahbaz</h3>
@@ -716,7 +710,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Anisa.jpeg" alt="Anisa Qurbonalizoda" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Anisa.jpeg" alt="Anisa Qurbonalizoda" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Anisa Qurbonalizoda</h3>
@@ -730,7 +724,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                         <img src="Ayaan.jpeg" alt="Ayaan Danish" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                         <img src="Ayaan.jpeg" alt="Ayaan Danish" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Ayaan Danish</h3>
@@ -741,7 +735,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Versha.jpeg" alt="Versha Kumari" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Versha.jpeg" alt="Versha Kumari" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Versha Kumari</h3>
@@ -755,7 +749,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                         <img src="Manuel.jpeg" alt="Manuel Dieudon" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                         <img src="Manuel.jpeg" alt="Manuel Dieudon" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Manuel Dieudon</h3>
@@ -766,7 +760,7 @@
             <div class="card-wrapper scroll-reveal">
                 <div class="team-card">
                     <div class="team-photo-frame">
-                        <img src="Zainab.jpeg" alt="Zainab Ali" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="Zainab.jpeg" alt="Zainab Ali" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <span class="fallback-icon" style="display:none;"></span>
                     </div>
                     <h3>Zainab Ali</h3>
@@ -832,7 +826,7 @@
                         <p>The first iteration of PBSMUN hopes to support the founder of the PACE Group, Dr. PA Ibrahim Haji's belief that education should not merely impart knowledge but translate it into actions that benefit humanity. Three years ago, the Pace British Lunchtime Club was founded by the Head-boy and the Head-girl at that time, the MUN lunchtime club was comprised of many beginners and the lunchtime club served to help students prepair for their first MUN elsewhere. </p>
                     </div>
                     <div class="founder-photo">
-                        <img src="/Ibrahimhaji.jpg.jpg" alt="Dr. PA Ibrahim Haji" loading="lazy">
+                        <img src="/Ibrahimhaji.jpg.jpg" alt="Dr. PA Ibrahim Haji" loading="lazy" decoding="async">
                     </div>
                 </div>
                 
@@ -912,18 +906,17 @@
             document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
         }, 1000);
 
-        // --- Repeating Scroll Animation Logic ---
+        // --- Performance Fix: Modified Scroll Animation Logic ---
         const observerOptions = {
             root: null,
             rootMargin: '0px 0px -20px 0px', 
             threshold: 0.1 
         };
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
-                } else {
-                    entry.target.classList.remove('show');
+                    observer.unobserve(entry.target); 
                 }
             });
         }, observerOptions);
