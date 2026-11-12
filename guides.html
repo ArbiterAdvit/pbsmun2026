@@ -1,632 +1,740 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PBSMUN 2026 conference guides, venue, and schedule.">
     <title>The Conference | PBSMUN</title>
-    <link rel="icon" type="image/x-icon" href="/1_1770817820402_2cg59.png">
-    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/xb-niloofar" type="text/css"/>
+    <link rel="icon" type="image/png" href="1_1770817820402_2cg59.png">
+    <link rel="stylesheet" href="https://fontlibrary.org/face/xb-niloofar">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        /* --- BRANDING VARIABLES --- */
-        :root {
+         :root {
             --navy-blue: #161a29;
             --light-navy: #1f253a;
-            --gold: #d4c08b;      
-            --white: #ffffff;
-            --gold-shadow: rgba(212, 192, 139, 0.3);
+            --gold: #d4c08b;
+            --white: #fff;
+            --gold-shadow: rgba(212, 192, 139, .3);
         }
-
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 88px;
+        }
+        
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--navy-blue);
-            color: var(--white);
-            line-height: 1.6;
             overflow-x: hidden;
+            background: var(--navy-blue);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
         }
-
-        body::-webkit-scrollbar { width: 10px; background: var(--navy-blue); }
-        body::-webkit-scrollbar-thumb { background-color: var(--gold); border-radius: 5px; }
-
-        h1, h2, h3, h4 { font-family: 'XBNiloofarRegular'; font-weight: normal; }
-
-        /* --- NAVIGATION --- */
+        
+        body::-webkit-scrollbar {
+            width: 10px;
+            background: var(--navy-blue);
+        }
+        
+        body::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 5px;
+        }
+        
+        h1,
+        h2,
+        h3 {
+            font-family: 'XBNiloofarRegular', Georgia, serif;
+            font-weight: normal;
+        }
+        
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background-color: var(--light-navy);
-            border-bottom: 2px solid var(--gold);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 76px;
+            padding: .85rem 5%;
+            background: rgba(31, 37, 58, .96);
+            border-bottom: 1px solid rgba(212, 192, 139, .2);
+            backdrop-filter: blur(14px);
         }
-
+        
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-family: 'XBNiloofarRegular';
+            gap: .75rem;
             color: var(--white);
+            font-family: 'XBNiloofarRegular', Georgia, serif;
+            font-size: 1.35rem;
+            letter-spacing: 1px;
             text-decoration: none;
-            letter-spacing: 2px;
         }
-        .nav-logo img { height: 40px; width: auto; }
-
-        .nav-links { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        
+        .nav-logo img {
+            width: auto;
+            height: 42px;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(.85rem, 1.8vw, 1.8rem);
+            list-style: none;
+        }
+        
         .nav-links a {
             color: var(--white);
-            text-decoration: none;
+            font-size: .82rem;
             font-weight: 600;
-            transition: color 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 180ms ease;
         }
-        .nav-links a:hover { color: var(--gold); }
-
-        /* Dropdown Styles */
-        .dropdown { position: relative; display: flex; align-items: center; }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
         .dropdown-content {
-            visibility: hidden;
-            opacity: 0;
             position: absolute;
             top: 100%;
             left: 50%;
-            transform: translate(-50%, 15px); 
-            background-color: var(--light-navy);
-            min-width: 260px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            border: 2px solid var(--gold); 
-            border-radius: 10px; 
             z-index: 1001;
-            overflow: hidden;
-            margin-top: 15px; 
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; 
+            min-width: 260px;
+            margin-top: 15px;
+            padding: .4rem;
+            visibility: hidden;
+            opacity: 0;
+            transform: translate(-50%, 12px);
+            background: rgba(31, 37, 58, .99);
+            border: 1px solid rgba(212, 192, 139, .2);
+            border-radius: 6px;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .3);
+            transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
         }
-
+        
         .dropdown-content a {
-            color: var(--white);
-            padding: 15px 25px;
-            text-decoration: none;
             display: block;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border-bottom: 1px solid rgba(212, 192, 139, 0.15);
-            transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+            padding: .8rem 1rem;
+            border-bottom: 1px solid rgba(212, 192, 139, .1);
+            font-size: .78rem;
         }
+        
+        .dropdown-content a:last-child {
+            border-bottom: 0;
+        }
+        
         .dropdown-content a:hover {
-            background-color: rgba(212, 192, 139, 0.15); 
-            color: var(--gold);
-            padding-left: 32px;
+            background: rgba(212, 192, 139, .08);
         }
-
-        @media (min-width: 769px) {
-            .dropdown:hover .dropdown-content {
+        
+        .hamburger {
+            display: none;
+            width: 44px;
+            height: 44px;
+            place-items: center;
+            color: var(--gold);
+            border: 1px solid rgba(212, 192, 139, .2);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.45rem;
+        }
+        
+        @media (min-width:769px) {
+            .dropdown:hover .dropdown-content,
+            .dropdown:focus-within .dropdown-content {
                 visibility: visible;
                 opacity: 1;
-                transform: translate(-50%, 0); 
+                transform: translate(-50%, 0);
             }
         }
-
-        .hamburger { display: none; cursor: pointer; font-size: 2rem; color: var(--gold); }
-
-        /* --- HERO SECTION --- */
-        header {
+        
+        .hero {
+            display: grid;
+            min-height: 470px;
+            padding: 5rem 1.5rem;
+            place-items: center;
             text-align: center;
-            padding: 8rem 2rem 6rem;
-            background: linear-gradient(rgba(22, 26, 41, 0.9), rgba(22, 26, 41, 0.9)), 
-            url('https://static01.nyt.com/images/2019/09/27/world/un-explainer1/un-explainer1-articleLarge.jpg?quality=75&auto=webp&disable=upscale');
-            background-size: cover; background-position: center; background-attachment: fixed;
-            border-bottom: 2px solid var(--gold-shadow);
+            background: linear-gradient(rgba(22, 26, 41, .84), rgba(22, 26, 41, .94)), url('https://static01.nyt.com/images/2019/09/27/world/un-explainer1/un-explainer1-articleLarge.jpg?quality=75&auto=webp&disable=upscale') center 38%/cover;
+            border-bottom: 1px solid rgba(212, 192, 139, .2);
+        }
+        
+        .hero-inner {
+            width: min(760px, 100%);
+        }
+        
+        .eyebrow {
+            margin-bottom: .9rem;
+            color: var(--gold);
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.05;
+        }
+        
+        .hero-copy {
+            max-width: 620px;
+            margin: 1.25rem auto 0;
+            color: rgba(255, 255, 255, .72);
+            font-size: 1rem;
+        }
+        
+        .quick-nav {
+            border-bottom: 1px solid rgba(212, 192, 139, .12);
+            background: var(--light-navy);
+        }
+        
+        .quick-nav-inner {
+            display: flex;
+            width: min(1120px, calc(100% - 2.5rem));
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+        
+        .quick-nav a {
+            flex: 1;
+            min-width: 150px;
+            padding: 1.15rem;
+            color: rgba(255, 255, 255, .7);
+            border-right: 1px solid rgba(212, 192, 139, .1);
+            font-size: .78rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 180ms ease, background 180ms ease;
+        }
+        
+        .quick-nav a:first-child {
+            border-left: 1px solid rgba(212, 192, 139, .1);
+        }
+        
+        .quick-nav a:hover {
+            color: var(--gold);
+            background: rgba(212, 192, 139, .05);
+        }
+        
+        .page-section {
+            padding: 5.5rem max(1.25rem, calc((100% - 1120px)/2));
+        }
+        
+        .page-section.alt {
+            background: var(--light-navy);
+        }
+        
+        #guides {
+            position: relative;
+            isolation: isolate;
+            background: var(--navy-blue);
+        }
+        
+        #guides::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            background: url('https://framerusercontent.com/images/ofqW9upMhy9yG8Z1L44vkDhMsqw.webp') center / cover no-repeat;
+            filter: grayscale(1);
+            opacity: .12;
+        }
+        
+        #guides::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            background: rgba(22, 26, 41, .36);
+        }
+        
+        .section-heading {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 460px);
+            gap: 2rem;
+            align-items: end;
+            margin-bottom: 2.5rem;
+        }
+        
+        .section-kicker {
+            display: block;
+            margin-bottom: .55rem;
+            color: var(--gold);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        
+        .section-heading h2 {
+            font-size: 2.65rem;
+            line-height: 1.1;
+        }
+        
+        .section-heading p {
+            color: rgba(255, 255, 255, .65);
+            font-size: .92rem;
+        }
+        
+        .guide-group+.guide-group {
+            margin-top: 3rem;
+        }
+        
+        .group-title {
+            margin-bottom: 1rem;
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            font-size: .76rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
         }
 
-        .hero-title { font-size: 4rem; margin-bottom: 0.5rem; text-shadow: 0 0 20px var(--gold-shadow); }
-        .hero-subtitle { font-size: 1.2rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; font-weight: 300; font-family: 'Montserrat', sans-serif; }
-
-        /* --- SECTION TITLES & HEADINGS --- */
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; position: relative; text-shadow: 0 0 10px var(--gold-shadow); color: var(--white); }
-        .section-title::after { content: ''; width: 80px; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); display: block; margin: 1rem auto 0; }
-
-        /* --- CONFERENCE DETAILS SECTION (From Index) --- */
-        .info-grid-container { padding: 5rem 10%; background-color: var(--navy-blue); border-bottom: 1px solid rgba(212, 192, 139, 0.15); }
-        .info-grid { display: grid; grid-template-columns: 1fr 2.5fr 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .general-resources-grid {
+            grid-template-columns: minmax(0, 1fr);
+        }
         
-        .info-wrapper { display: flex; width: 100%; height: 100%; }
-        .box-dates { grid-column: 1; grid-row: 1; }
-        .box-ages { grid-column: 1; grid-row: 2; }
-        .box-events { grid-column: 2; grid-row: 1 / 3; }
-        .box-location { grid-column: 3; grid-row: 1; }
-        .box-reg { grid-column: 3; grid-row: 2; cursor: pointer; }
+        .guide-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 205px;
+            padding: 1.5rem;
+            color: var(--white);
+            background: var(--light-navy);
+            border: 1px solid rgba(212, 192, 139, .18);
+            border-radius: 7px;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, .18);
+            text-decoration: none;
+            transition: transform 180ms ease, border-color 180ms ease;
+        }
+        
+        .alt .guide-card {
+            background: var(--navy-blue);
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(212, 192, 139, .48);
+        }
+        
+        .guide-number {
+            color: rgba(212, 192, 139, .7);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .guide-card h3 {
+            margin: .8rem 0 .45rem;
+            font-size: 1.45rem;
+            line-height: 1.2;
+        }
+        
+        .guide-card p {
+            flex: 1;
+            color: rgba(255, 255, 255, .58);
+            font-size: .82rem;
+        }
+        
+        .status {
+            align-self: flex-start;
+            margin-top: 1.2rem;
+            padding: .35rem .55rem;
+            color: rgba(255, 255, 255, .55);
+            border: 1px solid rgba(255, 255, 255, .14);
+            border-radius: 4px;
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+        }
 
-        .info-box { 
-            background-color: var(--light-navy); 
-            border: 2px solid var(--gold); 
-            border-radius: 12px; 
-            padding: 2.5rem 1.5rem; 
-            text-align: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        .status.available {
+            color: var(--navy-blue);
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 1.25rem;
+        }
+        
+        .feature-panel {
+            min-height: 330px;
+            padding: 2.5rem;
+            background: var(--navy-blue);
+            border: 1px solid rgba(212, 192, 139, .2);
+            border-radius: 7px;
+        }
+        
+        .location-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(rgba(22, 26, 41, .78), rgba(22, 26, 41, .94)), url('https://spea.shj.ae/media/uc1pyzr3/s384.webp') center / cover no-repeat;
+            box-shadow: inset 0 3px 0 rgba(212, 192, 139, .7);
+        }
+        
+        .panel-label {
+            color: var(--gold);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        
+        .feature-panel h2 {
+            margin: .7rem 0 .6rem;
+            font-size: 2.3rem;
+            line-height: 1.1;
+        }
+        
+        .feature-panel p {
+            max-width: 560px;
+            color: rgba(255, 255, 255, .68);
+            font-size: .9rem;
+        }
+        
+        .text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            align-self: flex-start;
+            margin-top: 1.6rem;
+            padding: .8rem 1rem;
+            color: var(--navy-blue);
+            background: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 5px;
+            font-size: .78rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background 180ms ease, transform 180ms ease;
+        }
+        
+        .text-link:hover {
+            background: var(--white);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+        
+        .schedule-panel {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             overflow: hidden;
-            transform: translateZ(0); 
-            width: 100%;
-            height: 100%;
         }
-        .info-box:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(212, 192, 139, 0.3); }
-        .info-wrapper.box-events .info-box { padding: 0; position: relative; }
-
-        .box-title { color: var(--white); font-family: 'XBNiloofarRegular', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; letter-spacing: 2px; }
-        .box-content { color: var(--gold); font-size: 1.2rem; font-weight: 600; }
-        .box-content a { color: var(--gold); text-decoration: none; padding: 0.5rem; }
-        .box-content a:hover { text-decoration: underline; }
-        .info-icon { width: 50px; height: 50px; fill: var(--gold); margin-bottom: 1rem; opacity: 0.8; }
-
-        /* Carousel Styles & Glowing Animations */
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px rgba(212,192,139,0.3), 0 0 10px rgba(212,192,139,0.2); }
-            100% { text-shadow: 0 0 15px rgba(212,192,139,0.8), 0 0 25px rgba(212,192,139,0.5); }
-        }
-
-        @keyframes textGlowGold {
-            0% { text-shadow: 0 0 5px rgba(212,192,139,0.4); }
-            100% { text-shadow: 0 0 15px rgba(212,192,139,0.9), 0 0 25px rgba(212,192,139,0.6); }
-        }
-
-        @keyframes fadeEffect { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .events-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(22, 26, 41, 0.8), rgba(22, 26, 41, 0.9)), url('https://static01.nyt.com/images/2019/09/27/world/un-explainer1/un-explainer1-articleLarge.jpg?quality=75&auto=webp&disable=upscale'); background-size: cover; background-position: center; z-index: 0; opacity: 0.3; pointer-events: none; }
-        .events-content { position: relative; z-index: 1; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
         
-        .carousel-container { display: flex; align-items: center; justify-content: space-between; width: 100%; position: relative; height: 100%; }
-        .carousel-slide { display: none; text-align: center; width: 100%; animation: fadeEffect 0.6s ease-out; }
-        .carousel-slide.active { display: block; }
+        .schedule-panel>* {
+            position: relative;
+            z-index: 1;
+        }
         
-        .carousel-slide h2 { font-size: 3.5rem; font-family: 'XBNiloofarRegular', sans-serif; letter-spacing: 5px; color: var(--white); margin: 0; animation: textGlow 2s infinite alternate ease-in-out; }
-        .carousel-slide h3 { color: var(--gold); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; animation: textGlowGold 2s infinite alternate ease-in-out; }
-        .carousel-slide p { color: var(--white); font-size: 1.8rem; font-weight: 300; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
-
-        .carousel-btn { 
-            background: transparent; border: none; color: var(--gold); font-size: 2.8rem; cursor: pointer; 
-            display: flex; justify-content: center; align-items: center; transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.1s ease; 
-            z-index: 10; padding: 15px; user-select: none; -webkit-tap-highlight-color: transparent;
+        .schedule-panel .panel-brand {
+            position: absolute;
+            right: 1.25rem;
+            bottom: 1rem;
+            z-index: 0;
+            width: 64px;
+            height: auto;
+            opacity: .72;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .2));
+            pointer-events: none;
         }
-        .carousel-btn:hover { color: var(--white); text-shadow: 0 0 15px var(--gold), 0 0 25px var(--gold); }
-        .carousel-btn:active { transform: scale(0.85); text-shadow: 0 0 5px var(--gold); }
-
-        /* --- COMMITTEE GRID & SECTIONS --- */
-        .section-container { padding: 5rem 10%; background-color: var(--light-navy); }
-        .division-title {
-            font-size: 2.2rem; color: var(--gold); text-align: center; margin-bottom: 3rem;
-            display: flex; align-items: center; justify-content: center; gap: 20px;
-        }
-        .division-title::before, .division-title::after { content: ""; height: 1px; width: 60px; background: var(--gold); opacity: 0.4; }
-
-        .committee-grid {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem;
-            margin-bottom: 6rem; max-width: 1200px; margin-left: auto; margin-right: auto;
-        }
-
-        .committee-card {
-            background-color: var(--navy-blue); border: 1px solid rgba(212, 192, 139, 0.15);
-            border-radius: 15px; padding: 3rem 2rem; text-align: center; cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            flex: 1 1 300px; max-width: 350px; display: flex; flex-direction: column; align-items: center;
-        }
-        .committee-card:hover {
-            transform: translateY(-10px); border-color: var(--gold);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px var(--gold-shadow);
-        }
-
-        .committee-logo {
-            width: 90px; height: 90px; border-radius: 50%; background-color: var(--light-navy);
-            border: 2px solid var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;
-        }
-
-        .committee-card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--white); }
-        .committee-card p { font-family: 'Montserrat', sans-serif; color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1; }
-
-        /* Level Tags */
-        .level-tag { font-family: 'Montserrat', sans-serif; padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px; }
-        .level-junior { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.3); }
-        .level-beginner { background: rgba(212, 192, 139, 0.08); color: rgba(212, 192, 139, 0.8); border: 1px solid rgba(212, 192, 139, 0.4); }
-        .level-intermediate { background: rgba(212, 192, 139, 0.15); color: var(--gold); border: 1px solid var(--gold); }
-        .level-advanced { background: var(--gold); color: var(--navy-blue); border: 1px solid var(--gold); }
-
-        /* --- MODAL POPUP --- */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 18, 30, 0.95); z-index: 2000; backdrop-filter: blur(8px); overflow-y: auto; padding: 2rem;
-        }
-        .modal-content {
-            background-color: var(--light-navy); max-width: 900px; margin: 2rem auto;
-            border: 2px solid var(--gold); border-radius: 20px; position: relative;
-            transform: scale(0.9) translateY(20px); opacity: 0; transition: all 0.4s ease;
-        }
-        .modal-overlay.active .modal-content { transform: scale(1) translateY(0); opacity: 1; }
-
-        .modal-header { padding: 4rem 3rem 2rem; text-align: center; border-bottom: 1px solid rgba(212, 192, 139, 0.1); }
-        .modal-header h2 { font-size: 3rem; color: var(--gold); }
-
-        .modal-body { padding: 3rem; }
-        .info-grid-modal { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-
-        .full-width { grid-column: 1 / -1; }
-        .info-card { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 1.5rem; border-left: 3px solid var(--gold); }
-        .info-card h4 { color: var(--gold); margin-bottom: 0.5rem; letter-spacing: 1px; font-size: 1.2rem; }
-
-        .close-btn { position: absolute; top: 20px; right: 25px; font-size: 2.5rem; color: var(--gold); cursor: pointer; line-height: 1; }
-
-        /* --- DELEGATE RESOURCES --- */
-        .resources-box { max-width: 900px; margin: 4rem auto 0; border: 2px solid var(--gold); background: var(--navy-blue); padding: 3.5rem 2rem; border-radius: 15px; text-align: center; }
-        .resources-box h2 { font-size: 2.5rem; color: var(--gold); margin-bottom: 1.5rem; }
-        .resources-box p { font-family: 'Montserrat', sans-serif; max-width: 700px; margin: 0 auto 2rem; font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.8; }
-
-        .btn-gold {
-            background: linear-gradient(135deg, var(--gold) 0%, #ad9963 100%);
-            color: var(--navy-blue); padding: 1.2rem 2.5rem; text-decoration: none; border-radius: 5px;
-            font-weight: 700; display: inline-block; transition: 0.3s; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-family: 'Montserrat', sans-serif;
-        }
-        .btn-gold:hover { background: var(--white); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
         
-        .btn-gold.coming-soon { opacity: 0.8; cursor: not-allowed; }
-
-        /* --- ANIMATIONS (RE-TRIGGER) --- */
-        .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .scroll-reveal.show { opacity: 1; transform: translateY(0); }
-
-        /* --- MOBILE STYLES --- */
-        @media (max-width: 900px) {
-            .info-grid { grid-template-columns: 1fr; }
-            .box-dates, .box-ages, .box-location, .box-reg { grid-column: 1; grid-row: auto; }
-            .box-events { grid-column: 1; grid-row: auto; min-height: 350px; }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 600ms ease, transform 600ms ease;
         }
-
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
+        
+        .scroll-reveal.show {
+            opacity: 1;
+            transform: none;
+        }
+        
+        footer {
+            padding: 2.5rem 1.5rem;
+            color: rgba(255, 255, 255, .58);
+            border-top: 1px solid rgba(212, 192, 139, .2);
+            text-align: center;
+            font-size: .85rem;
+        }
+        
+        @media (max-width:900px) {
+            .section-heading {
+                grid-template-columns: 1fr;
+                gap: .75rem;
+            }
+            .guide-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width:768px) {
+            nav {
+                min-height: 70px;
+                padding: .75rem 1.1rem;
+            }
+            .nav-logo img {
+                height: 38px;
+            }
+            .hamburger {
+                display: grid;
+            }
             .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
                 display: none;
                 flex-direction: column;
-                position: absolute;
-                top: 72px; left: 0; width: 100%;
-                background-color: var(--light-navy); padding: 1rem 0;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.5); border-bottom: 2px solid var(--gold);
+                width: 100%;
+                max-height: calc(100vh - 70px);
+                padding: .65rem 1rem 1.25rem;
+                overflow-y: auto;
+                gap: 0;
+                background: rgba(31, 37, 58, .99);
             }
-            .nav-links.active { display: flex; }
-            .nav-links li { margin: 1rem 0; text-align: center; width: 100%; }
-
-            .dropdown { flex-direction: column; }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a {
+                display: block;
+                padding: .85rem;
+            }
+            .dropdown {
+                flex-direction: column;
+            }
             .dropdown-content {
-                visibility: visible; opacity: 1; position: relative; top: 0; left: 0;
-                transform: none; box-shadow: none; border: none; background-color: transparent;
-                width: 100%; margin-top: 0.5rem; display: none; 
+                position: relative;
+                top: 0;
+                left: 0;
+                display: none;
+                width: 100%;
+                min-width: 0;
+                margin: 0;
+                visibility: visible;
+                opacity: 1;
+                transform: none;
+                border: 0;
+                box-shadow: none;
             }
-            .dropdown-content.show { display: block; }
-            .dropdown-content a { text-align: center; }
-            .dropdown-content a:hover { padding-left: 25px; }
-
-            .hero-title { font-size: 2.8rem; }
-            
-            .carousel-slide h2 { font-size: 2.2rem !important; }
-            .carousel-slide p { font-size: 1.2rem; }
-            .carousel-btn { padding: 10px; font-size: 2.5rem; } 
-
-            /* Modal Mobile Fixes */
-            .modal-overlay { padding: 1rem; }
-            .modal-content { margin: 1rem auto; width: 100%; }
-            .modal-header { padding: 3rem 1.5rem 1.5rem; }
-            .modal-header h2 { font-size: 2rem; }
-            .modal-body { padding: 1.5rem; }
-            .info-grid-modal { grid-template-columns: 1fr; gap: 1rem; }
-            .info-card { padding: 1rem; }
-            .close-btn { top: 10px; right: 15px; font-size: 2rem; }
-        } /* Closing bracket fixed here */
+            .dropdown-content.show {
+                display: block;
+            }
+            .hero {
+                min-height: 390px;
+                padding: 4rem 1.25rem;
+            }
+            .hero-title {
+                font-size: 2.65rem;
+            }
+            .page-section {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+            .section-heading h2 {
+                font-size: 2.15rem;
+            }
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+            .guide-card {
+                min-height: 180px;
+            }
+            .feature-panel {
+                min-height: 300px;
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        @media (max-width:420px) {
+            .hero-title {
+                font-size: 2.25rem;
+            }
+        }
+        
+        @media (prefers-reduced-motion:reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms!important;
+                transition-duration: .01ms!important;
+            }
+            .scroll-reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="site-polish.css">
 </head>
-<body>
 
-    <nav>
-        <a href="index.html" class="nav-logo">
-            <img src="1_1770817820402_2cg59.png" alt="PBSMUN Logo"> PBSMUN
-        </a>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+<body>
+    <nav aria-label="Primary navigation">
+        <a href="index.html" class="nav-logo"><img src="1_1770817820402_2cg59.png" alt="PBSMUN logo">PBSMUN</a>
+        <div class="hamburger" onclick="toggleMenu()" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-controls="nav-menu">&#9776;</div>
         <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" onclick="toggleDropdown(event)">Applications</a>
-                <div class="dropdown-content" id="app-dropdown">
-                    <a href="/delegate-app.html">Delegate Applications</a>
-                    <a href="/chair-app.html">Chair Applications</a>
-                    <a href="/staff-app.html">Staff Applications</a>
-                </div>
-            </li>
-            <li><a href="#" style="color: var(--gold);">The Conference</a></li>
-            <li><a href="/schedule-coming-soon.html">Schedule</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#team">Team</a></li>
-            <li><a href="index.html#contact">Contact Us</a></li>
+            <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+            <li><a href="guides.html" class="active" aria-current="page" onclick="closeMenu()">The Conference</a></li>
+            <li><a href="schedule.html" onclick="closeMenu()">Schedule</a></li>
+            <li><a href="index.html#about" onclick="closeMenu()">About</a></li>
+            <li><a href="index.html#team" onclick="closeMenu()">Team</a></li>
+            <li><a href="index.html#contact" onclick="closeMenu()">Contact Us</a></li>
         </ul>
     </nav>
 
-    <header>
-        <h1 class="hero-title scroll-reveal">The Conference</h1>
-        <p class="hero-subtitle scroll-reveal">Official PBSMUN 2026 Committees</p>
+    <header class="hero">
+        <div class="hero-inner scroll-reveal">
+            <p class="eyebrow">PBSMUN 2026</p>
+            <h1 class="hero-title">The Conference</h1>
+            <p class="hero-copy">Everything delegates, chairs, and staff need to prepare for PBSMUN, gathered in one clear place.</p>
+        </div>
     </header>
 
-    <section class="info-grid-container">
-        <h2 class="section-title scroll-reveal">CONFERENCE DETAILS</h2>
-        
-        <div class="info-grid">
-            <div class="info-wrapper box-dates scroll-reveal">
-                <div class="info-box">
-                    <svg class="info-icon" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
-                    <div class="box-title">SAVE THE DATES</div>
-                    <div class="box-content">Coming Soon</div>
-                </div>
-            </div>
-
-            <div class="info-wrapper box-ages scroll-reveal">
-                <div class="info-box">
-                    <svg class="info-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-                    <div class="box-title">OPEN TO</div>
-                    <div class="box-content">Ages 11 - 18</div>
-                </div>
-            </div>
-
-            <div class="info-wrapper box-events scroll-reveal">
-                <div class="info-box">
-                    <div class="events-bg"></div>
-                    <div class="events-content">
-                        <div class="carousel-container">
-                            <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
-                            
-                            <div class="carousel-slide active">
-                                <h2>EVENTS</h2>
-                            </div>
-                            <div class="carousel-slide">
-                                <h3>Day 1</h3>
-                                <p>Opening Ceremony</p>
-                            </div>
-                            <div class="carousel-slide">
-                                <h3>Day 2</h3>
-                                <p>Social Evening</p>
-                            </div>
-                            <div class="carousel-slide">
-                                <h3>Day 3</h3>
-                                <p>Closing Ceremony</p>
-                            </div>
-                            
-                            <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-wrapper box-location scroll-reveal">
-                <div class="info-box">
-                    <svg class="info-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <div class="box-title">LOCATION</div>
-                    <div class="box-content">
-                        <a href="https://maps.app.goo.gl/dM8TZMoVG9Do9rC99" target="_blank" rel="noopener noreferrer">View on Maps</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-wrapper box-reg scroll-reveal">
-                <div class="info-box">
-                    <svg class="info-icon" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-                    <div class="box-title">JOIN US NOW!</div>
-                    <div class="box-content">Registrations Coming Soon</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-container">
-        
-        <h3 class="division-title scroll-reveal">Boys' Assembly</h3>
-        <div class="committee-grid">
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Junior', 'Committee 1', '#')">
-                <div class="committee-logo">🏛️</div>
-                <span class="level-tag level-junior">Junior</span>
-                <h3>Committee 1</h3>
-                <p>Foundational diplomacy for emerging voices.</p>
-            </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 2', '#')">
-                <div class="committee-logo">🌍</div>
-                <span class="level-tag level-beginner">Beginner</span>
-                <h3>Committee 2</h3>
-                <p>Exploring the mechanics of global governance.</p>
-            </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 3', '#')">
-                <div class="committee-logo">⚖️</div>
-                <span class="level-tag level-beginner">Beginner</span>
-                <h3>Committee 3</h3>
-                <p>Navigating international law and legal frameworks.</p>
-            </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Intermediate', 'Committee 4', '#')">
-                <div class="committee-logo">🛡️</div>
-                <span class="level-tag level-intermediate">Intermediate</span>
-                <h3>Committee 4</h3>
-                <p>Strategizing against complex security threats.</p>
-            </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Advanced', 'Committee 5', '#')">
-                <div class="committee-logo">⚔️</div>
-                <span class="level-tag level-advanced">Advanced</span>
-                <h3>Committee 5</h3>
-                <p>High-intensity crisis and resolution management.</p>
-            </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Intermediate', 'Committee 6', '#')">
-                <div class="committee-logo">📜</div>
-                <span class="level-tag level-intermediate">Intermediate</span>
-                <h3>Committee 6</h3>
-                <p>Drafting policies and specialized resolutions.</p>
-            </div>
-        </div>
-
-        <h3 class="division-title scroll-reveal">Girls' Assembly</h3>
-        <div class="committee-grid">
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Junior', 'Committee 1', '#')">
-                <div class="committee-logo">🏛️</div>
-                <span class="level-tag level-junior">Junior</span>
-                <h3>Committee 1</h3>
-                <p>Empowering the next generation of leadership.</p>
-            </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 2', '#')">
-                <div class="committee-logo">🌍</div>
-                <span class="level-tag level-beginner">Beginner</span>
-                <h3>Committee 2</h3>
-                <p>Analyzing cross-border cooperation strategies.</p>
-            </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Beginner', 'Committee 3', '#')">
-                <div class="committee-logo">⚖️</div>
-                <span class="level-tag level-beginner">Beginner</span>
-                <h3>Committee 3</h3>
-                <p>Human rights and legislative advocacy.</p>
-            </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Intermediate', 'Committee 4', '#')">
-                <div class="committee-logo">🛡️</div>
-                <span class="level-tag level-intermediate">Intermediate</span>
-                <h3>Committee 4</h3>
-                <p>Mitigating socio-economic global challenges.</p>
-            </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Advanced', 'Committee 5', '#')">
-                <div class="committee-logo">⚔️</div>
-                <span class="level-tag level-advanced">Advanced</span>
-                <h3>Committee 5</h3>
-                <p>Specialized summits for veteran delegates.</p>
-            </div>
-            <div class="committee-card scroll-reveal" onclick="openCommittee('Intermediate', 'Committee 6', '#')">
-                <div class="committee-logo">📜</div>
-                <span class="level-tag level-intermediate">Intermediate</span>
-                <h3>Committee 6</h3>
-                <p>Addressing structural and systemic global disparities.</p>
-            </div>
-        </div>
-
-        <div class="resources-box scroll-reveal">
-            <h2>Delegate Resources</h2>
-            <p>The PBSMUN Delegate Guide is an essential comprehensive manual designed to equip participants with the technical mastery required for high-level diplomacy. It encompasses the official Rules of Procedure, nuances of parliamentary debate, and strategic guidelines for position paper composition, ensuring every delegate can navigate the floor with professional confidence and poise.</p>
-            <a href="#" onclick="event.preventDefault();" class="btn-gold coming-soon">Coming Soon</a>
-        </div>
-    </section>
-
-    <div id="committee-modal" class="modal-overlay" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="toggleModal()">&times;</span>
-            <div class="modal-header">
-                <span id="m-tag" class="level-tag">Level</span>
-                <h2 id="m-title">Committee Name</h2>
-            </div>
-            <div class="modal-body">
-                <div class="info-grid-modal">
-                    <div class="info-card full-width">
-                        <h4>Committee Overview</h4>
-                        <p id="m-desc">Comprehensive details regarding this committee's jurisdiction and diplomatic objectives will be provided in the official background guides.</p>
-                    </div>
-                    
-                    <div class="info-card full-width" style="background: rgba(212, 192, 139, 0.05);">
-                        <h4>Chairing Team</h4>
-                        <p><strong>Head Chair:</strong> To Be Announced<br><strong>Deputy Chair:</strong> To Be Announced</p>
-                    </div>
-
-                    <div class="info-card">
-                        <h4>Topic 1</h4>
-                        <p>Detailed topic outlines are currently under review by the Secretariat.</p>
-                    </div>
-                    <div class="info-card">
-                        <h4>Topic 2</h4>
-                        <p>Specialized research briefs will be accessible to registered delegates.</p>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 2.5rem;">
-                    <a id="m-guide-btn" href="#" onclick="event.preventDefault();" class="btn-gold coming-soon" style="padding: 1rem 2rem; font-size: 1rem;">Coming Soon</a>
-                </div>
-
-            </div>
-        </div>
+    <div class="quick-nav" aria-label="Page sections">
+        <div class="quick-nav-inner"><a href="#guides">Guides</a><a href="#venue">Location</a><a href="schedule.html">Schedule</a></div>
     </div>
 
+    <main>
+        <section class="page-section" id="guides">
+            <div class="section-heading scroll-reveal">
+                <div><span class="section-kicker">Prepare with confidence</span>
+                    <h2>Conference Guides</h2>
+                </div>
+                <p>Official materials will be published here as they are approved. Each guide will cover procedures, research expectations, and committee-specific preparation.</p>
+            </div>
+            <div class="guide-group scroll-reveal">
+                <h3 class="group-title">General Resources</h3>
+                <div class="guide-grid general-resources-grid">
+                    <a class="guide-card" href="Delegate%20Guide.docx" download><span class="guide-number">RESOURCE 01</span>
+                        <h3>Delegate Guide</h3>
+                        <p>Rules of procedure, debate structure, motions, resolutions, and preparation essentials.</p><span class="status available">Download Guide &#8595;</span></a>
+                </div>
+            </div>
+            <div class="guide-group scroll-reveal">
+                <h3 class="group-title">Committee Background Guides</h3>
+                <div class="guide-grid">
+                    <a class="guide-card" href="WHO%20PBS%20GUIDE.docx" download><span class="guide-number">BEGINNER</span>
+                        <h3>WHO</h3>
+                        <p>World Health Organization committee background guide and topic research.</p><span class="status available">Download Guide &#8595;</span></a>
+                    <a class="guide-card" href="ECOSOC%20PBS%20GUIDE.docx" download><span class="guide-number">BEGINNER</span>
+                        <h3>ECOSOC</h3>
+                        <p>Economic and Social Council committee background guide and topic research.</p><span class="status available">Download Guide &#8595;</span></a>
+                    <a class="guide-card" href="DISEC%20PBS%20GUIDE.pdf"><span class="guide-number">BEGINNER</span>
+                        <h3>DISEC</h3>
+                        <p>Disarmament and International Security Committee background guide and topic research.</p><span class="status available">Open Guide &#8594;</span></a>
+                    <a class="guide-card" href="CCPCJ%20PBS%20GUIDE.docx" download><span class="guide-number">INTERMEDIATE</span>
+                        <h3>CCPCJ</h3>
+                        <p>Commission on Crime Prevention and Criminal Justice background guide and topic research.</p><span class="status available">Download Guide &#8595;</span></a>
+                    <a class="guide-card" href="UNICEF%20PBS%20GUIDE.docx" download><span class="guide-number">INTERMEDIATE</span>
+                        <h3>UNICEF</h3>
+                        <p>United Nations Children's Fund committee background guide and topic research.</p><span class="status available">Download Guide &#8595;</span></a>
+                    <a class="guide-card" href="UNW%20PBS%20GUIDE.docx" download><span class="guide-number">INTERMEDIATE</span>
+                        <h3>UNW</h3>
+                        <p>UN Women committee background guide and topic research.</p><span class="status available">Download Guide &#8595;</span></a>
+                    <a class="guide-card" href="F1%20Committee%20Guide.docx" download><span class="guide-number">INTERMEDIATE</span>
+                        <h3>F1</h3>
+                        <p>Formula 1 committee background guide and topic research.</p><span class="status available">Download Guide &#8595;</span></a>
+                    <a class="guide-card" href="UNSC%20PBS%20GUIDE.docx" download><span class="guide-number">ADVANCED</span>
+                        <h3>UNSC</h3>
+                        <p>United Nations Security Council background guide and topic research.</p><span class="status available">Download Guide &#8595;</span></a>
+                    <a class="guide-card" href="IAEA%20PBS%20GUIDE.pdf"><span class="guide-number">ADVANCED</span>
+                        <h3>IAEA</h3>
+                        <p>International Atomic Energy Agency background guide and topic research.</p><span class="status available">Open Guide &#8594;</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section alt" id="venue">
+            <div class="section-heading scroll-reveal">
+                <div><span class="section-kicker">Plan your visit</span>
+                    <h2>Location &amp; Schedule</h2>
+                </div>
+                <p>Find the conference venue and review the full three-day programme before arriving.</p>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-panel location-panel scroll-reveal"><span class="panel-label">Conference Venue</span>
+                    <h2>Pace British School</h2>
+                    <p>Sharjah, United Arab Emirates. Open the venue in Google Maps for directions.</p><a class="text-link" href="https://maps.app.goo.gl/dM8TZMoVG9Do9rC99" target="_blank" rel="noopener noreferrer">View on Maps <span aria-hidden="true">&#8599;</span></a></article>
+                <article class="feature-panel schedule-panel scroll-reveal">
+                    <img class="panel-brand" src="1_1770817820402_2cg59.png" alt="PBSMUN logo" loading="lazy" decoding="async">
+                    <span class="panel-label">Three-day programme</span>
+                    <h2>Conference Schedule</h2>
+                    <p>Review registration, committee sessions, breaks, ceremonies, and social events across all three conference days.</p><a class="text-link" href="schedule.html">View Schedule <span aria-hidden="true">&#8594;</span></a>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Pace British School Model United Nations. All rights reserved. Website Made by Manuel Dieudon , Mohammed Shabaz and Advit Pankaj. </p>
+    </footer>
     <script>
-        // --- Navigation Logic ---
+        const menu = document.getElementById('nav-menu');
         function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
+            if (window.innerWidth <= 768) menu.classList.toggle('active');
+        }
+
+        function closeMenu() {
             if (window.innerWidth <= 768) {
-                menu.classList.toggle('active');
+                menu.classList.remove('active');
             }
         }
 
-        function toggleDropdown(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                document.getElementById('app-dropdown').classList.toggle('show');
+        document.querySelector('.hamburger').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleMenu();
             }
-        }
-
-        // --- Carousel Logic (From Index) ---
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-
-        function showSlide(index) {
-            if (index >= slides.length) slideIndex = 0;
-            if (index < 0) slideIndex = slides.length - 1;
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[slideIndex].classList.add('active');
-        }
-
-        function changeSlide(step) {
-            slideIndex += step;
-            showSlide(slideIndex);
-        }
-
-        // --- Re-triggering Scroll Animations ---
-        const observerOptions = { 
-            root: null,
-            rootMargin: '0px 0px -20px 0px', 
-            threshold: 0.1 
-        };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                } else {
-                    entry.target.classList.remove('show');
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-
-        // --- Modal Control ---
-        const modal = document.getElementById('committee-modal');
-        function openCommittee(level, title, guideUrl) {
-            document.getElementById('m-title').innerText = title;
-            document.getElementById('m-tag').innerText = level;
-            document.getElementById('m-tag').className = 'level-tag level-' + level.toLowerCase();
-            
-            // Background Guide button link handling
-            const guideBtn = document.getElementById('m-guide-btn');
-            guideBtn.href = "#"; 
-
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => { modal.classList.add('active'); }, 10);
-        }
-        function toggleModal() {
-            modal.classList.remove('active');
-            setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }, 400);
-        }
-        function closeModal(e) { if (e.target === modal) toggleModal(); }
-        document.addEventListener('keydown', (e) => { if (e.key === "Escape") toggleModal(); });
+        });
+        const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('show');
+        }), {
+            threshold: .08
+        });
+        document.querySelectorAll('.scroll-reveal').forEach((element) => observer.observe(element));
     </script>
 </body>
+
 </html>

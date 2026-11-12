@@ -322,6 +322,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="site-polish.css">
 </head>
 <body>
 
@@ -336,17 +337,9 @@
         <ul class="nav-links" id="nav-menu">
             <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
             
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown(event)">Applications</a>
-                <div class="dropdown-content" id="app-dropdown">
-                    <a href="/delegate-app.html" onclick="toggleMenu()">Delegate Applications</a>
-                    <a href="/chair-app.html" onclick="toggleMenu()">Chair Applications</a>
-                    <a href="/staff-app.html" onclick="toggleMenu()">Staff Applications</a>
-                </div>
-            </li>
 
             <li><a href="/guides.html" onclick="toggleMenu()">The Conference</a></li>
-            <li><a href="/schedule-coming-soon.html" onclick="toggleMenu()">Schedule</a></li>
+            <li><a href="schedule.html" onclick="toggleMenu()">Schedule</a></li>
             <li><a href="index.html#about" onclick="toggleMenu()">About</a></li>
             <li><a href="index.html#team" onclick="toggleMenu()">Team</a></li>
             <li><a href="index.html#contact" onclick="toggleMenu()">Contact Us</a></li>
@@ -370,7 +363,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Pace British School Model United Nations. All rights reserved.</p>
+        <p>© 2026 Pace British School Model United Nations. All rights reserved. Website Made by Manuel Dieudon , Mohammed Shabaz and Advit Pankaj. </p>
     </footer>
 
     <script>
@@ -381,12 +374,6 @@
             }
         }
 
-        function toggleDropdown(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault(); 
-                document.getElementById('app-dropdown').classList.toggle('show');
-            }
-        }
     </script>
 
 </body>
