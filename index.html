@@ -602,6 +602,10 @@
             max-width: 1040px;
             margin: 0 auto 2.5rem auto;
         }
+
+        .secretariat-row .chief-of-staff-card {
+            grid-column: 2;
+        }
         
         .card-wrapper {
             display: flex;
@@ -914,6 +918,9 @@
             }
             .team-grid.secretariat-row {
                 max-width: 100%;
+            }
+            .secretariat-row .chief-of-staff-card {
+                grid-column: auto;
             }
         }
         /* 2026 visual refinement — preserves the original navy and gold palette */
@@ -1539,6 +1546,16 @@
                 </div>
             </div>
             <div class="card-wrapper scroll-reveal">
+                <div class="team-card">
+                    <div class="team-photo-frame">
+                        <img src="Malik.jpg" alt="Malik Mohammed" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="fallback-icon" style="display:none;"></span>
+                    </div>
+                    <h3>Malik Mohammed</h3>
+                    <p class="team-role">Deputy Secretary General</p>
+                </div>
+            </div>
+            <div class="card-wrapper scroll-reveal chief-of-staff-card">
                 <div class="team-card">
                     <div class="team-photo-frame">
                         <img src="Rameen.jpeg" alt="Rameen Adnan" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
