@@ -1866,15 +1866,22 @@
         });
 
         // --- Countdown Timer Logic ---
-        const countDownDate = new Date("Nov 20, 2026 08:00:00 GMT+0400").getTime();
-        const timerInterval = setInterval(function() {
+        const countDownDate = new Date("2026-11-20T08:00:00+04:00").getTime();
+        const conferenceEndDate = new Date("2026-11-23T00:00:00+04:00").getTime();
+
+        function updateCountdown() {
             const now = new Date().getTime();
             const distance = countDownDate - now;
+            const timerContainer = document.getElementById("timer-container");
 
-            if (distance < 0) {
-                clearInterval(timerInterval);
-                document.getElementById("timer-container").innerHTML = "<h2 style='margin-bottom: 2rem; color: var(--gold);'>The Conference Has Begun!</h2>";
-                return;
+            if (now >= conferenceEndDate) {
+                timerContainer.innerHTML = "<h2 style='margin-bottom: 2rem; color: var(--gold);'>See you next year Delegates!</h2>";
+                return true;
+            }
+
+            if (now >= countDownDate) {
+                timerContainer.innerHTML = "<h2 style='margin-bottom: 2rem; color: var(--gold);'>The Conference has begun!</h2>";
+                return false;
             }
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -1886,6 +1893,14 @@
             document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
             document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
             document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            return false;
+        }
+
+        updateCountdown();
+        const timerInterval = setInterval(function() {
+            if (updateCountdown()) {
+                clearInterval(timerInterval);
+            }
         }, 1000);
 
         // --- Performance Fix: Modified Scroll Animation Logic ---
